@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using Domain.Base;
 
 namespace Persistence.Repositories.Base
 {
-    public class Repository<T> : IRepository<T> where T :class
+    public class Repository<T> : IRepository<T> where T :AuditableBaseEntity
     {
         private readonly BigBlueBirdsDbContext _dbContext;
         public Repository(BigBlueBirdsDbContext dbContext)

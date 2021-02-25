@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Domain.Entities
 {
-    public class Song_PlayList : AuditableBaseEntity
+    public class Song_PlayList : ExtensionEntity
     {
         public int SongId { get; set; }
         public Song Song { get; set; }

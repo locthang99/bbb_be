@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Domain.Entities
 {
-    public class User_Like_Song : AuditableBaseEntity
+    public class User_Like_Song : ExtensionEntity
     {
         public User User { get; set; }
         public int SongId { get; set; }

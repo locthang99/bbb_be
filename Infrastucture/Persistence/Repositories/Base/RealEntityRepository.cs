@@ -10,16 +10,16 @@ using System.Linq;
 
 namespace Persistence.Repositories.Base
 {
-    public class RealEntityRepository : Repository<RealEntity>, IRealEntityRepository<RealEntity>
+    public class RealEntityRepository<T> : Repository<T>, IRealEntityRepository<T> where T : RealEntity
     {
-        private readonly DbSet<RealEntity> _realEntity;
+        private readonly DbSet<T> _realEntity;
 
         public RealEntityRepository(BigBlueBirdsDbContext dbContext) : base(dbContext)
         {
-            _realEntity = dbContext.Set<RealEntity>();
+            _realEntity = dbContext.Set<T>();
         }
 
-        public async Task<IReadOnlyList<RealEntity>> GetByNameAsync(string name)
+        public async Task<IReadOnlyList<T>> GetByNameAsync(string name)
         {
             return await _realEntity.Where(r => r.Name.Contains(name)|| name.Contains(r.Name)).AsNoTracking().ToListAsync();
         }

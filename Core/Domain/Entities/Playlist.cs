@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Domain.Entities
 {
-    public class PlayList : RealEntity
+    public class Playlist : RealEntity
     {
 
         public string Thumbnail { get; set; }
