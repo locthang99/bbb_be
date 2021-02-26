@@ -7,13 +7,14 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Persistence.Configurations
 {
-    public class ProductConfiguration : IEntityTypeConfiguration<Product>
+    public class ProductConfiguration : AuditableEntityConfigurations<Product>, IEntityTypeConfiguration<Product>
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
+            ConfigureBase(ref builder);
             builder.ToTable("Products");
-            builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).UseIdentityColumn();
+            builder.Property(x => x.Barcode).HasDefaultValue("1");
+
         }
     }
 }

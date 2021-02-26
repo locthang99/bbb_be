@@ -14,7 +14,13 @@ namespace Persistence.Seed
                 Id =1,
                 Name = "aaaaa",
                 Barcode = "vvvvvvvvvvv"
-            });
+            },
+            new Product()
+            {
+                Id = 2,
+                Name = "aaaaa"
+            }
+            );
 
         }
     }

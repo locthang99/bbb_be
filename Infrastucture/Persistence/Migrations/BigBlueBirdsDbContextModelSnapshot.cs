@@ -27,19 +27,26 @@ namespace Persistence.Migrations
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Barcode")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("timestamp without time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("text")
+                        .HasDefaultValue("1");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("text");
+
+                    b.Property<DateTime>("DateCreate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp without time zone")
+                        .HasDefaultValue(new DateTime(2021, 2, 26, 17, 28, 36, 461, DateTimeKind.Local).AddTicks(9258));
 
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("LastModified")
-                        .HasColumnType("timestamp without time zone");
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp without time zone")
+                        .HasDefaultValue(new DateTime(2021, 2, 26, 17, 28, 36, 472, DateTimeKind.Local).AddTicks(1423));
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
@@ -59,7 +66,14 @@ namespace Persistence.Migrations
                         {
                             Id = 1,
                             Barcode = "vvvvvvvvvvv",
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "aaaaa",
+                            Rate = 0m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DateCreate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "aaaaa",
                             Rate = 0m
                         });
