@@ -17,6 +17,5 @@ namespace Persistence.Repositories.Repo
         {
             _songs = dbContext.Set<Song>();
         }
-
     }
 }

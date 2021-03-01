@@ -20,8 +20,11 @@
     "BackendAPI": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
-      "applicationUrl": "https://localhost:5001;http://localhost:5000",
+      "launchUrl": "swagger",
+      "applicationUrl": "https://localhost:5001",
+      //"applicationUrl": "http://192.168.0.103:5000",
+      "sslPort": 5001,
+      //"applicationUrl": "https://192.168.0.103:5001",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

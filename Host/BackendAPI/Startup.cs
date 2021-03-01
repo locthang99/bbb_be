@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BackendAPI.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,11 +29,11 @@ namespace BackendAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<BigBlueBirdsDbContext>(options =>
-            //options.UseNpgsql(Configuration.GetConnectionString("BigBlueBirdsDb"), options => options.EnableRetryOnFailure())
-            //);
             services.AddPersistenceInfrastructure(Configuration);
+            services.AddSwagger();
             services.AddControllers();
+            services.AddHttpClient();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,15 +51,20 @@ namespace BackendAPI
             }
 
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
+            //app.UseCors("MyPolicy");
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
+            //use swagger
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
         }
     }
 }

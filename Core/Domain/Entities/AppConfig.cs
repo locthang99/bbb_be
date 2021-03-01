@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Domain.Base;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Domain.Entities
 {
-    public class AppConfig
+    public class AppConfig : AuditableBaseEntity
     {
         public string Key { get; set; }
 

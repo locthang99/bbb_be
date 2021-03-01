@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Domain.Base;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Domain.Entities
 {
-    public class History
+    public class History: AuditableBaseEntity
     {
-        public int Id { get; set; }
-        public Guid UserId { get; set; }
+        public int UserId { get; set; }
         public DateTime DateTime { get; set; }
         public string ActionType { get; set; }
         public string ObjectType { get; set; }
