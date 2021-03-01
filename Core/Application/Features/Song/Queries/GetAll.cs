@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Features.Song.DTO;
+using Application.DTOs.Song;
 using Application.Interfaces.Repo;
 using Application.Parameters;
 using Application.Wrappers;
@@ -25,8 +25,15 @@ namespace Application.Features.Song.Queries
         }
         public async Task<PagedResponse<IEnumerable<SongDTO>>> Handle(GetAllQuery request, CancellationToken cancellationToken)
         {
-            var res = await _songRepository.GetAllPagedSortAsync(request._pagedSortRequest);  
-            throw new NotImplementedException();
+            var res = await _songRepository.GetAllPagedSortAsync(request._pagedSortRequest);
+            var data = res.Select(s => _songRepository.MapSong(s)).ToList();
+            return new PagedResponse<IEnumerable<SongDTO>> {
+                Code = 200,
+                Msg = "Get Song Ok",
+                PageSize = request._pagedSortRequest.PageSize,
+                Index = request._pagedSortRequest.Index  ,
+                Data = data
+            };
         }
     }
 }

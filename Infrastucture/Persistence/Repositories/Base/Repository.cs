@@ -12,7 +12,7 @@ namespace Persistence.Repositories.Base
 {
     public class Repository<T> : IRepository<T> where T :AuditableBaseEntity
     {
-        private readonly BigBlueBirdsDbContext _dbContext;
+        public readonly BigBlueBirdsDbContext _dbContext;
         public Repository(BigBlueBirdsDbContext dbContext)
         {
             _dbContext = dbContext;

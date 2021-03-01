@@ -12,7 +12,7 @@ namespace Persistence.Repositories.Base
 {
     public class ExtensionEntityRepository<T> : Repository<T>, IExtensionEntityRepository<T> where T : ExtensionEntity
     {
-        private readonly DbSet<T> _extensionEntity;
+        public readonly DbSet<T> _extensionEntity;
 
         public ExtensionEntityRepository(BigBlueBirdsDbContext dbContext) : base(dbContext)
         {

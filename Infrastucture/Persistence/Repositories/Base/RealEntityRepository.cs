@@ -13,7 +13,7 @@ namespace Persistence.Repositories.Base
 {
     public class RealEntityRepository<T> : Repository<T>, IRealEntityRepository<T> where T : RealEntity
     {
-        private readonly DbSet<T> _realEntity;
+        public readonly DbSet<T> _realEntity;
 
         public RealEntityRepository(BigBlueBirdsDbContext dbContext) : base(dbContext)
         {

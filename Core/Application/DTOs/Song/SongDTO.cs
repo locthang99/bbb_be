@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Application.DTOs.Owner;
+using Application.DTOs.Tag;
+using Application.DTOs.SongType;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Application.Features.Song.DTO
+namespace Application.DTOs.Song
 {
     public class SongDTO
     {
@@ -18,8 +21,8 @@ namespace Application.Features.Song.DTO
         public string Thumbnail { get; set; }
         public string FileMusic { get; set; }
         public int Duration { get; set; }
-        //public List<SongTypeModel> Types { get; set; }
-        //public List<TagModel> Tags { get; set; }
-        //public List<OwnerModel> Owners { get; set; }
+        public List<SongTypeDTO> Types { get; set; }
+        public List<TagDTO> Tags { get; set; }
+        public List<OwnerDTO> Owners { get; set; }
     }
 }

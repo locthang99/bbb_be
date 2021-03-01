@@ -1,0 +1,20 @@
+﻿using Microsoft.AspNetCore.Http;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Application.DTOs.Song.SongRequest
+{
+    public class SongUpdateRequest
+    {
+        //public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string Lyric { get; set; }
+        public int Duration { get; set; }
+        public IFormFile Thumbnail { get; set; }
+        public IFormFile FileMusic { get; set; }
+        public List<int> SongTypes { get; set; }
+        public List<int> Tags { get; set; }
+    }
+}
