@@ -11,8 +11,27 @@ namespace BackendAPI.Controllers.v1
         public async Task<IActionResult> Get([FromQuery] GetAllQuery rq)
         {
 
-            return Ok(await Mediator.Send(new GetAllQuery()
-            { _pagedSortRequest = new Application.Parameters.PagedSortRequest { Index = 1, PageSize = 10, SortASC = true, SortBy = "Id" } }));
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpGet("ById")]
+        public async Task<IActionResult> Get([FromQuery] GetByIdQuery rq)
+        {
+
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpGet("ByListId")]
+        public async Task<IActionResult> GetByListId([FromQuery] GetByListIdQuery rq)
+        {
+
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpGet("ByName")]
+        public async Task<IActionResult> GetByName([FromQuery] GetByNameQuery rq)
+        {
+            return Ok(await Mediator.Send(rq));
         }
     }
 }

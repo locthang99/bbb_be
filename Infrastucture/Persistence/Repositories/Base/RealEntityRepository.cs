@@ -20,24 +20,20 @@ namespace Persistence.Repositories.Base
             _realEntity = dbContext.Set<T>();
         }
 
-        public async Task<IReadOnlyList<T>> GetAllPagedSortAsync(PagedSortRequest rq)
+        private IOrderedQueryable<T> Sort(PagedSortRequest rq,IQueryable<T> input)
         {
-            var data = _realEntity;
             if (rq.SortASC)
             {
                 switch (rq.SortBy)
                 {
                     case "Id":
-                        data.OrderBy(x => x.Id);
-                        break;
+                        return input.OrderBy(x => x.Id);                       
                     case "Name":
-                        data.OrderBy(x => x.Name);
-                        break;
+                        return input.OrderBy(x => x.Name);                    
                     case "DateCreate":
-                        data.OrderBy(x => x.DateCreate);
-                        break;
+                        return input.OrderBy(x => x.DateCreate);
                     default:
-                        break;
+                        return input.OrderBy(x => x.Id);
                 }
             }
             else
@@ -45,24 +41,33 @@ namespace Persistence.Repositories.Base
                 switch (rq.SortBy)
                 {
                     case "Id":
-                        data.OrderByDescending(x => x.Id);
-                        break;
+                        return input.OrderByDescending(x => x.Id);
                     case "Name":
-                        data.OrderByDescending(x => x.Name);
-                        break;
+                        return input.OrderByDescending(x => x.Name);
                     case "DateCreate":
-                        data.OrderByDescending(x => x.DateCreate);
-                        break;
+                        return input.OrderByDescending(x => x.DateCreate);
                     default:
-                        break;
+                        return input.OrderByDescending(x => x.Id);
                 }
             }
-           return await data.Skip((rq.Index - 1) * rq.PageSize).Take(rq.PageSize).ToListAsync();
         }
 
-        public async Task<IReadOnlyList<T>> GetByNameAsync(string name)
+        public async Task<IReadOnlyList<T>> GetAllPagedSortAsync(PagedSortRequest rq)
         {
-            return await _realEntity.Where(r => r.Name.Contains(name)|| name.Contains(r.Name)).AsNoTracking().ToListAsync();
+           var data = _realEntity.Select(x => x).AsNoTracking();
+           return await Sort(rq,data).Skip((rq.Index - 1) * rq.PageSize).Take(rq.PageSize).ToListAsync();
+        }
+
+        public async Task<IReadOnlyList<T>> GetByNamePagedSortAsync(string name,PagedSortRequest rq)
+        {
+            var data = _realEntity.Where(r => r.Name.Contains(name) || name.Contains(r.Name)).AsNoTracking();
+            return await Sort(rq,data).Skip((rq.Index - 1) * rq.PageSize).Take(rq.PageSize).ToListAsync();
+        }
+
+        public async Task<IReadOnlyList<T>> GetByListIdPagedSortAsync(IReadOnlyList<int> listId, PagedSortRequest rq)
+        {
+            var data = _realEntity.Where(r => listId.Contains(r.Id)).AsNoTracking();
+            return await Sort(rq, data).Skip((rq.Index - 1) * rq.PageSize).Take(rq.PageSize).ToListAsync();
         }
     }
 }

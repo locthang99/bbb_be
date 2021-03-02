@@ -12,9 +12,8 @@ using MediatR;
 
 namespace Application.Features.Song.Queries
 {
-    public class GetAllQuery : IRequest<PagedResponse<IEnumerable<SongDTO>>>
+    public class GetAllQuery :PagedSortRequest, IRequest<PagedResponse<IEnumerable<SongDTO>>>
     {
-        public PagedSortRequest _pagedSortRequest { get; set; }
     }
     public class GetAllHandler : IRequestHandler<GetAllQuery, PagedResponse<IEnumerable<SongDTO>>>
     {
@@ -25,13 +24,13 @@ namespace Application.Features.Song.Queries
         }
         public async Task<PagedResponse<IEnumerable<SongDTO>>> Handle(GetAllQuery request, CancellationToken cancellationToken)
         {
-            var res = await _songRepository.GetAllPagedSortAsync(request._pagedSortRequest);
+            var res = await _songRepository.GetAllPagedSortAsync(request);
             var data = res.Select(s => _songRepository.MapSong(s)).ToList();
             return new PagedResponse<IEnumerable<SongDTO>> {
                 Code = 200,
                 Msg = "Get Song Ok",
-                PageSize = request._pagedSortRequest.PageSize,
-                Index = request._pagedSortRequest.Index  ,
+                PageSize = request.PageSize,
+                Index = request.Index  ,
                 Data = data
             };
         }

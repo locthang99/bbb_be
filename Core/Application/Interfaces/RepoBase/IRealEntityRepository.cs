@@ -11,6 +11,8 @@ namespace Application.Interfaces.RepoBase
     {
         Task<IReadOnlyList<T>> GetAllPagedSortAsync(PagedSortRequest rq);
 
-        Task<IReadOnlyList<T>> GetByNameAsync(string name);
+        Task<IReadOnlyList<T>> GetByNamePagedSortAsync(string name,PagedSortRequest rq);
+        Task<IReadOnlyList<T>> GetByListIdPagedSortAsync(IReadOnlyList<int> listId, PagedSortRequest rq);
+
     }
 }
