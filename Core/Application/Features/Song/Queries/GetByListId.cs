@@ -26,13 +26,10 @@ namespace Application.Features.Song.Queries
         public async Task<PagedResponse<IEnumerable<SongDTO>>> Handle(GetByListIdQuery request, CancellationToken cancellationToken)
         {
             var res = await _songRepository.GetByListIdPagedSortAsync(request.listId,request);
-            var data = res.Select(s => _songRepository.MapSong(s)).ToList();
-            return new PagedResponse<IEnumerable<SongDTO>>
+            var data = res.Data.Select(s => _songRepository.MapSong(s)).ToList();
+            return new PagedResponse<IEnumerable<SongDTO>>(request)
             {
-                Code = 200,
-                Msg = "Get Song by list id Ok",
-                PageSize = request.PageSize,
-                Index = request.Index,
+                TotalItem = res.TotallRecord,
                 Data = data
             };
         }

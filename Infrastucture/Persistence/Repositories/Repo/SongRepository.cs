@@ -11,16 +11,20 @@ using System.Linq;
 using Application.DTOs.SongType;
 using Application.DTOs.Owner;
 using Application.DTOs.Tag;
+using Microsoft.Extensions.Configuration;
 
 namespace Persistence.Repositories.Repo
 {
     public class SongRepository : RealEntityRepository<Song>,ISongRepository
     {
+        private readonly IConfiguration _config;
+
         private readonly DbSet<Song> _songs;
 
-        public SongRepository(BigBlueBirdsDbContext dbContext) : base(dbContext)
+        public SongRepository(BigBlueBirdsDbContext dbContext, IConfiguration config) : base(dbContext)
         {
             _songs = dbContext.Set<Song>();
+            _config = config;
         }
 
         public SongDTO MapSong(Song song)
@@ -52,14 +56,14 @@ namespace Persistence.Repositories.Repo
                     Name = c.Tag.Name
                 }).ToList()
             };
-            //if (!song.Thumbnail.Contains("http") && song.Thumbnail != "")
-            //    data.Thumbnail = _config["File:Image"] + song.Thumbnail;
-            //else
-            //    data.Thumbnail = song.Thumbnail;
-            //if (!song.FileMusic.Contains("http") && song.FileMusic != "")
-            //    data.FileMusic = _config["File:Music"] + song.FileMusic;
-            //else
-            //    data.FileMusic = song.FileMusic;
+            if (!song.Thumbnail.Contains("http") && song.Thumbnail != "")
+                data.Thumbnail = _config["File:Image"] + song.Thumbnail;
+            else
+                data.Thumbnail = song.Thumbnail;
+            if (!song.FileMusic.Contains("http") && song.FileMusic != "")
+                data.FileMusic = _config["File:Music"] + song.FileMusic;
+            else
+                data.FileMusic = song.FileMusic;
             return data;
 
         }

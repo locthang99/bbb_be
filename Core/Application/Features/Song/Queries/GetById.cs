@@ -27,17 +27,11 @@ namespace Application.Features.Song.Queries
         {
             var res = await _songRepository.GetByIdAsync(request.Id);
             if (res == null)
-                return new Response<SongDTO>
-                {
-                    Code = 404,
-                    Msg = "Get Song Failed",
-                    Data = null
-                };
+                return new NotFoundReponse<SongDTO>();
+
             var data = _songRepository.MapSong(res);
-            return new Response<SongDTO>
+            return new Response<SongDTO>()
             {
-                Code = 200,
-                Msg = "Get Song Ok",
                 Data = data
             };
         }

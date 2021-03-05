@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackendAPI", "Host\BackendA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Infrastucture\Persistence\Persistence.csproj", "{5C363553-8810-4E3F-80BB-0F552313E9F1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Infrastucture\Shared\Shared.csproj", "{6BA3E553-FC45-4BFA-8696-B8D33521C79A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThirdPartyServices", "Infrastucture\Shared\ThirdPartyServices.csproj", "{6BA3E553-FC45-4BFA-8696-B8D33521C79A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

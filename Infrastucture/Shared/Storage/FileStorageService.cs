@@ -1,0 +1,63 @@
+﻿using Microsoft.AspNetCore.Hosting;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using System.Net.Http.Headers;
+using ThirdPartyServices.Storage;
+
+namespace ThirdPartyServices.Storage
+{
+    public class FileStorageService : IStorageService
+    {
+        private readonly string _audio;
+        private const string AUDIO_FOLDER_NAME = "Audio";
+
+        private readonly string _image;
+        private const string IMAGE_FOLDER_NAME = "Image";
+
+        public FileStorageService(Microsoft.AspNetCore.Hosting.IHostingEnvironment webHostEnvironment)
+        {
+            _audio = Path.Combine(webHostEnvironment.WebRootPath, AUDIO_FOLDER_NAME);
+            _image = Path.Combine(webHostEnvironment.WebRootPath, IMAGE_FOLDER_NAME);
+        }
+
+        //public string GetFileUrl(string fileName)
+        //{
+        //    return $"/{USER_CONTENT_FOLDER_NAME}/{fileName}";
+        //}
+
+        public async Task SaveFileAsync(Stream mediaBinaryStream, string fileName, int Type)
+        {
+            string filePath = "";
+            if (Type == 0)
+                filePath = Path.Combine(_image, fileName);
+            else
+                filePath = Path.Combine(_audio, fileName);
+            using var output = new FileStream(filePath, FileMode.Create);
+            await mediaBinaryStream.CopyToAsync(output);
+        }
+
+        public async Task DeleteFileAsync(string fileName, int Type)
+        {
+            string filePath = "";
+            if (Type == 0)
+                filePath = Path.Combine(_image, fileName);
+            else
+                filePath = Path.Combine(_audio, fileName);
+            if (File.Exists(filePath))
+            {
+                await Task.Run(() => File.Delete(filePath));
+            }
+        }
+        public async Task<string> SaveFile(IFormFile file, int Type)
+        {
+            var originalFileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+            var fileName = $"{Guid.NewGuid()}{Path.GetExtension(originalFileName)}";
+            await SaveFileAsync(file.OpenReadStream(), fileName, Type);
+            return fileName;
+        }
+    }
+}

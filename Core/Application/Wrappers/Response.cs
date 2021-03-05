@@ -11,7 +11,18 @@ namespace Application.Wrappers
         public T Data { get; set; }
         public Response()
         {
-
+            Code = 200;
+            Msg = "Get OK";
         }
     }
+    public class NotFoundReponse<T> : Response<T>
+    {
+        public NotFoundReponse()
+        {
+            Code = 404;
+            Msg = "Not Found";
+        }
+    }
+
+
 }

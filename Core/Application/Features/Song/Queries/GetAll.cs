@@ -25,12 +25,9 @@ namespace Application.Features.Song.Queries
         public async Task<PagedResponse<IEnumerable<SongDTO>>> Handle(GetAllQuery request, CancellationToken cancellationToken)
         {
             var res = await _songRepository.GetAllPagedSortAsync(request);
-            var data = res.Select(s => _songRepository.MapSong(s)).ToList();
-            return new PagedResponse<IEnumerable<SongDTO>> {
-                Code = 200,
-                Msg = "Get Song Ok",
-                PageSize = request.PageSize,
-                Index = request.Index  ,
+            var data = res.Data.Select(s => _songRepository.MapSong(s)).ToList();
+            return new PagedResponse<IEnumerable<SongDTO>>(request) {
+                TotalItem = res.TotallRecord,
                 Data = data
             };
         }

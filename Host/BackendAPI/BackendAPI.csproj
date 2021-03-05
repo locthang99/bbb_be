@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -7,8 +7,13 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Application\Application.csproj" />
     <ProjectReference Include="..\..\Infrastucture\Persistence\Persistence.csproj" />
-    <ProjectReference Include="..\..\Infrastucture\Shared\Shared.csproj" />
+    <ProjectReference Include="..\..\Infrastucture\Shared\ThirdPartyServices.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Audio\" />
+    <Folder Include="wwwroot\Image\" />
   </ItemGroup>
 
 

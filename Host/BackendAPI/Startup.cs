@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Persistence;
 using Persistence.Contexts;
+using ThirdPartyServices;
 
 namespace BackendAPI
 {
@@ -32,6 +33,7 @@ namespace BackendAPI
         {
             services.AddApplicationLayer();
             services.AddPersistenceInfrastructure(Configuration);
+            services.AddThirdPartyServices(Configuration);
             services.AddSwagger();
             services.AddControllers();
             services.AddHttpClient();
