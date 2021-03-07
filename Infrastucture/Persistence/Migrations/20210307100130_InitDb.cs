@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Persistence.Migrations
 {
-    public partial class InitDb0 : Migration
+    public partial class InitDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,9 +17,9 @@ namespace Persistence.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
-                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 646, DateTimeKind.Local).AddTicks(130)),
+                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 669, DateTimeKind.Local).AddTicks(5323)),
                     LastModifiedBy = table.Column<string>(type: "text", nullable: true),
-                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 658, DateTimeKind.Local).AddTicks(3908))
+                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 692, DateTimeKind.Local).AddTicks(3193))
                 },
                 constraints: table =>
                 {
@@ -37,9 +37,9 @@ namespace Persistence.Migrations
                     Type = table.Column<string>(type: "text", nullable: false),
                     TimeExpire = table.Column<int>(type: "integer", nullable: false, defaultValue: 1),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
-                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 737, DateTimeKind.Local).AddTicks(8260)),
+                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 839, DateTimeKind.Local).AddTicks(128)),
                     LastModifiedBy = table.Column<string>(type: "text", nullable: true),
-                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 737, DateTimeKind.Local).AddTicks(9887))
+                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 839, DateTimeKind.Local).AddTicks(3857))
                 },
                 constraints: table =>
                 {
@@ -59,9 +59,9 @@ namespace Persistence.Migrations
                     ObjectId = table.Column<string>(type: "text", nullable: true),
                     ObjectName = table.Column<string>(type: "text", nullable: true),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
-                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 732, DateTimeKind.Local).AddTicks(7561)),
+                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 828, DateTimeKind.Local).AddTicks(6784)),
                     LastModifiedBy = table.Column<string>(type: "text", nullable: true),
-                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 732, DateTimeKind.Local).AddTicks(9140))
+                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 828, DateTimeKind.Local).AddTicks(9851))
                 },
                 constraints: table =>
                 {
@@ -82,9 +82,9 @@ namespace Persistence.Migrations
                     PlaylistType = table.Column<string>(type: "text", nullable: false),
                     OwnerId = table.Column<int>(type: "integer", nullable: false),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
-                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 701, DateTimeKind.Local).AddTicks(3651)),
+                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 772, DateTimeKind.Local).AddTicks(3215)),
                     LastModifiedBy = table.Column<string>(type: "text", nullable: true),
-                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 701, DateTimeKind.Local).AddTicks(5249)),
+                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 772, DateTimeKind.Local).AddTicks(7091)),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: true, defaultValue: "")
                 },
@@ -120,9 +120,9 @@ namespace Persistence.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
-                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 661, DateTimeKind.Local).AddTicks(6133)),
+                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 703, DateTimeKind.Local).AddTicks(2462)),
                     LastModifiedBy = table.Column<string>(type: "text", nullable: true),
-                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 661, DateTimeKind.Local).AddTicks(7426)),
+                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 703, DateTimeKind.Local).AddTicks(5302)),
                     Name = table.Column<string>(type: "text", nullable: true),
                     NormalizedName = table.Column<string>(type: "text", nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "text", nullable: true)
@@ -148,9 +148,9 @@ namespace Persistence.Migrations
                     Thumbnail = table.Column<string>(type: "text", nullable: false, defaultValue: ""),
                     FileMusic = table.Column<string>(type: "text", nullable: false, defaultValue: ""),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
-                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 697, DateTimeKind.Local).AddTicks(4760)),
+                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 762, DateTimeKind.Local).AddTicks(358)),
                     LastModifiedBy = table.Column<string>(type: "text", nullable: true),
-                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 697, DateTimeKind.Local).AddTicks(6314)),
+                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 762, DateTimeKind.Local).AddTicks(5408)),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: true, defaultValue: "")
                 },
@@ -166,9 +166,9 @@ namespace Persistence.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
-                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 699, DateTimeKind.Local).AddTicks(5560)),
+                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 767, DateTimeKind.Local).AddTicks(9707)),
                     LastModifiedBy = table.Column<string>(type: "text", nullable: true),
-                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 699, DateTimeKind.Local).AddTicks(7011)),
+                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 768, DateTimeKind.Local).AddTicks(3353)),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: true, defaultValue: "")
                 },
@@ -184,9 +184,9 @@ namespace Persistence.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
-                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 733, DateTimeKind.Local).AddTicks(9018)),
+                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 830, DateTimeKind.Local).AddTicks(9751)),
                     LastModifiedBy = table.Column<string>(type: "text", nullable: true),
-                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 734, DateTimeKind.Local).AddTicks(588)),
+                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 831, DateTimeKind.Local).AddTicks(3062)),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: true, defaultValue: "")
                 },
@@ -265,9 +265,9 @@ namespace Persistence.Migrations
                     AccountType = table.Column<string>(type: "text", nullable: false),
                     Thumbnail = table.Column<string>(type: "text", nullable: false, defaultValue: ""),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
-                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 664, DateTimeKind.Local).AddTicks(826)),
+                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 708, DateTimeKind.Local).AddTicks(642)),
                     LastModifiedBy = table.Column<string>(type: "text", nullable: true),
-                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 664, DateTimeKind.Local).AddTicks(2090)),
+                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 708, DateTimeKind.Local).AddTicks(3307)),
                     UserName = table.Column<string>(type: "text", nullable: true),
                     NormalizedUserName = table.Column<string>(type: "text", nullable: true),
                     Email = table.Column<string>(type: "text", nullable: true),
@@ -336,9 +336,9 @@ namespace Persistence.Migrations
                     SongId = table.Column<int>(type: "integer", nullable: false),
                     PlayListId = table.Column<int>(type: "integer", nullable: false),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
-                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 703, DateTimeKind.Local).AddTicks(3843)),
+                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 776, DateTimeKind.Local).AddTicks(6074)),
                     LastModifiedBy = table.Column<string>(type: "text", nullable: true),
-                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 703, DateTimeKind.Local).AddTicks(5588))
+                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 777, DateTimeKind.Local).AddTicks(54))
                 },
                 constraints: table =>
                 {
@@ -366,9 +366,9 @@ namespace Persistence.Migrations
                     SongId = table.Column<int>(type: "integer", nullable: false),
                     SongTypeId = table.Column<int>(type: "integer", nullable: false),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
-                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 708, DateTimeKind.Local).AddTicks(8396)),
+                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 786, DateTimeKind.Local).AddTicks(2260)),
                     LastModifiedBy = table.Column<string>(type: "text", nullable: true),
-                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 709, DateTimeKind.Local).AddTicks(666))
+                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 786, DateTimeKind.Local).AddTicks(6077))
                 },
                 constraints: table =>
                 {
@@ -396,9 +396,9 @@ namespace Persistence.Migrations
                     SongId = table.Column<int>(type: "integer", nullable: false),
                     TagId = table.Column<int>(type: "integer", nullable: false),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
-                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 735, DateTimeKind.Local).AddTicks(6739)),
+                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 834, DateTimeKind.Local).AddTicks(6166)),
                     LastModifiedBy = table.Column<string>(type: "text", nullable: true),
-                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 735, DateTimeKind.Local).AddTicks(8379))
+                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 834, DateTimeKind.Local).AddTicks(9394))
                 },
                 constraints: table =>
                 {
@@ -467,9 +467,9 @@ namespace Persistence.Migrations
                     ReceiverId = table.Column<int>(type: "integer", nullable: false),
                     Status = table.Column<int>(type: "integer", nullable: false),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
-                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 722, DateTimeKind.Local).AddTicks(9545)),
+                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 808, DateTimeKind.Local).AddTicks(1762)),
                     LastModifiedBy = table.Column<string>(type: "text", nullable: true),
-                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 723, DateTimeKind.Local).AddTicks(1441))
+                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 808, DateTimeKind.Local).AddTicks(5228))
                 },
                 constraints: table =>
                 {
@@ -496,9 +496,9 @@ namespace Persistence.Migrations
                     SongId = table.Column<int>(type: "integer", nullable: false),
                     OwnerId = table.Column<int>(type: "integer", nullable: false),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
-                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 712, DateTimeKind.Local).AddTicks(2052)),
+                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 790, DateTimeKind.Local).AddTicks(7137)),
                     LastModifiedBy = table.Column<string>(type: "text", nullable: true),
-                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 712, DateTimeKind.Local).AddTicks(4376))
+                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 791, DateTimeKind.Local).AddTicks(900))
                 },
                 constraints: table =>
                 {
@@ -558,9 +558,9 @@ namespace Persistence.Migrations
                     SongId = table.Column<int>(type: "integer", nullable: false),
                     Content = table.Column<string>(type: "character varying(1000)", maxLength: 1000, nullable: false),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
-                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 719, DateTimeKind.Local).AddTicks(4694)),
+                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 803, DateTimeKind.Local).AddTicks(369)),
                     LastModifiedBy = table.Column<string>(type: "text", nullable: true),
-                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 719, DateTimeKind.Local).AddTicks(6734))
+                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 803, DateTimeKind.Local).AddTicks(4161))
                 },
                 constraints: table =>
                 {
@@ -618,9 +618,9 @@ namespace Persistence.Migrations
                     UserId = table.Column<int>(type: "integer", nullable: false),
                     SongId = table.Column<int>(type: "integer", nullable: false),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),
-                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 716, DateTimeKind.Local).AddTicks(9621)),
+                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 797, DateTimeKind.Local).AddTicks(6176)),
                     LastModifiedBy = table.Column<string>(type: "text", nullable: true),
-                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 2, 27, 22, 18, 27, 716, DateTimeKind.Local).AddTicks(8997))
+                    LastModified = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, defaultValue: new DateTime(2021, 3, 7, 17, 1, 29, 797, DateTimeKind.Local).AddTicks(2830))
                 },
                 constraints: table =>
                 {

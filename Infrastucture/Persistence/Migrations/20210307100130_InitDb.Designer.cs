@@ -10,8 +10,8 @@ using Persistence.Contexts;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(BigBlueBirdsDbContext))]
-    [Migration("20210227151828_InitDb0")]
-    partial class InitDb0
+    [Migration("20210307100130_InitDb")]
+    partial class InitDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,9 +32,10 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 646, DateTimeKind.Local).AddTicks(130));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 669, DateTimeKind.Local).AddTicks(5323));
 
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
@@ -42,7 +43,7 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 658, DateTimeKind.Local).AddTicks(3908));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 692, DateTimeKind.Local).AddTicks(3193));
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
@@ -73,13 +74,13 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 737, DateTimeKind.Local).AddTicks(8260));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 839, DateTimeKind.Local).AddTicks(128));
 
                     b.Property<DateTime?>("LastModified")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 737, DateTimeKind.Local).AddTicks(9887));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 839, DateTimeKind.Local).AddTicks(3857));
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
@@ -201,13 +202,13 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 722, DateTimeKind.Local).AddTicks(9545));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 808, DateTimeKind.Local).AddTicks(1762));
 
                     b.Property<DateTime?>("LastModified")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 723, DateTimeKind.Local).AddTicks(1441));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 808, DateTimeKind.Local).AddTicks(5228));
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
@@ -247,7 +248,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 732, DateTimeKind.Local).AddTicks(7561));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 828, DateTimeKind.Local).AddTicks(6784));
 
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("timestamp without time zone");
@@ -256,7 +257,7 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 732, DateTimeKind.Local).AddTicks(9140));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 828, DateTimeKind.Local).AddTicks(9851));
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
@@ -292,7 +293,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 701, DateTimeKind.Local).AddTicks(3651));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 772, DateTimeKind.Local).AddTicks(3215));
 
                     b.Property<string>("Description")
                         .ValueGeneratedOnAdd()
@@ -303,7 +304,7 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 701, DateTimeKind.Local).AddTicks(5249));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 772, DateTimeKind.Local).AddTicks(7091));
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
@@ -419,13 +420,13 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 661, DateTimeKind.Local).AddTicks(6133));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 703, DateTimeKind.Local).AddTicks(2462));
 
                     b.Property<DateTime?>("LastModified")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 661, DateTimeKind.Local).AddTicks(7426));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 703, DateTimeKind.Local).AddTicks(5302));
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
@@ -454,7 +455,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 697, DateTimeKind.Local).AddTicks(4760));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 762, DateTimeKind.Local).AddTicks(358));
 
                     b.Property<string>("Description")
                         .ValueGeneratedOnAdd()
@@ -481,7 +482,7 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 697, DateTimeKind.Local).AddTicks(6314));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 762, DateTimeKind.Local).AddTicks(5408));
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
@@ -537,7 +538,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 699, DateTimeKind.Local).AddTicks(5560));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 767, DateTimeKind.Local).AddTicks(9707));
 
                     b.Property<string>("Description")
                         .ValueGeneratedOnAdd()
@@ -548,7 +549,7 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 699, DateTimeKind.Local).AddTicks(7011));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 768, DateTimeKind.Local).AddTicks(3353));
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
@@ -575,13 +576,13 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 712, DateTimeKind.Local).AddTicks(2052));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 790, DateTimeKind.Local).AddTicks(7137));
 
                     b.Property<DateTime?>("LastModified")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 712, DateTimeKind.Local).AddTicks(4376));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 791, DateTimeKind.Local).AddTicks(900));
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
@@ -614,13 +615,13 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 703, DateTimeKind.Local).AddTicks(3843));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 776, DateTimeKind.Local).AddTicks(6074));
 
                     b.Property<DateTime?>("LastModified")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 703, DateTimeKind.Local).AddTicks(5588));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 777, DateTimeKind.Local).AddTicks(54));
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
@@ -653,13 +654,13 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 708, DateTimeKind.Local).AddTicks(8396));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 786, DateTimeKind.Local).AddTicks(2260));
 
                     b.Property<DateTime?>("LastModified")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 709, DateTimeKind.Local).AddTicks(666));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 786, DateTimeKind.Local).AddTicks(6077));
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
@@ -692,13 +693,13 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 735, DateTimeKind.Local).AddTicks(6739));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 834, DateTimeKind.Local).AddTicks(6166));
 
                     b.Property<DateTime?>("LastModified")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 735, DateTimeKind.Local).AddTicks(8379));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 834, DateTimeKind.Local).AddTicks(9394));
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
@@ -731,7 +732,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 733, DateTimeKind.Local).AddTicks(9018));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 830, DateTimeKind.Local).AddTicks(9751));
 
                     b.Property<string>("Description")
                         .ValueGeneratedOnAdd()
@@ -742,7 +743,7 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 734, DateTimeKind.Local).AddTicks(588));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 831, DateTimeKind.Local).AddTicks(3062));
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
@@ -782,7 +783,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 664, DateTimeKind.Local).AddTicks(826));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 708, DateTimeKind.Local).AddTicks(642));
 
                     b.Property<DateTime>("Dob")
                         .HasColumnType("timestamp without time zone");
@@ -802,7 +803,7 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 664, DateTimeKind.Local).AddTicks(2090));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 708, DateTimeKind.Local).AddTicks(3307));
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
@@ -911,13 +912,13 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 719, DateTimeKind.Local).AddTicks(4694));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 803, DateTimeKind.Local).AddTicks(369));
 
                     b.Property<DateTime?>("LastModified")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 719, DateTimeKind.Local).AddTicks(6734));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 803, DateTimeKind.Local).AddTicks(4161));
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
@@ -984,13 +985,13 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 716, DateTimeKind.Local).AddTicks(9621));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 797, DateTimeKind.Local).AddTicks(6176));
 
                     b.Property<DateTime?>("LastModified")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 2, 27, 22, 18, 27, 716, DateTimeKind.Local).AddTicks(8997));
+                        .HasDefaultValue(new DateTime(2021, 3, 7, 17, 1, 29, 797, DateTimeKind.Local).AddTicks(2830));
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");

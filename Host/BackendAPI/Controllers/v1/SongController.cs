@@ -1,12 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Application.Features.Song.Queries;
+using Application.Features.Song.Commands;
 
 namespace BackendAPI.Controllers.v1
 {
     [ApiVersion("1.0")]
     public class SongController : BaseApiController
     {
+        #region Queries
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] GetAllQuery rq)
         {
@@ -33,5 +35,29 @@ namespace BackendAPI.Controllers.v1
         {
             return Ok(await Mediator.Send(rq));
         }
+        #endregion
+
+        #region Command
+        [HttpPost]
+        public async Task<IActionResult> Create([FromForm] CreateCommand rq)
+        {
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update([FromQuery] int Id,[FromForm] UpdateCommand rq)
+        {
+            rq.SetId(Id);
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromQuery] int Id)
+        {
+            var rq = new DeleteCommand();
+            rq.SetId(Id);
+            return Ok(await Mediator.Send(rq));
+        }
+        #endregion
     }
 }

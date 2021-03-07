@@ -13,7 +13,7 @@ namespace Persistence.Configurations.BaseConfig
         {
             //builder.ToTable("AppConfigs");
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).UseIdentityColumn();
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Property(x => x.DateCreate).IsRequired(true).HasDefaultValue(DateTime.Now);
             builder.Property(x => x.LastModified).IsRequired(true).HasDefaultValue(DateTime.Now);
             return builder;
