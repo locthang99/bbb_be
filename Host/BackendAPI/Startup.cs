@@ -61,6 +61,7 @@ namespace BackendAPI
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseErrorHandlingMiddleware();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
