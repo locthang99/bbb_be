@@ -31,7 +31,14 @@ namespace Persistence
             services.AddTransient<ITagRepository, TagRepository>();
 
 
-            services.AddIdentity<User, Role>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<BigBlueBirdsDbContext>()
+            services.AddIdentity<User, Role>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = false;
+                options.SignIn.RequireConfirmedEmail = false;
+                options.SignIn.RequireConfirmedPhoneNumber = false;
+            }
+            )
+                .AddEntityFrameworkStores<BigBlueBirdsDbContext>()
             .AddDefaultTokenProviders();
             services.AddTransient<UserManager<User>, UserManager<User>>();
             services.AddTransient<SignInManager<User>, SignInManager<User>>();

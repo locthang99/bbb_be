@@ -65,7 +65,10 @@ namespace Persistence.Contexts
             modelBuilder.Entity<IdentityRoleClaim<int>>().ToTable("UserRoleClaims");
             modelBuilder.Entity<IdentityUserToken<int>>().ToTable("UserTokens").HasKey(x => x.UserId);
             //base.OnModelCreating(modelBuilder);
-            modelBuilder.Seed();
+            //modelBuilder.Seed();
+            modelBuilder.SeedAccount();
+            modelBuilder.SeedRole();
+            modelBuilder.SeedAccount_Role();
         }
         public DbSet<AppConfig> AppConfig { get; set; }
         public DbSet<Song> Songs { get; set; }

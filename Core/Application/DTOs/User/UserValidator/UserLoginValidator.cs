@@ -10,7 +10,7 @@ namespace Application.DTOs.User.UserValidator
     {
         public UserLoginValidator()
         {
-            RuleFor(x => x.User).NotEmpty().WithMessage("Username not empty");
+            RuleFor(x => x.Username).NotEmpty().WithMessage("Username not empty");
             RuleFor(x => x.Password).NotEmpty().WithMessage("Password not empty").MinimumLength(6).WithMessage("Password must > 6");
         }
     }

@@ -34,14 +34,14 @@ namespace Application.Wrappers
     }
 
 
-    public class CommandResponse<T> : Response<T> where T: AuditableBaseEntity
+    public class CommandResponse<T> : Response<T> 
     {
         public string ObjectType { get; set; }
         public int ObjectId { get; set; }
 
     }
 
-    public class CommandOK<T> : CommandResponse<T> where T: AuditableBaseEntity
+    public class CommandOK<T> : CommandResponse<T>
     {
         public CommandOK()
         {

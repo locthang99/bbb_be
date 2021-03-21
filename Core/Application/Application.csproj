@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <Folder Include="DTOs\Tag\TagValidator\" />
+    <Folder Include="Features\Account\EndUser\Queries\" />
     <Folder Include="Features\SongType\" />
     <Folder Include="Features\Tag\" />
     <Folder Include="Features\Playlist\" />
@@ -21,6 +22,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
     <PackageReference Include="FluentValidation" Version="9.2.2" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.7.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+
   </ItemGroup>
 
 </Project>

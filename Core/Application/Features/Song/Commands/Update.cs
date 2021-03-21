@@ -1,5 +1,6 @@
 ﻿using Application.DTOs.Song;
 using Application.DTOs.Song.SongRequest;
+using Application.Exceptions;
 using Application.Interfaces.Repo;
 using Application.Wrappers;
 using Domain.Base;
@@ -35,7 +36,7 @@ namespace Application.Features.Song.Commands
 
             var song = await _songRepository.GetByIdAsync(request.Id);
             if (song == null)
-                return new NotFoundReponse<Domain.Entities.Song>();
+                throw new NotFoundException("Song not found");
 
             if (request.Name != null)
                 song.Name = request.Name;
@@ -53,10 +54,7 @@ namespace Application.Features.Song.Commands
             var res = await _songRepository.UpdateAsync(song);
 
             if (res == 0)
-                return new CommandFail<Domain.Entities.Song>()
-                {
-                    Msg = "Update song Failed"
-                };
+                throw new UpdateRequestException("update song fail");
             else
                 return new CommandOK<Domain.Entities.Song>()
                 {

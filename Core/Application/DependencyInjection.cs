@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using FluentValidation;
-
+using Application.Features.Account.Base.Queries;
 
 namespace Application
 {
@@ -15,6 +15,7 @@ namespace Application
         {
             //services.AddAutoMapper(Assembly.GetExecutingAssembly());
             //services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddTransient<IToken,Token>();
             services.AddMediatR(Assembly.GetExecutingAssembly());
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 

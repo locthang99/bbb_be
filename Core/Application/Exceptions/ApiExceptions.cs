@@ -16,6 +16,10 @@ namespace Application.Exceptions
         {
         }
     }
+    public class CreateRequestException : ApiException
+    {
+        public CreateRequestException(string message) : base(message) { }
+    }
     public class NotFoundException : ApiException
     {
         public NotFoundException(string message) : base(message) { }
@@ -33,5 +37,15 @@ namespace Application.Exceptions
     public class DeleteRequestException : ApiException
     {
         public DeleteRequestException(string message) : base(message) { }
+    }
+
+    public class UnauthorizeException : ApiException
+    {
+        public UnauthorizeException(string message) : base(message) { }
+    }
+
+    public class AuthFailedException : ApiException
+    {
+        public AuthFailedException(string message) : base(message) { }
     }
 }

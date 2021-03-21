@@ -14,7 +14,7 @@ namespace Persistence.Configurations
         {
             builder.ToTable("Users");
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).UseIdentityColumn();
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Property(x => x.DateCreate).IsRequired(true).HasDefaultValue(DateTime.Now);
             builder.Property(x => x.LastModified).IsRequired(true).HasDefaultValue(DateTime.Now);
             builder.Property(x => x.FirstName).HasMaxLength(200).IsRequired();

@@ -35,14 +35,32 @@ namespace BackendAPI.Middlewares
                 {
 
                     case Application.Exceptions.NotFoundException e:
-                        // custom application error
                         response.StatusCode = (int)HttpStatusCode.NotFound;
                         responseModel.Msg = e.Message;
                         break;
-                    case Application.Exceptions.BadRequestException e:
-                        // custom application error
+                    case Application.Exceptions.CreateRequestException e:
                         response.StatusCode = (int)HttpStatusCode.BadRequest;
                         responseModel.Msg = e.Message;
+                        break;
+                    case Application.Exceptions.UpdateRequestException e:
+                        response.StatusCode = (int)HttpStatusCode.BadRequest;
+                        responseModel.Msg = e.Message;
+                        break;
+                    case Application.Exceptions.DeleteRequestException e:
+                        response.StatusCode = (int)HttpStatusCode.BadRequest;
+                        responseModel.Msg = e.Message;
+                        break;
+                    case Application.Exceptions.BadRequestException e:
+                        response.StatusCode = (int)HttpStatusCode.BadRequest;
+                        responseModel.Msg = e.Message;
+                        break;
+                    case Application.Exceptions.AuthFailedException e:
+                        response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                        responseModel.Msg = e.Message;
+                        break;
+                    case Application.Exceptions.UnauthorizeException e:
+                        response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                        responseModel.Msg = "You have not permission to change this resource";
                         break;
                     //case ValidationException e:
                     //    // custom application error
@@ -53,9 +71,12 @@ namespace BackendAPI.Middlewares
                         // not found error
                         response.StatusCode = (int)HttpStatusCode.NotFound;
                         break;
+                    case Exception e:
+                        response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                        responseModel.Msg = "Server Toang";
+                        responseModel.Data = e.Message;
+                        break;
                     default:
-                        // unhandled error
-
                         response.StatusCode = (int)HttpStatusCode.InternalServerError;
                         break;
                 }

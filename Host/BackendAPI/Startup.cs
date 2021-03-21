@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Application;
+using Application.Interfaces.Service;
 using BackendAPI.Extensions;
+using BackendAPI.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -37,6 +39,7 @@ namespace BackendAPI
             services.AddSwagger();
             services.AddControllers();
             services.AddHttpClient();
+            services.AddTransient<IAuthenticatedUserService, AuthenticatedUserService>();
 
         }
 

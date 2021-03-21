@@ -11,7 +11,7 @@ namespace Application.DTOs.User.UserRequest
         public string FirstName { get; set; }
         public string LastName { get; set; }
         [DataType(DataType.Date)]
-        public DateTime Dob { get; set; }
+        public DateTime? Dob { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public string User { get; set; }
