@@ -1,4 +1,5 @@
-﻿using Application.Interfaces.Service;
+﻿using Application.Exceptions;
+using Application.Interfaces.Service;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -17,10 +18,12 @@ namespace BackendAPI.Services
         }
         public int GetCurrentUserId()
         {
+            if (!CheckAuthentication())
+                throw new AuthFailedException("Not login");
             if (_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier) != null)
                 return Int32.Parse( _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
             else
-                return 0;
+                throw new AuthFailedException("Not login");
         }
         public bool CheckAuthentication()
         {

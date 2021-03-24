@@ -29,6 +29,8 @@ namespace Persistence
             services.AddTransient<IPlaylistRepository, PlaylistRepository>();
             services.AddTransient<ISongTypeRepository, SongTypeRepository>();
             services.AddTransient<ITagRepository, TagRepository>();
+            services.AddTransient<IAccountRepository<User>, AccountRepository>();
+
 
 
             services.AddIdentity<User, Role>(options =>
@@ -38,7 +40,7 @@ namespace Persistence
                 options.SignIn.RequireConfirmedPhoneNumber = false;
             }
             )
-                .AddEntityFrameworkStores<BigBlueBirdsDbContext>()
+            .AddEntityFrameworkStores<BigBlueBirdsDbContext>()
             .AddDefaultTokenProviders();
             services.AddTransient<UserManager<User>, UserManager<User>>();
             services.AddTransient<SignInManager<User>, SignInManager<User>>();
@@ -55,7 +57,7 @@ namespace Persistence
                 .AddJwtBearer(o =>
                 {
                     o.RequireHttpsMetadata = false;
-                    o.SaveToken = false;
+                    o.SaveToken = true;
                     o.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuerSigningKey = true,
@@ -64,7 +66,7 @@ namespace Persistence
                         ValidateLifetime = true,
                         ClockSkew = TimeSpan.Zero,
                         ValidIssuer = configuration["JWTSettings:Issuer"],
-                        ValidAudience = configuration["JWTSettings:Audience"],
+                        //ValidAudience = configuration["JWTSettings:Audience"],
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWTSettings:Key"]))
                     };
                     //o.Events = new JwtBearerEvents()

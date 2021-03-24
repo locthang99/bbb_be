@@ -39,7 +39,7 @@ namespace BackendAPI
             services.AddSwagger();
             services.AddControllers();
             services.AddHttpClient();
-            services.AddTransient<IAuthenticatedUserService, AuthenticatedUserService>();
+            services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
 
         }
 
