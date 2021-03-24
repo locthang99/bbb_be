@@ -5,7 +5,7 @@ variables:
 
 stages:
   - build
-  - test
+  # - test
   - docker
 
 build:
@@ -14,7 +14,7 @@ build:
   only:
     - master
   script:
-    - cd src/$PROJECT_NAME
+    - cd $PROJECT_NAME
     - dotnet restore --interactive
     - dotnet build --configuration Release
     - dotnet publish --configuration Release --output ../../publish/
@@ -25,21 +25,21 @@ build:
   tags:
   - docker
   
-test:
-  stage: test
-  image: $BUILD_IMAGE
-  only:
-    - master
-  script:
-    - cd src/$PROJECT_NAME.UnitTest
-    - dotnet test --test-adapter-path:. --logger:"junit;LogFilePath=../../UnitTestResult.xml"
-  artifacts:
-    paths:
-      - ./UnitTestResult.xml
-    reports:
-      junit: ./UnitTestResult.xml
-  tags:
-  - docker
+# test:
+#   stage: test
+#   image: $BUILD_IMAGE
+#   only:
+#     - master
+#   script:
+#     - cd src/$PROJECT_NAME.UnitTest
+#     - dotnet test --test-adapter-path:. --logger:"junit;LogFilePath=../../UnitTestResult.xml"
+#   artifacts:
+#     paths:
+#       - ./UnitTestResult.xml
+#     reports:
+#       junit: ./UnitTestResult.xml
+#   tags:
+#   - docker
 
 docker:
   stage: docker
