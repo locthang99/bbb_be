@@ -8,11 +8,13 @@ using BackendAPI.Extensions;
 using BackendAPI.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Persistence;
@@ -39,7 +41,10 @@ namespace BackendAPI
             services.AddSwagger();
             services.AddControllers();
             services.AddHttpClient();
-            services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
+            services.AddTransient<IAuthenticatedUserService, AuthenticatedUserService>();
+            services.AddHttpContextAccessor();
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddMvc();
 
         }
 

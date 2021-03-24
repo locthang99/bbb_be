@@ -11,10 +11,5 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.1.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\Audio\" />
-    <Folder Include="wwwroot\Image\" />
-  </ItemGroup>
-
 
 </Project>

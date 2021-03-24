@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Persistence.Contexts
 {
-    public class BigBlueBirdsDbContext : IdentityDbContext<User, Role, int>
+    public class BigBlueBirdsDbContext : IdentityDbContext<User, Role, int,IdentityUserClaim<int>,IdentityUserRole<int>,IdentityUserLogin<int>,IdentityRoleClaim<int>,IdentityUserToken<int>>
     {
         public BigBlueBirdsDbContext(DbContextOptions options) : base(options)
         {

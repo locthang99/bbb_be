@@ -33,15 +33,7 @@ namespace Persistence
 
 
 
-            services.AddIdentity<User, Role>(options =>
-            {
-                options.SignIn.RequireConfirmedAccount = false;
-                options.SignIn.RequireConfirmedEmail = false;
-                options.SignIn.RequireConfirmedPhoneNumber = false;
-            }
-            )
-            .AddEntityFrameworkStores<BigBlueBirdsDbContext>()
-            .AddDefaultTokenProviders();
+
             services.AddTransient<UserManager<User>, UserManager<User>>();
             services.AddTransient<SignInManager<User>, SignInManager<User>>();
             services.AddTransient<RoleManager<Role>, RoleManager<Role>>();
@@ -66,7 +58,7 @@ namespace Persistence
                         ValidateLifetime = true,
                         ClockSkew = TimeSpan.Zero,
                         ValidIssuer = configuration["JWTSettings:Issuer"],
-                        //ValidAudience = configuration["JWTSettings:Audience"],
+                        ValidAudience = configuration["JWTSettings:Issuer"],
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWTSettings:Key"]))
                     };
                     //o.Events = new JwtBearerEvents()
@@ -95,7 +87,17 @@ namespace Persistence
                     //    },
                     //};
                 });
-            #endregion
+
+            services.AddIdentity<User, Role>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = false;
+                options.SignIn.RequireConfirmedEmail = false;
+                options.SignIn.RequireConfirmedPhoneNumber = false;
+            }
+            )
+            .AddEntityFrameworkStores<BigBlueBirdsDbContext>()
+            .AddDefaultTokenProviders();
+                        #endregion
         }
 
     }

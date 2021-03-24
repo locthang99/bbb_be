@@ -18,7 +18,8 @@ namespace BackendAPI.Services
         }
         public int GetCurrentUserId()
         {
-            if (!CheckAuthentication())
+            var x = CheckAuthentication();
+            if (!x)
                 throw new AuthFailedException("Not login");
             if (_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier) != null)
                 return Int32.Parse( _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);

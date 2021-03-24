@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace BackendAPI.Controllers.v1
 {
     [ApiVersion("1.0")]
+    [ApiController]
     public class EndUserController: BaseApiController
     {
         [HttpPost("Resgister")]
@@ -23,6 +24,7 @@ namespace BackendAPI.Controllers.v1
             return Ok(await Mediator.Send(rq));
         }
 
+        
         [HttpPost("GetProfile")]
         public async Task<IActionResult> GetProfile()
         {

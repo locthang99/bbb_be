@@ -36,11 +36,11 @@ namespace Application.Features.Account.Base.Queries
                 new Claim(ClaimTypes.Name,(user.FirstName+" "+user.LastName)),
                 new Claim(ClaimTypes.NameIdentifier,user.Id.ToString())
             };
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"]));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWTSettings:Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-            var token = new JwtSecurityToken(_config["Tokens:Issuer"],
-                _config["Tokens:Issuer"],
+            var token = new JwtSecurityToken(_config["JWTSettings:Issuer"],
+                _config["JWTSettings:Issuer"],
                 claims,
                 expires: DateTime.Now.AddHours(3),
                 signingCredentials: creds);
