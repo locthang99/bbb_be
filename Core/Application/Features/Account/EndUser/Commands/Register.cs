@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using ThirdPartyServices.SendMail;
 using ThirdPartyServices.Storage;
 
 namespace Application.Features.Account.EndUser.Commands
@@ -23,11 +24,14 @@ namespace Application.Features.Account.EndUser.Commands
         private readonly UserManager<Domain.Entities.User> _userManager;
         private readonly IToken _token;
         private readonly IStorageService _storageService;
-        public RegisterCommandHandler(UserManager<Domain.Entities.User> userManager, IToken token, IStorageService storageService)
+        private readonly ISendMailService _sendMailService; 
+        public RegisterCommandHandler(UserManager<Domain.Entities.User> userManager,
+            IToken token, IStorageService storageService, ISendMailService sendMailService)
         {
             _userManager = userManager;
             _token = token;
             _storageService = storageService;
+            _sendMailService = sendMailService;
         }
         public async Task<CommandResponse<TokenResponse>> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
@@ -61,6 +65,7 @@ namespace Application.Features.Account.EndUser.Commands
                         Username = user.Email
 
                     };
+                    await _sendMailService.SendMailNotify("Vip pro", "<h1>BBB aaaaaaaaaaaaaaaaa</h1>", user.Email);
                     return new CommandOK<TokenResponse>()
                     {
                         Msg = "Register OK",

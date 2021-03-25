@@ -3,6 +3,7 @@ using Application.DTOs.User.UserRequest;
 using Application.Enum;
 using Application.Exceptions;
 using Application.Features.Account.Base.Queries;
+using Application.Interfaces.Repo;
 using Application.Wrappers;
 using Domain.Entities;
 using MediatR;
@@ -24,12 +25,12 @@ namespace Application.Features.Account.EndUser.Commands
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        private readonly IToken _token;
-        public LoginCommandHandler(UserManager<User> userManager, SignInManager<User> signInManager, IToken token)
+        private readonly IAccountRepository<User> _accountRepository;
+        public LoginCommandHandler(UserManager<User> userManager, SignInManager<User> signInManager, IAccountRepository<User> accountRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _token = token;
+            _accountRepository = accountRepository;
         }
         public async Task<CommandResponse<TokenResponse>> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
@@ -39,11 +40,14 @@ namespace Application.Features.Account.EndUser.Commands
             var result = await _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe, false);
             if (!result.Succeeded)
                 throw new AuthFailedException("Username or password is invalid");
+            var checkEndUser = await _userManager.IsInRoleAsync(user,"ADMIN")|| await _userManager.IsInRoleAsync(user, "SUPPERADMIN");
+            if (checkEndUser == true)
+                throw new UnauthorizeException("Login with account enduser");
             var token = new TokenResponse()
             {
                 UserId = user.Id.ToString(),
                 Username = user.UserName,
-                Token = await _token.GenerateToken(user)
+                Token = await _accountRepository.GenerateToken(user)
             };
             return new CommandOK<TokenResponse>()
             {

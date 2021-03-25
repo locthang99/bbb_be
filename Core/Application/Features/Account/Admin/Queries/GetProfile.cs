@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Features.Account.Base.Queries
+namespace Application.Features.Account.Admin.Queries
 {
     public class GetProfileCommand : IRequest<CommandResponse<UserDTO>>
     {
@@ -20,7 +20,6 @@ namespace Application.Features.Account.Base.Queries
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        private readonly IToken _token;
         private readonly IAccountRepository<User> _accountRepository;
         private readonly IAuthenticatedUserService _authenticatedUserService;
         public GetProfileCommandHandler(UserManager<User> userManager, IAccountRepository<User> accountRepository,

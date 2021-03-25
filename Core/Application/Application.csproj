@@ -11,7 +11,6 @@
 
   <ItemGroup>
     <Folder Include="DTOs\Tag\TagValidator\" />
-    <Folder Include="Features\Account\EndUser\Queries\" />
     <Folder Include="Features\SongType\" />
     <Folder Include="Features\Tag\" />
     <Folder Include="Features\Playlist\" />

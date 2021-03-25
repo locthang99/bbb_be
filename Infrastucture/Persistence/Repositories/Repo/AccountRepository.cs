@@ -7,9 +7,12 @@ using Application.Parameters;
 using Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using Persistence.Contexts;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using ThirdPartyServices.Storage;
@@ -56,6 +59,28 @@ namespace Persistence.Repositories.Repo
             if (!user.Thumbnail.Contains("http") && user.Thumbnail != "")
                 data.Thumbnail = _config["File:Image"] + user.Thumbnail;
             return data;
+        }
+
+        public async Task<string> GenerateToken(User user)
+        {
+            var roles = await _userManager.GetRolesAsync(user);
+            var claims = new[]
+            {
+                new Claim(ClaimTypes.Email,user.Email),
+                new Claim(ClaimTypes.GivenName,user.Id.ToString()),
+                new Claim(ClaimTypes.Role, string.Join(";",roles)),
+                new Claim(ClaimTypes.Name,(user.FirstName+" "+user.LastName)),
+                new Claim(ClaimTypes.NameIdentifier,user.Id.ToString())
+            };
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWTSettings:Key"]));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(_config["JWTSettings:Issuer"],
+                _config["JWTSettings:Issuer"],
+                claims,
+                expires: DateTime.Now.AddHours(3),
+                signingCredentials: creds);
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
         public async Task<User> AddAsync(User entity,string pwd)
         {

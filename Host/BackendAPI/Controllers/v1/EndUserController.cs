@@ -1,4 +1,4 @@
-﻿using Application.Features.Account.Base.Queries;
+﻿using Application.Features.Account.Admin.Queries;
 using Application.Features.Account.EndUser.Commands;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -23,9 +23,7 @@ namespace BackendAPI.Controllers.v1
         {
             return Ok(await Mediator.Send(rq));
         }
-
-        
-        [HttpPost("GetProfile")]
+        [HttpGet("GetProfile")]
         public async Task<IActionResult> GetProfile()
         {
             var rq = new GetProfileCommand();

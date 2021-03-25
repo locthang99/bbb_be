@@ -17,6 +17,7 @@ namespace Application.Interfaces.Repo
         Task<T> DeleteAsync(T entity);
         Task<T> SetRole(T entity);
         Task<UserDTO> MapUserAsync(T entity);
+        Task<string> GenerateToken(T entity);
         Task<ResponseQuery<T>> GetAllPagedSortAsync(PagedSortRequest rq);
         Task<ResponseQuery<T>> GetByListIdPagedSortAsync(IReadOnlyList<int> listId, PagedSortRequest rq);
     }
