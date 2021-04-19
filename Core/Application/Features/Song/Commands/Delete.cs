@@ -2,6 +2,7 @@
 using Application.DTOs.Song.SongRequest;
 using Application.Exceptions;
 using Application.Interfaces.Repo;
+using Application.Interfaces.UoW;
 using Application.Wrappers;
 using Domain.Base;
 using MediatR;
@@ -23,24 +24,24 @@ namespace Application.Features.Song.Commands
     }
     public class DeleteCommandHandler : IRequestHandler<DeleteCommand, Response<Domain.Entities.Song>>
     {
-        private readonly ISongRepository _songRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IStorageService _storageService;
-        public DeleteCommandHandler(ISongRepository songRepository, IStorageService storageService)
+        public DeleteCommandHandler(IUnitOfWork unitOfWork, IStorageService storageService)
         {
-            _songRepository = songRepository;
+            _unitOfWork = unitOfWork;
             _storageService = storageService;
         }
 
         public async Task<Response<Domain.Entities.Song>> Handle(DeleteCommand request, CancellationToken cancellationToken)
         {
 
-            var song = await _songRepository.GetByIdAsync(request.Id);
+            var song = await _unitOfWork.SongRepo.GetByIdAsync(request.Id);
             if (song == null)
                 throw new NotFoundException("Song not found");
 
-            var res = await _songRepository.DeleteAsync(song);
+            var res =  _unitOfWork.SongRepo.Delete(song);
 
-            if (res == 0)
+            if (_unitOfWork.Commit()==0)
                 throw new DeleteRequestException("Delete fail");
             else
             {

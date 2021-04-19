@@ -13,6 +13,8 @@ using Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Application.Interfaces.UoW;
+using Persistence.Repositories.UoW;
 
 namespace Persistence
 {
@@ -27,6 +29,7 @@ namespace Persistence
             #region Repositories
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient(typeof(IExtensionEntityRepository<>), typeof(ExtensionEntityRepository<>));
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<ISongRepository, SongRepository>();
             services.AddTransient<IPlaylistRepository, PlaylistRepository>();
             services.AddTransient<ISongTypeRepository, SongTypeRepository>();

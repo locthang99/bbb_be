@@ -11,8 +11,8 @@ namespace Application.Interfaces.RepoBase
         Task<IReadOnlyList<T>> GetAllAsync();
         Task<IReadOnlyList<T>> GetPagedReponseAsync(int pageNumber, int pageSize);
         Task<T> AddAsync(T entity);
-        Task<int> UpdateAsync(T entity);
-        Task<int> DeleteAsync(T entity);
+        T Update(T entity);
+        T Delete(T entity);
         bool CheckAuthorizeResource(T entiry);
     }
 }

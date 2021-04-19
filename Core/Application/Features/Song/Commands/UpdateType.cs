@@ -1,6 +1,7 @@
 ﻿using Application.Exceptions;
 using Application.Interfaces.Repo;
 using Application.Interfaces.RepoBase;
+using Application.Interfaces.UoW;
 using Application.Wrappers;
 using Domain.Entities;
 using MediatR;
@@ -26,30 +27,28 @@ namespace Application.Features.Song.Commands
 
     public class UpdateTypeHandler : IRequestHandler<UpdateTypeCommand, Response<string>>
     {
-        private readonly ISongRepository _songRepository;
-        private readonly IExtensionEntityRepository<Song_SongType> _song_typeRepo;
-        public UpdateTypeHandler(ISongRepository songRepository,IExtensionEntityRepository<Song_SongType> song_typeRepo)
+        private readonly IUnitOfWork _unitOfWork;
+        public UpdateTypeHandler(IUnitOfWork unitOfWork)
         {
-            _songRepository = songRepository;
-            _song_typeRepo = song_typeRepo;
+            _unitOfWork = unitOfWork;
         }
         
         public async Task<Response<string>> Handle(UpdateTypeCommand request, CancellationToken cancellationToken)
         {
             if(request.IdTypeUpdate==0)
                 throw new BadRequestException("Id type not equal 0");
-            var song = await _songRepository.GetByIdAsync(request.Id);
+            var song = await _unitOfWork.SongRepo.GetByIdAsync(request.Id);
             if (song == null)
                 throw new NotFoundException("Song not found");
-            if (!_songRepository.CheckAuthorizeResource(song))
+            if (!_unitOfWork.SongRepo.CheckAuthorizeResource(song))
                 throw new UnauthorizeException();
             if (request.IdTypeUpdate > 0)
             {
-                var type = await _song_typeRepo.GetByTwoIdAsync(request.Id, request.IdTypeUpdate);
+                var type =  await _unitOfWork.Song_TypeRepo.GetByTwoIdAsync(request.Id, request.IdTypeUpdate);
                 if (type != null)
                     throw new BadRequestException("This type have been added to this song");
-                var rs = await _song_typeRepo.AddAsync(new Song_SongType() { SongId = request.Id, SongTypeId = request.IdTypeUpdate });
-                if (rs != null)
+                var rs =  _unitOfWork.Song_TypeRepo.AddAsync(new Song_SongType() { SongId = request.Id, SongTypeId = request.IdTypeUpdate });
+                if (_unitOfWork.Commit()>0)
                     return new CommandOK<string>()
                     {
                         Msg = "Add type OK"
@@ -57,11 +56,11 @@ namespace Application.Features.Song.Commands
             }
             if (request.IdTypeUpdate < 0)
             {
-                var type = await _song_typeRepo.GetByTwoIdAsync(request.Id, -request.IdTypeUpdate);
+                var type = await _unitOfWork.Song_TypeRepo.GetByTwoIdAsync(request.Id, -request.IdTypeUpdate);
                 if (type == null)
                     throw new BadRequestException("The song dont has this type");
-                var rs = await _song_typeRepo.DeleteAsync(type);
-                if(rs>0)
+                var rs  =  _unitOfWork.Song_TypeRepo.Delete(type);
+                if(_unitOfWork.Commit()>0)
                     return new CommandOK<string>()
                     {
                         Msg = "Remove type OK"

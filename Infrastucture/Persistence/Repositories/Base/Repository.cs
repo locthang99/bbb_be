@@ -40,23 +40,24 @@ namespace Persistence.Repositories.Base
             await _dbContext.Set<T>().AddAsync(entity);
             entity.DateCreate = DateTime.Now;
             entity.CreatedBy = _authenticatedUserService.GetCurrentUserId();
-            await _dbContext.SaveChangesAsync();
+            //await _dbContext.SaveChangesAsync();
             return entity;
         }
 
-        public async Task<int> UpdateAsync(T entity)
+        public T Update(T entity)
         {
             _dbContext.Entry(entity).State = EntityState.Modified;
             entity.LastModified = DateTime.Now;
             entity.LastModifiedBy = _authenticatedUserService.GetCurrentUserId();
             _dbContext.Set<T>().Update(entity);
-            return await _dbContext.SaveChangesAsync();
+            return entity;
+            //return await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<int> DeleteAsync(T entity)
+        public T Delete(T entity)
         {
             _dbContext.Set<T>().Remove(entity);
-            return await _dbContext.SaveChangesAsync();
+            return entity;
         }
 
         public async Task<IReadOnlyList<T>> GetAllAsync()

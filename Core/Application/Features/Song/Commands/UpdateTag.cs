@@ -1,6 +1,7 @@
 ﻿using Application.Exceptions;
 using Application.Interfaces.Repo;
 using Application.Interfaces.RepoBase;
+using Application.Interfaces.UoW;
 using Application.Wrappers;
 using Domain.Entities;
 using MediatR;
@@ -26,30 +27,28 @@ namespace Application.Features.Song.Commands
 
     public class UpdateTagHandler : IRequestHandler<UpdateTagCommand, Response<string>>
     {
-        private readonly ISongRepository _songRepository;
-        private readonly IExtensionEntityRepository<Song_Tag> _song_tagRepo;
-        public UpdateTagHandler(ISongRepository songRepository, IExtensionEntityRepository<Song_Tag> song_tagRepo)
+        private readonly IUnitOfWork _unitOfWork;
+        public UpdateTagHandler(IUnitOfWork unitOfWork)
         {
-            _songRepository = songRepository;
-            _song_tagRepo = song_tagRepo;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<Response<string>> Handle(UpdateTagCommand request, CancellationToken cancellationToken)
         {
             if (request.IdTagUpdate == 0)
                 throw new BadRequestException("Id tag not equal 0");
-            var song = await _songRepository.GetByIdAsync(request.Id);
+            var song = await _unitOfWork.SongRepo.GetByIdAsync(request.Id);
             if (song == null)
                 throw new NotFoundException("Song not found");
-            if (!_songRepository.CheckAuthorizeResource(song))
+            if (!_unitOfWork.SongRepo.CheckAuthorizeResource(song))
                 throw new UnauthorizeException();
             if (request.IdTagUpdate > 0)
             {
-                var tag = await _song_tagRepo.GetByTwoIdAsync(request.Id, request.IdTagUpdate);
+                var tag = await _unitOfWork.Song_TagRepo.GetByTwoIdAsync(request.Id, request.IdTagUpdate);
                 if (tag != null)
                     throw new BadRequestException("This tag have been added to this song");
-                var rs = await _song_tagRepo.AddAsync(new Song_Tag() { SongId = request.Id, TagId = request.IdTagUpdate });
-                if (rs != null)
+                var rs = await _unitOfWork.Song_TagRepo.AddAsync(new Song_Tag() { SongId = request.Id, TagId = request.IdTagUpdate });
+                if (_unitOfWork.Commit()>0)
                     return new CommandOK<string>()
                     {
                         Msg = "Add tag OK"
@@ -57,11 +56,11 @@ namespace Application.Features.Song.Commands
             }
             if (request.IdTagUpdate < 0)
             {
-                var tag = await _song_tagRepo.GetByTwoIdAsync(request.Id, -request.IdTagUpdate);
+                var tag = await _unitOfWork.Song_TagRepo.GetByTwoIdAsync(request.Id, -request.IdTagUpdate);
                 if (tag == null)
                     throw new BadRequestException("The song dont has this tag");
-                var rs = await _song_tagRepo.DeleteAsync(tag);
-                if (rs > 0)
+                var rs =  _unitOfWork.Song_TagRepo.Delete(tag);
+                if (_unitOfWork.Commit()>0)
                     return new CommandOK<string>()
                     {
                         Msg = "Remove tag OK"

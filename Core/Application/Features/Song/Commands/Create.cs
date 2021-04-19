@@ -13,6 +13,7 @@ using ThirdPartyServices.Storage;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Linq;
+using Application.Interfaces.UoW;
 
 namespace Application.Features.Song.Commands
 {
@@ -22,12 +23,12 @@ namespace Application.Features.Song.Commands
     }
     public class CreateCommandHandler : IRequestHandler<CreateCommand, CommandResponse<TypeFromML>>
     {
-        private readonly ISongRepository _songRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IStorageService _storageService;
         private readonly IHttpClientFactory _httpClientFactoty;
-        public CreateCommandHandler(ISongRepository songRepository, IStorageService storageService, IHttpClientFactory httpClientFactoty)
+        public CreateCommandHandler(IUnitOfWork unitOfWork, IStorageService storageService, IHttpClientFactory httpClientFactoty)
         {
-            _songRepository = songRepository;
+            _unitOfWork = unitOfWork;
             _storageService = storageService;
             _httpClientFactoty = httpClientFactoty;
         }
@@ -44,14 +45,14 @@ namespace Application.Features.Song.Commands
                 FileMusic = await _storageService.SaveFile(request.FileMusic, 1)
             };
 
-            var res = await _songRepository.AddAsync(song);
+            var res = await _unitOfWork.SongRepo.AddAsync(song);
 
-            var rs = await _httpClientFactoty.CreateClient().GetAsync("http://localhost:8089/predict/?"+song.FileMusic);
-            rs.EnsureSuccessStatusCode();
-            var resp = await rs.Content.ReadAsStringAsync();
-            var obj =  JsonConvert.DeserializeObject<TypeFromML>(resp);
+            //var rs = await _httpClientFactoty.CreateClient().GetAsync("http://localhost:8089/predict/?"+song.FileMusic);
+            //rs.EnsureSuccessStatusCode();
+            //var resp = await rs.Content.ReadAsStringAsync();
+            //var obj =  JsonConvert.DeserializeObject<TypeFromML>(resp);
 
-            if (res == null)
+            if (_unitOfWork.Commit()==0)
                 return new CommandFail<TypeFromML>()
                 {
                     Msg = "Create song Failed"
@@ -60,7 +61,7 @@ namespace Application.Features.Song.Commands
                 return new CommandOK<TypeFromML>()
                 {
                     ObjectId = res.Id,
-                    Data = obj,
+                    Data = null,
                 };
         }
     }
