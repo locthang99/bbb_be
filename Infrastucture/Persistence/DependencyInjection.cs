@@ -21,10 +21,12 @@ namespace Persistence
         public static void AddPersistenceInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<BigBlueBirdsDbContext>(options =>
-            options.UseNpgsql(configuration.GetConnectionString("BigBlueBirdsDb"), options => options.EnableRetryOnFailure())
+            options.UseNpgsql(configuration.GetConnectionString("BigBlueBirdsDb"),
+            b => b.MigrationsAssembly(typeof(BigBlueBirdsDbContext).Assembly.FullName))
             );
             #region Repositories
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+            services.AddTransient(typeof(IExtensionEntityRepository<>), typeof(ExtensionEntityRepository<>));
             services.AddTransient<ISongRepository, SongRepository>();
             services.AddTransient<IPlaylistRepository, PlaylistRepository>();
             services.AddTransient<ISongTypeRepository, SongTypeRepository>();

@@ -12,6 +12,7 @@ using Application.DTOs.SongType;
 using Application.DTOs.Owner;
 using Application.DTOs.Tag;
 using Microsoft.Extensions.Configuration;
+using Application.Interfaces.Service;
 
 namespace Persistence.Repositories.Repo
 {
@@ -21,7 +22,7 @@ namespace Persistence.Repositories.Repo
 
         private readonly DbSet<Song> _songs;
 
-        public SongRepository(BigBlueBirdsDbContext dbContext, IConfiguration config) : base(dbContext)
+        public SongRepository(BigBlueBirdsDbContext dbContext, IAuthenticatedUserService authenticatedUserService, IConfiguration config) : base(dbContext, authenticatedUserService)
         {
             _songs = dbContext.Set<Song>();
             _config = config;

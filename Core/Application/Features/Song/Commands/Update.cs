@@ -14,7 +14,7 @@ namespace Application.Features.Song.Commands
 {
     public class UpdateCommand : SongUpdateRequest, IRequest<Response<Domain.Entities.Song>>
     {
-        [JsonIgnore]
+        //[JsonIgnore]
         internal int Id { get; set; }
         public void SetId(int id)
         {

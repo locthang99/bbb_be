@@ -6,6 +6,7 @@ using Persistence.Repositories.Base;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
 using Application.Interfaces.Repo;
+using Application.Interfaces.Service;
 
 namespace Persistence.Repositories.Repo
 {
@@ -13,7 +14,7 @@ namespace Persistence.Repositories.Repo
     {
         private readonly DbSet<Playlist> _playlists;
 
-        public PlaylistRepository(BigBlueBirdsDbContext dbContext) : base(dbContext)
+        public PlaylistRepository(BigBlueBirdsDbContext dbContext, IAuthenticatedUserService authenticatedUserService) : base(dbContext, authenticatedUserService)
         {
             _playlists = dbContext.Set<Playlist>();
         }

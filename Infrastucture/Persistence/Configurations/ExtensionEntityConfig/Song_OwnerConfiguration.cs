@@ -13,7 +13,7 @@ namespace Persistence.Configurations
         public void Configure(EntityTypeBuilder<Song_Owner> builder)
         {
             ConfigureExtensionEntityBase(ref builder);
-            //builder.HasKey(t => new { t.SongId, t.OwnerId });
+            builder.HasKey(t => new { t.SongId, t.OwnerId });
             builder.ToTable("Song_Owners");
             builder.HasOne(s => s.Song).WithMany(o => o.Song_Owners)
                 .HasForeignKey(o => o.SongId);

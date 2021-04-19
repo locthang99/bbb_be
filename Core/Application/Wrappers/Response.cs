@@ -49,7 +49,7 @@ namespace Application.Wrappers
             ObjectType = typeof(T).FullName;
         }
     }
-    public class CommandFail<T> : CommandResponse<T> where T : AuditableBaseEntity
+    public class CommandFail<T> : CommandResponse<T>
     {
         public CommandFail()
         {

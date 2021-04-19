@@ -6,6 +6,7 @@ using Persistence.Repositories.Base;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
 using Application.Interfaces.Repo;
+using Application.Interfaces.Service;
 
 namespace Persistence.Repositories.Repo
 {
@@ -13,7 +14,7 @@ namespace Persistence.Repositories.Repo
     {
         private readonly DbSet<Tag> _tags;
 
-        public TagRepository(BigBlueBirdsDbContext dbContext) : base(dbContext)
+        public TagRepository(BigBlueBirdsDbContext dbContext, IAuthenticatedUserService authenticatedUserService) : base(dbContext, authenticatedUserService)
         {
             _tags = dbContext.Set<Tag>();
         }

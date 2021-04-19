@@ -12,7 +12,9 @@ namespace Persistence.Configurations.BaseConfig
         public EntityTypeBuilder<T> ConfigureExtensionEntityBase(ref EntityTypeBuilder<T> builder)
         {
             //builder.ToTable("AppConfigs");
-            ConfigureBase(ref builder);
+            //ConfigureBase(ref builder);
+            builder.Property(x => x.DateCreate).IsRequired(true).HasDefaultValue(DateTime.Now);
+            builder.Property(x => x.LastModified).IsRequired(true).HasDefaultValue(DateTime.Now);
             return builder;
         }
     }

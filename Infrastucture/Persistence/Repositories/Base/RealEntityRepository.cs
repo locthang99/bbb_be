@@ -9,6 +9,7 @@ using Persistence.Contexts;
 using System.Linq;
 using Application.Parameters;
 using Application.Interfaces.ResQuery;
+using Application.Interfaces.Service;
 
 namespace Persistence.Repositories.Base
 {
@@ -16,7 +17,7 @@ namespace Persistence.Repositories.Base
     {
         public readonly DbSet<T> _realEntity;
 
-        public RealEntityRepository(BigBlueBirdsDbContext dbContext) : base(dbContext)
+        public RealEntityRepository(BigBlueBirdsDbContext dbContext, IAuthenticatedUserService authenticatedUserService) : base(dbContext, authenticatedUserService)
         {
             _realEntity = dbContext.Set<T>();
         }

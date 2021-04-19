@@ -13,5 +13,6 @@ namespace Application.Interfaces.RepoBase
         Task<T> AddAsync(T entity);
         Task<int> UpdateAsync(T entity);
         Task<int> DeleteAsync(T entity);
+        bool CheckAuthorizeResource(T entiry);
     }
 }

@@ -41,6 +41,7 @@ namespace Application.Exceptions
 
     public class UnauthorizeException : ApiException
     {
+        public UnauthorizeException() : base() {}
         public UnauthorizeException(string message) : base(message) { }
     }
 

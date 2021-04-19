@@ -7,6 +7,7 @@ using Domain.Base;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
 using System.Linq;
+using Application.Interfaces.Service;
 
 namespace Persistence.Repositories.Base
 {
@@ -14,14 +15,14 @@ namespace Persistence.Repositories.Base
     {
         public readonly DbSet<T> _extensionEntity;
 
-        public ExtensionEntityRepository(BigBlueBirdsDbContext dbContext) : base(dbContext)
+        public ExtensionEntityRepository(BigBlueBirdsDbContext dbContext,IAuthenticatedUserService authenticatedUserService) : base(dbContext, authenticatedUserService)
         {
             _extensionEntity = dbContext.Set<T>();
         }
 
-        public Task<T> GetByTwoIdAsync(int id1, int id2)
+        public async Task<T> GetByTwoIdAsync(int id1, int id2)
         {
-            throw new NotImplementedException();
+            return await _extensionEntity.FindAsync(id1, id2);
         }
     }
 }

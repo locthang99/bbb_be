@@ -45,9 +45,23 @@ namespace BackendAPI.Controllers.v1
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromQuery] int Id,[FromForm] UpdateCommand rq)
+        public async Task<IActionResult> Update([FromQuery] int Id, [FromForm] UpdateCommand rq)
         {
             rq.SetId(Id);
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpPut("{Id}/UpdateType/{IdType}")]
+        public async Task<IActionResult> UpdateType(int Id, int IdType)
+        {
+            var rq = new UpdateTypeCommand() { Id = Id, IdTypeUpdate = IdType };
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpPut("{Id}/UpdateTag/{IdTag}")]
+        public async Task<IActionResult> UpdateTag(int Id, int IdTag)
+        {
+            var rq = new UpdateTagCommand() { Id = Id, IdTagUpdate = IdTag };
             return Ok(await Mediator.Send(rq));
         }
 

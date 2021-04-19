@@ -1,4 +1,5 @@
-﻿using Domain.Base;
+﻿using Application.Interfaces.Service;
+using Domain.Base;
 using Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -15,29 +16,30 @@ namespace Persistence.Contexts
 {
     public class BigBlueBirdsDbContext : IdentityDbContext<User, Role, int,IdentityUserClaim<int>,IdentityUserRole<int>,IdentityUserLogin<int>,IdentityRoleClaim<int>,IdentityUserToken<int>>
     {
+
         public BigBlueBirdsDbContext(DbContextOptions options) : base(options)
         {
             //ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
-        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
-        {
-            foreach (var entry in ChangeTracker.Entries<AuditableBaseEntity>())
-            {
-                switch (entry.State)
-                {
-                    case EntityState.Added:
-                        entry.Entity.DateCreate = DateTime.UtcNow;
-                        entry.Entity.CreatedBy = "Admin 1";
-                        break;
-                    case EntityState.Modified:
-                        entry.Entity.LastModified = DateTime.UtcNow;
-                        entry.Entity.LastModifiedBy = "Admin 2";
-                        break;
-                }
-            }
-            return base.SaveChangesAsync(cancellationToken);
-        }
+        //public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+        //{
+        //    foreach (var entry in ChangeTracker.Entries<AuditableBaseEntity>())
+        //    {
+        //        switch (entry.State)
+        //        {
+        //            case EntityState.Added:
+        //                entry.Entity.DateCreate = DateTime.UtcNow;
+        //                entry.Entity.CreatedBy ??= _authenticatedUser.GetCurrentUserId();
+        //                break;
+        //            case EntityState.Modified:
+        //                entry.Entity.LastModified = DateTime.UtcNow;
+        //                entry.Entity.LastModifiedBy ??= _authenticatedUser.GetCurrentUserId();
+        //                break;
+        //        }
+        //    }
+        //    return base.SaveChangesAsync(cancellationToken);
+        //}
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new AppConfigConfiguration());
@@ -69,6 +71,7 @@ namespace Persistence.Contexts
             modelBuilder.SeedAccount();
             modelBuilder.SeedRole();
             modelBuilder.SeedAccount_Role();
+            modelBuilder.SeedSongType();
         }
         public DbSet<AppConfig> AppConfig { get; set; }
         public DbSet<Song> Songs { get; set; }

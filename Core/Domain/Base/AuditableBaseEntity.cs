@@ -11,9 +11,9 @@ namespace Domain.Base
         //[Key]
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public virtual int Id { get; set; }
-        public string CreatedBy { get; set; }
+        public int? CreatedBy { get; set; }
         public DateTime DateCreate { get; set; }
-        public string LastModifiedBy { get; set; }
+        public int? LastModifiedBy { get; set; }
         public DateTime? LastModified { get; set; }
     }
 }

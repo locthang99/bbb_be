@@ -13,7 +13,7 @@ namespace Persistence.Configurations
         public void Configure(EntityTypeBuilder<User_Like_Song> builder)
         {
             ConfigureExtensionEntityBase(ref builder);
-            //builder.HasKey(t => new { t.UserId, t.SongId });
+            builder.HasKey(t => new { t.UserId, t.SongId });
             builder.Property(t => t.DateCreate).IsRequired().HasDefaultValue(DateTime.Now);
             builder.ToTable("User_Like_Song");
             builder.HasOne(s => s.Song).WithMany(u => u.ListUserLike)
