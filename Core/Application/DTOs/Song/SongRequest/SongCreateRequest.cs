@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Application.DTOs.SongType;
+using Application.DTOs.Type;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -17,9 +17,6 @@ namespace Application.DTOs.Song.SongRequest
         public IFormFile Thumbnail { get; set; }
         public IFormFile FileMusic { get; set; }
         public bool IsPublic { get; set; }
-
-        public List<int> SongTypes { get; set; }
-        public List<int> Tags { get; set; }
 
     }
 }

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Application.DTOs.SongType.SongTypeRequest
+namespace Application.DTOs.Type.TypeRequest
 {
-    public class SongTypeUpdateRequest
+    public class TypeUpdateRequest
     {
         //public string Id { get; set; }
         public string Name { get; set; }

@@ -23,7 +23,7 @@ namespace Application.Enum
     {
         SONG,
         PLAYLIST,
-        SONGTYPE,
+        Type,
         USER,
         FRIEND
 

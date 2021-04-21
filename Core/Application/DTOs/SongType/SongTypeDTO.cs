@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Application.DTOs.SongType
+namespace Application.DTOs.Type
 {
-    public class SongTypeDTO
+    public class TypeDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -17,13 +17,15 @@ namespace Persistence.Repositories.UoW
         public IPlaylistRepository PlaylistRepo { get; set; }
         public ITagRepository TagRepo { get; set; }
         public IExtensionEntityRepository<Song_Tag> Song_TagRepo { get; set; }
-        public IExtensionEntityRepository<Song_SongType> Song_TypeRepo { get; set; }
+        public IExtensionEntityRepository<Song_Type> Song_TypeRepo { get; set; }
+        public IExtensionEntityRepository<User_Like_Song> User_Like_SongRepo { get; }
         public UnitOfWork(BigBlueBirdsDbContext bigBlueBirdsDbContext,
             ISongRepository _songRepo,
             IPlaylistRepository _playlistRepo,
             ITagRepository _tagRepo,
             IExtensionEntityRepository<Song_Tag> _song_TagRepo,
-            IExtensionEntityRepository<Song_SongType> _song_TypeRepo
+            IExtensionEntityRepository<Song_Type> _song_TypeRepo,
+            IExtensionEntityRepository<User_Like_Song> _user_Like_SongRepo
         )
         {
             _bigBlueBirdsDbContext = bigBlueBirdsDbContext;
@@ -32,16 +34,25 @@ namespace Persistence.Repositories.UoW
             TagRepo = _tagRepo;
             Song_TagRepo = _song_TagRepo;
             Song_TypeRepo = _song_TypeRepo;
+            User_Like_SongRepo = _user_Like_SongRepo;
         }
 
-        public int Commit()
+        public bool Commit()
         {
-            return _bigBlueBirdsDbContext.SaveChanges();
+            var numRecordChange = _bigBlueBirdsDbContext.SaveChanges();
+            if (numRecordChange > 0)
+                return true;
+            else
+                return false;
         }
 
-        public async Task<int> CommitAsync()
+        public async Task<bool> CommitAsync()
         {
-            return await _bigBlueBirdsDbContext.SaveChangesAsync();
+            var numRecordChange =  await _bigBlueBirdsDbContext.SaveChangesAsync();
+            if (numRecordChange > 0)
+                return true;
+            else
+                return false;
         }
 
         public void Disposable()

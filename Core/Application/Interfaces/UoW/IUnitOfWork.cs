@@ -14,9 +14,10 @@ namespace Application.Interfaces.UoW
         public IPlaylistRepository PlaylistRepo { get; }
         public ITagRepository TagRepo { get; }
         public IExtensionEntityRepository<Song_Tag> Song_TagRepo {get;}
-        public IExtensionEntityRepository<Song_SongType> Song_TypeRepo { get; }
-        public int Commit();
-        public Task<int> CommitAsync();
+        public IExtensionEntityRepository<Song_Type> Song_TypeRepo { get; }
+        public IExtensionEntityRepository<User_Like_Song> User_Like_SongRepo { get; }
+        public bool Commit();
+        public Task<bool> CommitAsync();
         public void Disposable();
     }
 }

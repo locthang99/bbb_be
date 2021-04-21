@@ -8,12 +8,12 @@ using Persistence.Configurations.BaseConfig;
 
 namespace Persistence.Configurations
 {
-    public class SongTypeConfiguration : RealEntityConfiguration<SongType>, IEntityTypeConfiguration<SongType>
+    public class TypeConfiguration : RealEntityConfiguration<Domain.Entities.Type>, IEntityTypeConfiguration<Domain.Entities.Type>
     {
-        public void Configure(EntityTypeBuilder<SongType> builder)
+        public void Configure(EntityTypeBuilder<Domain.Entities.Type> builder)
         {
             ConfigureRealEntityBase(ref builder);
-            builder.ToTable("SongTypes");
+            builder.ToTable("Types");
         }
     }
 }

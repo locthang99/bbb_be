@@ -32,7 +32,7 @@ namespace Persistence
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<ISongRepository, SongRepository>();
             services.AddTransient<IPlaylistRepository, PlaylistRepository>();
-            services.AddTransient<ISongTypeRepository, SongTypeRepository>();
+            services.AddTransient<ITypeRepository, TypeRepository>();
             services.AddTransient<ITagRepository, TagRepository>();
             services.AddTransient<IAccountRepository<User>, AccountRepository>();
 

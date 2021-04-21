@@ -1,14 +1,14 @@
 ﻿using FluentValidation;
-using Application.DTOs.SongType.SongTypeRequest;
+using Application.DTOs.Type.TypeRequest;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Application.DTOs.SongType.SongTypeValidator
+namespace Application.DTOs.Type.TypeValidator
 {
-    public class SongTypeUpdateValidator: AbstractValidator<SongTypeUpdateRequest>
+    public class TypeUpdateValidator: AbstractValidator<TypeUpdateRequest>
     {
-        public SongTypeUpdateValidator()
+        public TypeUpdateValidator()
         {
             //RuleFor(x => x.Id).NotEmpty().WithMessage("Id is not emty");
             RuleFor(x => x.Name).NotEmpty().WithMessage("Name is not emty");

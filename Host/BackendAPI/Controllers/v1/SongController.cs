@@ -72,6 +72,13 @@ namespace BackendAPI.Controllers.v1
             rq.SetId(Id);
             return Ok(await Mediator.Send(rq));
         }
+
+        [HttpPut("{Id}/Reaction")]
+        public async Task<IActionResult> Reaction(int Id, bool Like)
+        {
+            var rq = new ReactionCommand() { IdSong = Id, Like = Like };
+            return Ok(await Mediator.Send(rq));
+        }
         #endregion
     }
 }

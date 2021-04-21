@@ -38,7 +38,8 @@ namespace Application.Features.Song.Commands
             var song = await _unitOfWork.SongRepo.GetByIdAsync(request.Id);
             if (song == null)
                 throw new NotFoundException("Song not found");
-
+            if (!_unitOfWork.SongRepo.CheckAuthorizeResource(song))
+                throw new UnauthorizeException();
             if (request.Name != null)
                 song.Name = request.Name;
             if (request.Description != null)
@@ -54,7 +55,7 @@ namespace Application.Features.Song.Commands
 
             var res =  _unitOfWork.SongRepo.Update(song);
 
-            if (_unitOfWork.Commit()==0)
+            if (!_unitOfWork.Commit())
                 throw new UpdateRequestException("update song fail");
             else
                 return new CommandOK<Domain.Entities.Song>()

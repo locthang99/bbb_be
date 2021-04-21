@@ -15,7 +15,7 @@ namespace Application.DTOs.Song.SongRequest
         public bool IsPublic { get; set; }
         public IFormFile Thumbnail { get; set; }
         public IFormFile FileMusic { get; set; }
-        public List<int> SongTypes { get; set; }
+        public List<int> Types { get; set; }
         public List<int> Tags { get; set; }
     }
 }

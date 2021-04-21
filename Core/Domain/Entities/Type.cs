@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Domain.Entities
 {
-    public class SongType : RealEntity
+    public class Type : RealEntity
     {
-        public List<Song_SongType> Song_SongTypes { get; set; }
+        public List<Song_Type> Song_Types { get; set; }
     }
 }

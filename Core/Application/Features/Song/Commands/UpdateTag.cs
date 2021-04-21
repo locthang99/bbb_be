@@ -40,15 +40,18 @@ namespace Application.Features.Song.Commands
             var song = await _unitOfWork.SongRepo.GetByIdAsync(request.Id);
             if (song == null)
                 throw new NotFoundException("Song not found");
+            var tag = await _unitOfWork.TagRepo.GetByIdAsync(Math.Abs(request.IdTagUpdate));
+            if (tag == null)
+                throw new NotFoundException("Tag not found");
             if (!_unitOfWork.SongRepo.CheckAuthorizeResource(song))
                 throw new UnauthorizeException();
             if (request.IdTagUpdate > 0)
             {
-                var tag = await _unitOfWork.Song_TagRepo.GetByTwoIdAsync(request.Id, request.IdTagUpdate);
-                if (tag != null)
+                var song_tag = await _unitOfWork.Song_TagRepo.GetByTwoIdAsync(request.Id, request.IdTagUpdate);
+                if (song_tag != null)
                     throw new BadRequestException("This tag have been added to this song");
                 var rs = await _unitOfWork.Song_TagRepo.AddAsync(new Song_Tag() { SongId = request.Id, TagId = request.IdTagUpdate });
-                if (_unitOfWork.Commit()>0)
+                if (_unitOfWork.Commit())
                     return new CommandOK<string>()
                     {
                         Msg = "Add tag OK"
@@ -56,11 +59,11 @@ namespace Application.Features.Song.Commands
             }
             if (request.IdTagUpdate < 0)
             {
-                var tag = await _unitOfWork.Song_TagRepo.GetByTwoIdAsync(request.Id, -request.IdTagUpdate);
-                if (tag == null)
+                var song_tag = await _unitOfWork.Song_TagRepo.GetByTwoIdAsync(request.Id, -request.IdTagUpdate);
+                if (song_tag == null)
                     throw new BadRequestException("The song dont has this tag");
-                var rs =  _unitOfWork.Song_TagRepo.Delete(tag);
-                if (_unitOfWork.Commit()>0)
+                var rs =  _unitOfWork.Song_TagRepo.Delete(song_tag);
+                if (_unitOfWork.Commit())
                     return new CommandOK<string>()
                     {
                         Msg = "Remove tag OK"

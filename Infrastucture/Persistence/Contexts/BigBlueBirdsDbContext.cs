@@ -46,10 +46,10 @@ namespace Persistence.Contexts
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new SongConfiguration());
-            modelBuilder.ApplyConfiguration(new SongTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new TypeConfiguration());
             modelBuilder.ApplyConfiguration(new PlaylistConfiguration());
             modelBuilder.ApplyConfiguration(new Song_PlayListConfiguration());
-            modelBuilder.ApplyConfiguration(new Song_SongTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new Song_TypeConfiguration());
             modelBuilder.ApplyConfiguration(new Song_OwnerConfiguration());
             modelBuilder.ApplyConfiguration(new User_Like_SongConfiguration());
             modelBuilder.ApplyConfiguration(new User_Cmt_SongConfiguration());
@@ -71,13 +71,13 @@ namespace Persistence.Contexts
             modelBuilder.SeedAccount();
             modelBuilder.SeedRole();
             modelBuilder.SeedAccount_Role();
-            modelBuilder.SeedSongType();
+            modelBuilder.SeedType();
         }
         public DbSet<AppConfig> AppConfig { get; set; }
         public DbSet<Song> Songs { get; set; }
         public DbSet<Playlist> Playlists { get; set; }
-        public DbSet<SongType> SongTypes { get; set; }
-        public DbSet<Song_SongType> Song_SongTypes { get; set; }
+        public DbSet<Domain.Entities.Type> Types { get; set; }
+        public DbSet<Song_Type> Song_Types { get; set; }
         public DbSet<Song_PlayList> Song_PlayLists { get; set; }
         public DbSet<Song_Owner> Song_Owers { get; set; }
         public DbSet<User_Like_Song> User_Like_Songs { get; set; }

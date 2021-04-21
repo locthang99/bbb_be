@@ -38,10 +38,11 @@ namespace Application.Features.Song.Commands
             var song = await _unitOfWork.SongRepo.GetByIdAsync(request.Id);
             if (song == null)
                 throw new NotFoundException("Song not found");
-
+            if (!_unitOfWork.SongRepo.CheckAuthorizeResource(song))
+                throw new UnauthorizeException();
             var res =  _unitOfWork.SongRepo.Delete(song);
 
-            if (_unitOfWork.Commit()==0)
+            if (!_unitOfWork.Commit())
                 throw new DeleteRequestException("Delete fail");
             else
             {

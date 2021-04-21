@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Application.Interfaces.Repo
 {
-    public interface ISongTypeRepository : IRealEntityRepository<SongType>
+    public interface ITypeRepository : IRealEntityRepository<Domain.Entities.Type>
     {
     }
 }

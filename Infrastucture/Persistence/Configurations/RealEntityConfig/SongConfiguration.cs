@@ -19,7 +19,7 @@ namespace Persistence.Configurations
             builder.Property(x => x.TotalListen).IsRequired().HasDefaultValue(0);
             builder.Property(x => x.TotalDownload).IsRequired().HasDefaultValue(0);
             builder.Property(x => x.Duration).IsRequired().HasDefaultValue(0);
-            builder.Property(x => x.IsPublic).IsRequired().HasDefaultValue(true);
+            builder.Property(x => x.IsPublic).IsRequired();
             builder.Property(x => x.Thumbnail).IsRequired().HasDefaultValue("");
             builder.Property(x => x.FileMusic).IsRequired().HasDefaultValue("");
             //builder.HasOne(x => x.FileMusic).WithOne(x => x.Song).HasForeignKey<FileMusic>(x => x.IdSong).OnDelete(DeleteBehavior.Cascade);

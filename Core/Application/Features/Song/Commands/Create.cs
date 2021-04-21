@@ -17,11 +17,11 @@ using Application.Interfaces.UoW;
 
 namespace Application.Features.Song.Commands
 {
-    public class CreateCommand : SongCreateRequest, IRequest<CommandResponse<TypeFromML>>
+    public class CreateCommand : SongCreateRequest, IRequest<CommandResponse<Domain.Entities.Song>>
     {
 
     }
-    public class CreateCommandHandler : IRequestHandler<CreateCommand, CommandResponse<TypeFromML>>
+    public class CreateCommandHandler : IRequestHandler<CreateCommand, CommandResponse<Domain.Entities.Song>>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IStorageService _storageService;
@@ -33,7 +33,7 @@ namespace Application.Features.Song.Commands
             _httpClientFactoty = httpClientFactoty;
         }
 
-        public async Task<CommandResponse<TypeFromML>> Handle(CreateCommand request, CancellationToken cancellationToken)
+        public async Task<CommandResponse<Domain.Entities.Song>> Handle(CreateCommand request, CancellationToken cancellationToken)
         {
             var song = new Domain.Entities.Song()
             {
@@ -50,22 +50,22 @@ namespace Application.Features.Song.Commands
             //var rs = await _httpClientFactoty.CreateClient().GetAsync("http://localhost:8089/predict/?"+song.FileMusic);
             //rs.EnsureSuccessStatusCode();
             //var resp = await rs.Content.ReadAsStringAsync();
-            //var obj =  JsonConvert.DeserializeObject<TypeFromML>(resp);
+            //var obj =  JsonConvert.DeserializeObject<Domain.Entities.Song>(resp);
 
-            if (_unitOfWork.Commit()==0)
-                return new CommandFail<TypeFromML>()
+            if (!_unitOfWork.Commit())
+                return new CommandFail<Domain.Entities.Song>()
                 {
                     Msg = "Create song Failed"
                 };
             else
-                return new CommandOK<TypeFromML>()
+                return new CommandOK<Domain.Entities.Song>()
                 {
                     ObjectId = res.Id,
-                    Data = null,
+                    Data = res,
                 };
         }
     }
-    public class TypeFromML : RealEntity
+    public class Type : RealEntity
     {
         public string reggae { get; set; }
         public string classical { get; set; }

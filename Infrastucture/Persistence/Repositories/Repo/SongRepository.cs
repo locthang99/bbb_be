@@ -8,7 +8,7 @@ using Persistence.Contexts;
 using Application.Interfaces.Repo;
 using Application.DTOs.Song;
 using System.Linq;
-using Application.DTOs.SongType;
+using Application.DTOs.Type;
 using Application.DTOs.Owner;
 using Application.DTOs.Tag;
 using Microsoft.Extensions.Configuration;
@@ -44,7 +44,7 @@ namespace Persistence.Repositories.Repo
                 TotalDownload = song.TotalDownload,
                 Lyric = song.Lyric,
                 Duration = song.Duration,
-                Types = _dbContext.Song_SongTypes.Where(z => z.SongId == song.Id).Select(c => new SongTypeDTO() { Id = c.SongTypeId, Name = c.SongType.Name }).ToList(),
+                Types = _dbContext.Song_Types.Where(z => z.SongId == song.Id).Select(c => new TypeDTO() { Id = c.TypeId, Name = c.Type.Name }).ToList(),
                 Owners = _dbContext.Song_Owers.Where(z => z.SongId == song.Id).Select(c => new OwnerDTO()
                 {
                     OwnerId = c.OwnerId,

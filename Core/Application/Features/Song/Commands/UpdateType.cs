@@ -42,13 +42,16 @@ namespace Application.Features.Song.Commands
                 throw new NotFoundException("Song not found");
             if (!_unitOfWork.SongRepo.CheckAuthorizeResource(song))
                 throw new UnauthorizeException();
+            var type = await _unitOfWork.TagRepo.GetByIdAsync(Math.Abs(request.IdTypeUpdate));
+            if (type == null)
+                throw new NotFoundException("Tag not found");
             if (request.IdTypeUpdate > 0)
             {
-                var type =  await _unitOfWork.Song_TypeRepo.GetByTwoIdAsync(request.Id, request.IdTypeUpdate);
-                if (type != null)
+                var song_type =  await _unitOfWork.Song_TypeRepo.GetByTwoIdAsync(request.Id, request.IdTypeUpdate);
+                if (song_type != null)
                     throw new BadRequestException("This type have been added to this song");
-                var rs =  _unitOfWork.Song_TypeRepo.AddAsync(new Song_SongType() { SongId = request.Id, SongTypeId = request.IdTypeUpdate });
-                if (_unitOfWork.Commit()>0)
+                var rs =  _unitOfWork.Song_TypeRepo.AddAsync(new Song_Type() { SongId = request.Id, TypeId = request.IdTypeUpdate });
+                if (_unitOfWork.Commit())
                     return new CommandOK<string>()
                     {
                         Msg = "Add type OK"
@@ -56,11 +59,11 @@ namespace Application.Features.Song.Commands
             }
             if (request.IdTypeUpdate < 0)
             {
-                var type = await _unitOfWork.Song_TypeRepo.GetByTwoIdAsync(request.Id, -request.IdTypeUpdate);
-                if (type == null)
+                var song_type = await _unitOfWork.Song_TypeRepo.GetByTwoIdAsync(request.Id, -request.IdTypeUpdate);
+                if (song_type == null)
                     throw new BadRequestException("The song dont has this type");
-                var rs  =  _unitOfWork.Song_TypeRepo.Delete(type);
-                if(_unitOfWork.Commit()>0)
+                var rs  =  _unitOfWork.Song_TypeRepo.Delete(song_type);
+                if(_unitOfWork.Commit())
                     return new CommandOK<string>()
                     {
                         Msg = "Remove type OK"

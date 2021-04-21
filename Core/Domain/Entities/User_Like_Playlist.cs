@@ -11,5 +11,6 @@ namespace Domain.Entities
         public User User { get; set; }
         public int PlaylistId { get; set; }
         public Playlist PlayList { get; set; }
+        public int TotalLike { get; set; }
     }
 }

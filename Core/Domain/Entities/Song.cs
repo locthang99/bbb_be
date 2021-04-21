@@ -17,7 +17,7 @@ namespace Domain.Entities
         public string Thumbnail { get; set; }
         public string FileMusic { get; set; }
         public List<Song_PlayList> Song_PlayLists { get; set; }
-        public List<Song_SongType> Song_SongTypes { get; set; }
+        public List<Song_Type> Song_Types { get; set; }
         public List<User_Like_Song> ListUserLike { get; set; }
         public List<User_Cmt_Song> ListUserCmt { get; set; }
         public List<Song_Owner> Song_Owners { get; set; }

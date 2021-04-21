@@ -1,6 +1,6 @@
 ﻿using Application.DTOs.Owner;
 using Application.DTOs.Tag;
-using Application.DTOs.SongType;
+using Application.DTOs.Type;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,7 +21,7 @@ namespace Application.DTOs.Song
         public string Thumbnail { get; set; }
         public string FileMusic { get; set; }
         public int Duration { get; set; }
-        public List<SongTypeDTO> Types { get; set; }
+        public List<TypeDTO> Types { get; set; }
         public List<TagDTO> Tags { get; set; }
         public List<OwnerDTO> Owners { get; set; }
     }

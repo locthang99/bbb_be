@@ -3,30 +3,29 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace Persistence.Seed
 {
-    public static class SeedSongTypes
+    public static class SeedTypes
     {
-        public static void SeedSongType(this ModelBuilder modelBuilder)
+        public static void SeedType(this ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<SongType>().HasData(
-            new SongType
+            modelBuilder.Entity<Domain.Entities.Type>().HasData(
+            new Domain.Entities.Type
             {
                 Id = 1,
                 Name = "Nhac tre"
             },
-            new SongType
+            new Domain.Entities.Type
             {
                 Id = 2,
                 Name = "Nhac Remix"
             },
-            new SongType
+            new Domain.Entities.Type
             {
                 Id = 3,
                 Name = "Nhac Pop"
             },
-            new SongType
+            new Domain.Entities.Type
             {
                 Id = 4,
                 Name = "Nhac Ballad"
