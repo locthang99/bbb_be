@@ -51,6 +51,9 @@ namespace Persistence.Contexts
             modelBuilder.ApplyConfiguration(new Song_PlayListConfiguration());
             modelBuilder.ApplyConfiguration(new Song_TypeConfiguration());
             modelBuilder.ApplyConfiguration(new Song_OwnerConfiguration());
+            modelBuilder.ApplyConfiguration(new Song_SingerConfiguration());
+            modelBuilder.ApplyConfiguration(new Song_ComposerConfiguration());
+            modelBuilder.ApplyConfiguration(new Song_OwnerConfiguration());
             modelBuilder.ApplyConfiguration(new User_Like_SongConfiguration());
             modelBuilder.ApplyConfiguration(new User_Cmt_SongConfiguration());
             modelBuilder.ApplyConfiguration(new FriendConfiguration());
@@ -80,6 +83,8 @@ namespace Persistence.Contexts
         public DbSet<Song_Type> Song_Types { get; set; }
         public DbSet<Song_PlayList> Song_PlayLists { get; set; }
         public DbSet<Song_Owner> Song_Owers { get; set; }
+        public DbSet<Song_Singer> Song_Singers { get; set; }
+        public DbSet<Song_Composer> Song_Composers { get; set; }
         public DbSet<User_Like_Song> User_Like_Songs { get; set; }
         public DbSet<User_Cmt_Song> User_Cmt_Songs { get; set; }
         public DbSet<User_Like_Playlist> User_Like_Playlists { get; set; }

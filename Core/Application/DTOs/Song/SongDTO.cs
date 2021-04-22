@@ -24,5 +24,7 @@ namespace Application.DTOs.Song
         public List<TypeDTO> Types { get; set; }
         public List<TagDTO> Tags { get; set; }
         public List<OwnerDTO> Owners { get; set; }
+        public List<SingerDTO> Singers { get; set; }
+        public List<ComposerDTO> Composers { get; set; }
     }
 }

@@ -5,13 +5,13 @@ using System.Text;
 
 namespace Domain.Entities
 {
-    public class Song_Owner : ExtensionEntity
+    public class Song_Singer : ExtensionEntity
     {
         public int SongId { get; set; }
         public Song Song { get; set; }
 
-        public int OwnerId { get; set; }
-        public User Owner { get; set; }
+        public int SingerId { get; set; }
+        public User Singer { get; set; }
 
     }
 }

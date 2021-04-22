@@ -47,7 +47,7 @@ namespace Application.Features.Song.Commands
             if (request.Duration != 0)
                 song.Duration = request.Duration;
             if (request.Lyric != null)
-                song.Lyric = request.Lyric;
+                song.Lyric = await _storageService.SaveFile(request.Lyric,2);
             if (request.Thumbnail != null)
                 song.Thumbnail = await _storageService.SaveFile(request.Thumbnail, 0);
             if (request.FileMusic != null)

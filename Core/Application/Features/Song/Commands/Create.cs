@@ -41,6 +41,7 @@ namespace Application.Features.Song.Commands
                 Description = request.Description,
                 Duration = request.Duration,
                 IsPublic = request.IsPublic,
+                Lyric = await _storageService.SaveFile(request.Lyric, 2),
                 Thumbnail = await _storageService.SaveFile(request.Thumbnail, 0),
                 FileMusic = await _storageService.SaveFile(request.FileMusic, 1)
             };

@@ -52,6 +52,8 @@ namespace Domain.Entities
         public List<Friend> ListFriendSend { get; set; }
         public List<Friend> ListFriendReceive { get; set; }
         public List<Song_Owner> Song_Owners { get; set; }
+        public List<Song_Singer> Song_Singers { get; set; }
+        public List<Song_Composer> Song_Composers { get; set; }
         //public List<PlayList> PlaylistPrivate { get; set; }
 
     }

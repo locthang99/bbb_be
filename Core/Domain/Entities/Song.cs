@@ -21,6 +21,8 @@ namespace Domain.Entities
         public List<User_Like_Song> ListUserLike { get; set; }
         public List<User_Cmt_Song> ListUserCmt { get; set; }
         public List<Song_Owner> Song_Owners { get; set; }
+        public List<Song_Singer> Song_Singers { get; set; }
+        public List<Song_Composer> Song_Composers { get; set; }
         //public List<FileImage> FileImages { get; set; }
         public List<Song_Tag> Song_Tags { get; set; }
         //public FileMusic FileMusic { get; set; }

@@ -44,18 +44,33 @@ namespace Persistence.Repositories.Repo
                 TotalDownload = song.TotalDownload,
                 Lyric = song.Lyric,
                 Duration = song.Duration,
-                Types = _dbContext.Song_Types.Where(z => z.SongId == song.Id).Select(c => new TypeDTO() { Id = c.TypeId, Name = c.Type.Name }).ToList(),
-                Owners = _dbContext.Song_Owers.Where(z => z.SongId == song.Id).Select(c => new OwnerDTO()
-                {
-                    OwnerId = c.OwnerId,
-                    NameOwner = c.Owner.FirstName + " " + c.Owner.LastName,
-                    Thumbnail = c.Owner.Thumbnail
+                Types = _dbContext.Song_Types.Where(z => z.SongId == song.Id).Select(c => new TypeDTO()
+                {   Id = c.TypeId,
+                    Name = c.Type.Name
                 }).ToList(),
                 Tags = _dbContext.Song_Tags.Where(z => z.SongId == song.Id).Select(c => new TagDTO()
                 {
                     Id = c.TagId,
                     Name = c.Tag.Name
-                }).ToList()
+                }).ToList(),
+                Owners = _dbContext.Users.Where(z => z.Id==song.CreatedBy).Select(c => new OwnerDTO()
+                {
+                    OwnerId = c.Id,
+                    NameOwner = c.FirstName + " " + c.LastName,
+                    Thumbnail = c.Thumbnail
+                }).ToList(),
+                Singers = _dbContext.Song_Singers.Where(z => z.SongId == song.Id).Select(c => new SingerDTO()
+                {
+                    SingerId = c.SingerId,
+                    NameSinger = c.Singer.FirstName + " " + c.Singer.LastName,
+                    Thumbnail = c.Singer.Thumbnail
+                }).ToList(),
+                Composers = _dbContext.Song_Composers.Where(z => z.SongId == song.Id).Select(c => new ComposerDTO()
+                {
+                    ComposerId = c.ComposerId,
+                    NameComposer = c.Composer.FirstName + " " + c.Composer.LastName,
+                    Thumbnail = c.Composer.Thumbnail
+                }).ToList(),
             };
             if (!song.Thumbnail.Contains("http") && song.Thumbnail != "")
                 data.Thumbnail = _config["File:Image"] + song.Thumbnail;

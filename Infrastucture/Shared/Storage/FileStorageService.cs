@@ -18,10 +18,14 @@ namespace ThirdPartyServices.Storage
         private readonly string _image;
         private const string IMAGE_FOLDER_NAME = "Image";
 
+        private readonly string _lyric;
+        private const string LYRIC_FOLDER_NAME = "Lyric";
+
         public FileStorageService(Microsoft.AspNetCore.Hosting.IHostingEnvironment webHostEnvironment)
         {
             _audio = Path.Combine(webHostEnvironment.WebRootPath, AUDIO_FOLDER_NAME);
             _image = Path.Combine(webHostEnvironment.WebRootPath, IMAGE_FOLDER_NAME);
+            _lyric = Path.Combine(webHostEnvironment.WebRootPath, LYRIC_FOLDER_NAME);
         }
 
         //public string GetFileUrl(string fileName)
@@ -35,7 +39,10 @@ namespace ThirdPartyServices.Storage
             if (Type == 0)
                 filePath = Path.Combine(_image, fileName);
             else
+                if (Type == 1)
                 filePath = Path.Combine(_audio, fileName);
+            else
+                filePath = Path.Combine(_lyric, fileName);
             using var output = new FileStream(filePath, FileMode.Create);
             await mediaBinaryStream.CopyToAsync(output);
         }
@@ -46,7 +53,11 @@ namespace ThirdPartyServices.Storage
             if (Type == 0)
                 filePath = Path.Combine(_image, fileName);
             else
-                filePath = Path.Combine(_audio, fileName);
+                if (Type == 1)
+                    filePath = Path.Combine(_audio, fileName);
+                else
+                    filePath = Path.Combine(_lyric, fileName);
+
             if (File.Exists(filePath))
             {
                 await Task.Run(() => File.Delete(filePath));

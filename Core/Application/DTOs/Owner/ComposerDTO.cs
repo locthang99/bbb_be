@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Application.DTOs.Owner
 {
-    public class SingerDTO
+    public class ComposerDTO
     {
-        public int SingerId { get; set; }
-        public string NameSinger { get; set; }
+        public int ComposerId { get; set; }
+        public string NameComposer { get; set; }
         public string Thumbnail { get; set; }
     }
 }
