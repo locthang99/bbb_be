@@ -21,12 +21,12 @@
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:5001",
+      "applicationUrl": "http://localhost:5000",
       //"applicationUrl": "http://192.168.0.103:5000",
-      "sslPort": 5001,
+      //"sslPort": 5001,
       //"applicationUrl": "https://192.168.0.103:5001",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Production"
       }
     }
   }

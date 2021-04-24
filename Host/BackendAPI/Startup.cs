@@ -45,6 +45,12 @@ namespace BackendAPI
             services.AddHttpContextAccessor();
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddMvc();
+            services.AddCors(o => o.AddPolicy("CORSPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
 
         }
 
@@ -65,7 +71,7 @@ namespace BackendAPI
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            //app.UseCors("MyPolicy");
+            app.UseCors("CORSPolicy");
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
