@@ -56,6 +56,8 @@ namespace Persistence.Contexts
             modelBuilder.ApplyConfiguration(new Song_OwnerConfiguration());
             modelBuilder.ApplyConfiguration(new User_Like_SongConfiguration());
             modelBuilder.ApplyConfiguration(new User_Cmt_SongConfiguration());
+            modelBuilder.ApplyConfiguration(new User_Like_PlaylistConfiguration());
+            modelBuilder.ApplyConfiguration(new User_Cmt_PlaylistConfiguration());
             modelBuilder.ApplyConfiguration(new FriendConfiguration());
             modelBuilder.ApplyConfiguration(new FileImageConfiguration());
             modelBuilder.ApplyConfiguration(new FileMusicConfiguration());

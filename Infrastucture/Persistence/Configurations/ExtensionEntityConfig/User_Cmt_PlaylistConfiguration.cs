@@ -13,6 +13,8 @@ namespace Persistence.Configurations
         public void Configure(EntityTypeBuilder<User_Cmt_Playlist> builder)
         {
             ConfigureExtensionEntityBase(ref builder);
+            builder.HasKey(t => t.Id);
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Property(t => t.PlaylistId).IsRequired();
             builder.Property(t => t.UserId).IsRequired();
             builder.Property(t => t.DateCreate).IsRequired().HasDefaultValue(DateTime.Now);

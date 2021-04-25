@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Application.DTOs.PlayList
 {
-    public class PlayListDTO
+    public class PlaylistDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }

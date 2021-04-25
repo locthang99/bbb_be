@@ -57,6 +57,7 @@
 
   <ItemGroup>
     <Folder Include="Contexts\" />
+    <Folder Include="Repositories\ExtensionRepo\" />
   </ItemGroup>
 
 </Project>

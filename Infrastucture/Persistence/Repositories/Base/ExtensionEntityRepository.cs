@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
 using System.Linq;
 using Application.Interfaces.Service;
+using System.Linq.Expressions;
+using Application.Interfaces.ResQuery;
+using Application.Parameters;
 
 namespace Persistence.Repositories.Base
 {
@@ -23,6 +26,54 @@ namespace Persistence.Repositories.Base
         public async Task<T> GetByTwoIdAsync(int id1, int id2)
         {
             return await _extensionEntity.FindAsync(id1, id2);
+        }
+
+        private IOrderedQueryable<T> Sort(PagedSortRequest rq, IQueryable<T> input)
+        {
+            if (rq.SortASC)
+            {
+                switch (rq.SortBy)
+                {
+                    case "Id":
+                        return input.OrderBy(x => x.Id);
+                    //case "Name":
+                    //    return input.OrderBy(x => x.Name);
+                    case "DateCreate":
+                        return input.OrderBy(x => x.DateCreate);
+                    default:
+                        return input.OrderBy(x => x.Id);
+                }
+            }
+            else
+            {
+                switch (rq.SortBy)
+                {
+                    case "Id":
+                        return input.OrderByDescending(x => x.Id);
+                    //case "Name":
+                    //    return input.OrderByDescending(x => x.Name);
+                    case "DateCreate":
+                        return input.OrderByDescending(x => x.DateCreate);
+                    default:
+                        return input.OrderByDescending(x => x.Id);
+                }
+            }
+        }
+        //public IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate)
+        //{
+        //    IEnumerable<T> query = _extensionEntity.Where(predicate).AsEnumerable();
+        //    return query;
+        //}
+        public async Task<ResponseQueryable<IQueryable<T>>> FindByAsync(Expression<Func<T, bool>> predicate, PagedSortRequest rq)
+        {
+            var data = _extensionEntity.Where(predicate).AsNoTracking();
+            List<IQueryable<T>> listData = new List<IQueryable<T>>();
+            //listData.Add(Sort(rq, data).Skip((rq.Index - 1) * rq.PageSize).Take(rq.PageSize));
+            return new ResponseQueryable<IQueryable<T>>()
+            {
+                TotallRecord = data.Count(),
+                Data = Sort(rq, data).Skip((rq.Index - 1) * rq.PageSize).Take(rq.PageSize)
+            };
         }
     }
 }

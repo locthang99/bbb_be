@@ -16,25 +16,47 @@ namespace Persistence.Repositories.UoW
         public ISongRepository SongRepo { get; set; }
         public IPlaylistRepository PlaylistRepo { get; set; }
         public ITagRepository TagRepo { get; set; }
+        public ITypeRepository TypeRepo { get; }
+        public IExtensionEntityRepository<Song_PlayList> Song_PlaylistRepo { get; }
         public IExtensionEntityRepository<Song_Tag> Song_TagRepo { get; set; }
         public IExtensionEntityRepository<Song_Type> Song_TypeRepo { get; set; }
+        public IExtensionEntityRepository<Song_Composer> Song_ComposerRepo { get; }
+        public IExtensionEntityRepository<Song_Singer> Song_SingerRepo { get; }
         public IExtensionEntityRepository<User_Like_Song> User_Like_SongRepo { get; }
+        public IExtensionEntityRepository<User_Cmt_Song> User_Comment_SongRepo { get; }
+        public IExtensionEntityRepository<User_Like_Playlist> User_Like_PlaylistRepo { get; }
+        public IExtensionEntityRepository<User_Cmt_Playlist> User_Comment_PlaylistRepo { get; }
         public UnitOfWork(BigBlueBirdsDbContext bigBlueBirdsDbContext,
             ISongRepository _songRepo,
             IPlaylistRepository _playlistRepo,
             ITagRepository _tagRepo,
+            ITypeRepository _typeRepo,
+            IExtensionEntityRepository<Song_PlayList> _song_PlaylistRepo,
             IExtensionEntityRepository<Song_Tag> _song_TagRepo,
             IExtensionEntityRepository<Song_Type> _song_TypeRepo,
-            IExtensionEntityRepository<User_Like_Song> _user_Like_SongRepo
+            IExtensionEntityRepository<User_Like_Song> _user_Like_SongRepo,
+            IExtensionEntityRepository<Song_Composer> _song_ComposerRepo,
+            IExtensionEntityRepository<Song_Singer> _song_SingerRepo,
+            IExtensionEntityRepository<User_Cmt_Song> _user_Comment_SongRepo,
+            IExtensionEntityRepository<User_Like_Playlist> _user_Like_PlaylistRepo,
+            IExtensionEntityRepository<User_Cmt_Playlist> _user_Comment_PlaylistRepo
         )
         {
             _bigBlueBirdsDbContext = bigBlueBirdsDbContext;
             SongRepo = _songRepo;
             PlaylistRepo = _playlistRepo;
             TagRepo = _tagRepo;
+            TypeRepo = _typeRepo;
+            Song_PlaylistRepo = _song_PlaylistRepo;
             Song_TagRepo = _song_TagRepo;
             Song_TypeRepo = _song_TypeRepo;
+            Song_ComposerRepo = _song_ComposerRepo;
+            Song_SingerRepo = _song_SingerRepo;
             User_Like_SongRepo = _user_Like_SongRepo;
+            User_Comment_SongRepo = _user_Comment_SongRepo;
+            User_Like_PlaylistRepo = _user_Like_PlaylistRepo;
+            User_Comment_PlaylistRepo = _user_Comment_PlaylistRepo;
+
         }
 
         public bool Commit()

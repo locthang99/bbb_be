@@ -14,8 +14,8 @@ namespace Application.Features.Song.Commands
 {
     public class ReactionCommand : IRequest<Response<string>>
     {
-        public int IdSong;
-        public bool Like;
+        public int IdSong { get; set; }
+        public bool Like { get; set; }
     }
     public class ReactionHandler : IRequestHandler<ReactionCommand, Response<string>>
     {

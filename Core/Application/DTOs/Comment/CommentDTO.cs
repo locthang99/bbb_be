@@ -9,6 +9,7 @@ namespace Application.DTOs.Comment
         public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Thumnail { get; set; }
         public string Content { get; set; }
         public DateTime DateTime { get; set; }
     }

@@ -10,6 +10,7 @@ using System.Linq;
 using Application.Parameters;
 using Application.Interfaces.ResQuery;
 using Application.Interfaces.Service;
+using System.Linq.Expressions;
 
 namespace Persistence.Repositories.Base
 {
@@ -81,6 +82,18 @@ namespace Persistence.Repositories.Base
             {
                 TotallRecord = data.Count(),
                 Data = await Sort(rq, data).Skip((rq.Index - 1) * rq.PageSize).Take(rq.PageSize).ToListAsync()
+            };
+        }
+
+        public async Task<ResponseQueryable<IQueryable<T>>> FindByAsync(Expression<Func<T, bool>> predicate, PagedSortRequest rq)
+        {
+            var data = _realEntity.Where(predicate).AsNoTracking();
+            List<IQueryable<T>> listData = new List<IQueryable<T>>();
+            //listData.Add(Sort(rq, data).Skip((rq.Index - 1) * rq.PageSize).Take(rq.PageSize));
+            return new ResponseQueryable<IQueryable<T>>()
+            {
+                TotallRecord = data.Count(),
+                Data = Sort(rq, data).Skip((rq.Index - 1) * rq.PageSize).Take(rq.PageSize)
             };
         }
     }

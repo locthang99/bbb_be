@@ -35,6 +35,18 @@ namespace BackendAPI.Controllers.v1
         {
             return Ok(await Mediator.Send(rq));
         }
+
+        [HttpGet("MySong")]
+        public async Task<IActionResult> GetMySong([FromQuery] GetPrivateQuery rq)
+        {
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpGet("Comment")]
+        public async Task<IActionResult> GetComment([FromQuery] GetCommentQuery rq)
+        {
+            return Ok(await Mediator.Send(rq));
+        }
         #endregion
 
         #region Command
@@ -51,17 +63,31 @@ namespace BackendAPI.Controllers.v1
             return Ok(await Mediator.Send(rq));
         }
 
-        [HttpPut("{Id}/UpdateType/{IdType}")]
-        public async Task<IActionResult> UpdateType(int Id, int IdType)
+        [HttpPut("{SongId}/UpdateType/{TypeId}")]
+        public async Task<IActionResult> UpdateType(int SongId, int TypeId)
         {
-            var rq = new UpdateTypeCommand() { Id = Id, IdTypeUpdate = IdType };
+            var rq = new UpdateTypeCommand() { Id = SongId, IdTypeUpdate = TypeId };
             return Ok(await Mediator.Send(rq));
         }
 
-        [HttpPut("{Id}/UpdateTag/{IdTag}")]
-        public async Task<IActionResult> UpdateTag(int Id, int IdTag)
+        [HttpPut("{SongId}/UpdateTag/{TagId}")]
+        public async Task<IActionResult> UpdateTag(int SongId, int TagId)
         {
-            var rq = new UpdateTagCommand() { Id = Id, IdTagUpdate = IdTag };
+            var rq = new UpdateTagCommand() { Id = SongId, IdTagUpdate = TagId };
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpPut("{SongId}/UpdateComposer/{ComposerId}")]
+        public async Task<IActionResult> UpdateComposer(int SongId, int ComposerId)
+        {
+            var rq = new UpdateComposerCommand() { Id = SongId, IdComposerUpdate = ComposerId };
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpPut("{SongId}/UpdateSinger/{SingerId}")]
+        public async Task<IActionResult> UpdateSinger(int SongId, int SingerId)
+        {
+            var rq = new UpdateSingerCommand() { Id = SongId, IdSingerUpdate = SingerId };
             return Ok(await Mediator.Send(rq));
         }
 
@@ -73,10 +99,15 @@ namespace BackendAPI.Controllers.v1
             return Ok(await Mediator.Send(rq));
         }
 
-        [HttpPut("{Id}/Reaction")]
-        public async Task<IActionResult> Reaction(int Id, bool Like)
+        [HttpPost("Reaction")]
+        public async Task<IActionResult> Reaction([FromQuery] ReactionCommand rq)
         {
-            var rq = new ReactionCommand() { IdSong = Id, Like = Like };
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpPost("Comment")]
+        public async Task<IActionResult> Comment([FromBody] CommentCommand rq)
+        {
             return Ok(await Mediator.Send(rq));
         }
         #endregion
