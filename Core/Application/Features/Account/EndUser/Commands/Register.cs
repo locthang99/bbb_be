@@ -61,7 +61,7 @@ namespace Application.Features.Account.EndUser.Commands
                     var token = new TokenResponse()
                     {
                         Token = await _token.GenerateToken(user),
-                        UserId = user.Id.ToString(),
+                        UserId = user.Id,
                         Username = user.Email
 
                     };

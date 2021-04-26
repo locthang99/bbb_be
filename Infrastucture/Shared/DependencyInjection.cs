@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ThirdPartyServices.FacebookAuth;
 using ThirdPartyServices.SendMail;
 using ThirdPartyServices.Storage;
 
@@ -15,6 +16,7 @@ namespace ThirdPartyServices
 
             services.AddTransient<IStorageService, FileStorageService>();
             services.AddTransient<ISendMailService, SendMailService>();
+            services.AddTransient<IFacebookAuthService, FacebookAuthService>();
             //services.AddTransient<IManageUserService, ManageUserService>();
             //services.AddTransient<IValidator<UserLoginRequest>, UserLoginValidator>();
 

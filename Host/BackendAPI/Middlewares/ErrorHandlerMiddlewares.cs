@@ -60,7 +60,10 @@ namespace BackendAPI.Middlewares
                         break;
                     case Application.Exceptions.UnauthorizeException e:
                         response.StatusCode = (int)HttpStatusCode.Unauthorized;
-                        responseModel.Msg = "You have not permission to change this resource";
+                        if (string.IsNullOrEmpty(e.Message))
+                            responseModel.Msg = "You have not permission to change this resource";
+                        else
+                            responseModel.Msg = e.Message;
                         break;
                     //case ValidationException e:
                     //    // custom application error

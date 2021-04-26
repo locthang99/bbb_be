@@ -23,6 +23,14 @@ namespace BackendAPI.Controllers.v1
         {
             return Ok(await Mediator.Send(rq));
         }
+
+        [HttpPost("LoginWithFacebook")]
+        public async Task<IActionResult> LoginFacebook([FromQuery] string Token)
+        {
+            var rq = new LoginFBCommand { Token = Token };
+            return Ok(await Mediator.Send(rq));
+        }
+
         [HttpGet("GetProfile")]
         public async Task<IActionResult> GetProfile()
         {

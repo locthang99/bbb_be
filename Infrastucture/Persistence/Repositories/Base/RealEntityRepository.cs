@@ -88,7 +88,6 @@ namespace Persistence.Repositories.Base
         public async Task<ResponseQueryable<IQueryable<T>>> FindByAsync(Expression<Func<T, bool>> predicate, PagedSortRequest rq)
         {
             var data = _realEntity.Where(predicate).AsNoTracking();
-            List<IQueryable<T>> listData = new List<IQueryable<T>>();
             //listData.Add(Sort(rq, data).Skip((rq.Index - 1) * rq.PageSize).Take(rq.PageSize));
             return new ResponseQueryable<IQueryable<T>>()
             {

@@ -45,7 +45,7 @@ namespace Application.Features.Account.EndUser.Commands
                 throw new UnauthorizeException("Login with account enduser");
             var token = new TokenResponse()
             {
-                UserId = user.Id.ToString(),
+                UserId = user.Id,
                 Username = user.UserName,
                 Token = await _accountRepository.GenerateToken(user)
             };

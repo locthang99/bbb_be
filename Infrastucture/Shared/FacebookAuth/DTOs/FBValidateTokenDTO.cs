@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Application.DTOs.FacebookAuth
+namespace ThirdPartyServices.FacebookAuth.DTOs
 {
     public class FBValidateTokenDTO
     {

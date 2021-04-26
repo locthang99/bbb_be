@@ -6,7 +6,7 @@ namespace Application.DTOs.User
 {
     public class TokenResponse
     {
-        public string UserId { get; set; }
+        public int UserId { get; set; }
         public string Username { get; set; }
         public string Token { get; set; }
     }
