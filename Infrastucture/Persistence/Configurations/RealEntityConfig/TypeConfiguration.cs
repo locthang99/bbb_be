@@ -14,6 +14,7 @@ namespace Persistence.Configurations
         {
             ConfigureRealEntityBase(ref builder);
             builder.ToTable("Types");
+            builder.Property(x => x.Thumbnail).IsRequired().HasDefaultValue("");
         }
     }
 }

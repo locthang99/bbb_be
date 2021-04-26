@@ -72,7 +72,7 @@ namespace Persistence.Repositories.Repo
                     Thumbnail = c.Composer.Thumbnail
                 }).ToList(),
             };
-            if (!song.Lyric.Contains("http") && song.Lyric != "")
+            if (!string.IsNullOrEmpty(song.Lyric) && !song.Lyric.Contains("http"))
                 data.Lyric = _config["File:Lyric"] + song.Lyric;
             else
                 data.Lyric = song.Lyric;
