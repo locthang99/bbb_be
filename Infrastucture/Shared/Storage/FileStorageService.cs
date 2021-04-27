@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using System.Net.Http.Headers;
 using ThirdPartyServices.Storage;
+using Microsoft.Extensions.Hosting;
+
 
 namespace ThirdPartyServices.Storage
 {
@@ -21,11 +23,11 @@ namespace ThirdPartyServices.Storage
         private readonly string _lyric;
         private const string LYRIC_FOLDER_NAME = "Lyric";
 
-        public FileStorageService(Microsoft.AspNetCore.Hosting.IHostingEnvironment webHostEnvironment)
+        public FileStorageService(IHostEnvironment webHostEnvironment)
         {
-            _audio = Path.Combine(webHostEnvironment.WebRootPath, AUDIO_FOLDER_NAME);
-            _image = Path.Combine(webHostEnvironment.WebRootPath, IMAGE_FOLDER_NAME);
-            _lyric = Path.Combine(webHostEnvironment.WebRootPath, LYRIC_FOLDER_NAME);
+            _audio = Path.Combine(webHostEnvironment.ContentRootPath + "/wwwroot", AUDIO_FOLDER_NAME);
+            _image = Path.Combine(webHostEnvironment.ContentRootPath + "/wwwroot", IMAGE_FOLDER_NAME);
+            _lyric = Path.Combine(webHostEnvironment.ContentRootPath + "/wwwroot", LYRIC_FOLDER_NAME);
         }
 
         //public string GetFileUrl(string fileName)
