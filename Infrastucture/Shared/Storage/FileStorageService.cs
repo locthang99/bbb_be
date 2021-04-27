@@ -9,7 +9,6 @@ using System.Net.Http.Headers;
 using ThirdPartyServices.Storage;
 using Microsoft.Extensions.Hosting;
 
-
 namespace ThirdPartyServices.Storage
 {
     public class FileStorageService : IStorageService
