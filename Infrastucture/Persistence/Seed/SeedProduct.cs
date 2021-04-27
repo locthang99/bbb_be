@@ -9,18 +9,18 @@ namespace Persistence.Seed
     {
         public static void Seed(this ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Product>().HasData(new Product()
-            {
-                Id =1,
-                Name = "aaaaa",
-                Barcode = "vvvvvvvvvvv"
-            },
-            new Product()
-            {
-                Id = 2,
-                Name = "aaaaa"
-            }
-            );
+            //modelBuilder.Entity<Product>().HasData(new Product()
+            //{
+            //    Id =1,
+            //    Name = "aaaaa",
+            //    Barcode = "vvvvvvvvvvv"
+            //},
+            //new Product()
+            //{
+            //    Id = 2,
+            //    Name = "aaaaa"
+            //}
+            //);
 
         }
     }

@@ -13,7 +13,7 @@ namespace Persistence.Configurations
         public void Configure(EntityTypeBuilder<Playlist> builder)
         {
             ConfigureRealEntityBase(ref builder);
-            builder.ToTable("PlayList");
+            builder.ToTable("Playlists");
             builder.Property(x => x.Thumbnail).IsRequired().HasDefaultValue("");
             builder.Property(x => x.TotalLike).IsRequired().HasDefaultValue(0);
             builder.Property(x => x.TotalCmt).IsRequired().HasDefaultValue(0);
