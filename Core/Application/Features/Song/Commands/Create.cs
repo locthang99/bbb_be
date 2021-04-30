@@ -40,11 +40,12 @@ namespace Application.Features.Song.Commands
                 Name = request.Name,
                 Description = request.Description,
                 Duration = request.Duration,
-                IsPublic = request.IsPublic,
-                Lyric = await _storageService.SaveFile(request.Lyric, 2),
+                IsPublic = request.IsPublic,              
                 Thumbnail = await _storageService.SaveFile(request.Thumbnail, 0),
                 FileMusic = await _storageService.SaveFile(request.FileMusic, 1)
             };
+            if (request.Lyric != null)
+                song.Lyric = await _storageService.SaveFile(request.Lyric, 2);           
 
             var res = await _unitOfWork.SongRepo.AddAsync(song);
 

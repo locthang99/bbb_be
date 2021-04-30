@@ -23,7 +23,7 @@ namespace Persistence
         public static void AddPersistenceInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<BigBlueBirdsDbContext>(options =>
-            options.UseNpgsql(configuration.GetConnectionString("BigBlueBirdsDb"),
+            options.UseNpgsql(configuration["ConnectionStrings:BigBlueBirdsDb"],
             b => b.MigrationsAssembly(typeof(BigBlueBirdsDbContext).Assembly.FullName))
             );
             #region Repositories
@@ -46,6 +46,15 @@ namespace Persistence
             //services.AddTransient<IValidator<UserLoginRequest>, UserLoginValidator>();
             #endregion
             #region DI
+
+            services.AddIdentity<User, Role>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = true;
+            }
+            )
+            .AddEntityFrameworkStores<BigBlueBirdsDbContext>()
+            .AddDefaultTokenProviders();
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -93,15 +102,7 @@ namespace Persistence
                     //};
                 });
 
-            services.AddIdentity<User, Role>(options =>
-            {
-                options.SignIn.RequireConfirmedAccount = false;
-                options.SignIn.RequireConfirmedEmail = false;
-                options.SignIn.RequireConfirmedPhoneNumber = false;
-            }
-            )
-            .AddEntityFrameworkStores<BigBlueBirdsDbContext>()
-            .AddDefaultTokenProviders();
+
                         #endregion
         }
 

@@ -35,13 +35,17 @@ namespace Application.Features.Account.EndUser.Commands
         }
         public async Task<CommandResponse<TokenResponse>> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
+            if(await _userManager.FindByEmailAsync(request.Email)!= null)
+            {
+                throw new BadRequestException("Email has been registered");
+            }
             var user = new Domain.Entities.User()
             {
                 Dob = request.Dob ?? DateTime.Now,
                 Email = request.Email,
                 FirstName = request.FirstName,
                 LastName = request.LastName,
-                UserName = request.User,              
+                UserName = request.Email,              
                 PhoneNumber = request.PhoneNumber ?? "0",
                 AccountType = AccountType.SYSTEM.ToString(),
 
@@ -65,7 +69,7 @@ namespace Application.Features.Account.EndUser.Commands
                         Username = user.Email
 
                     };
-                    await _sendMailService.SendMailNotify("Vip pro", "<h1>BBB aaaaaaaaaaaaaaaaa</h1>", user.Email);
+                    //await _sendMailService.SendMailNotify("Vip pro", "<h1>BBB aaaaaaaaaaaaaaaaa</h1>", user.Email);
                     return new CommandOK<TokenResponse>()
                     {
                         Msg = "Register OK",

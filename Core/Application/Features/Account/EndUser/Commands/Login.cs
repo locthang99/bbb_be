@@ -37,7 +37,7 @@ namespace Application.Features.Account.EndUser.Commands
             var user = await _userManager.FindByNameAsync(request.Username);
             if (user == null)
                 throw new AuthFailedException("Username is not exist");
-            var result = await _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe, false);
+            var result = await _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe, true);
             if (!result.Succeeded)
                 throw new AuthFailedException("Username or password is invalid");
             var checkEndUser = await _userManager.IsInRoleAsync(user,"ADMIN")|| await _userManager.IsInRoleAsync(user, "SUPPERADMIN");

@@ -17,6 +17,7 @@ namespace Persistence.Repositories.UoW
         public IPlaylistRepository PlaylistRepo { get; set; }
         public ITagRepository TagRepo { get; set; }
         public ITypeRepository TypeRepo { get; }
+        public IRepository<History> HistoryRepo { get; }
         public IExtensionEntityRepository<Song_PlayList> Song_PlaylistRepo { get; }
         public IExtensionEntityRepository<Song_Tag> Song_TagRepo { get; set; }
         public IExtensionEntityRepository<Song_Type> Song_TypeRepo { get; set; }
@@ -31,6 +32,7 @@ namespace Persistence.Repositories.UoW
             IPlaylistRepository _playlistRepo,
             ITagRepository _tagRepo,
             ITypeRepository _typeRepo,
+            IRepository<History> _historyRepo,
             IExtensionEntityRepository<Song_PlayList> _song_PlaylistRepo,
             IExtensionEntityRepository<Song_Tag> _song_TagRepo,
             IExtensionEntityRepository<Song_Type> _song_TypeRepo,
@@ -47,6 +49,7 @@ namespace Persistence.Repositories.UoW
             PlaylistRepo = _playlistRepo;
             TagRepo = _tagRepo;
             TypeRepo = _typeRepo;
+            HistoryRepo = _historyRepo;
             Song_PlaylistRepo = _song_PlaylistRepo;
             Song_TagRepo = _song_TagRepo;
             Song_TypeRepo = _song_TypeRepo;

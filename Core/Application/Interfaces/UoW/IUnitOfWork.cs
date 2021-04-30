@@ -14,6 +14,7 @@ namespace Application.Interfaces.UoW
         public IPlaylistRepository PlaylistRepo { get; }
         public ITagRepository TagRepo { get; }
         public ITypeRepository TypeRepo { get; }
+        public IRepository<History> HistoryRepo { get; }
         public IExtensionEntityRepository<Song_PlayList> Song_PlaylistRepo { get; }
         public IExtensionEntityRepository<Song_Tag> Song_TagRepo {get;}
         public IExtensionEntityRepository<Song_Type> Song_TypeRepo { get; }

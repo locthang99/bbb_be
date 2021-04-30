@@ -12,9 +12,11 @@ namespace Application.DTOs.User.UserRequest
         public string LastName { get; set; }
         [DataType(DataType.Date)]
         public DateTime? Dob { get; set; }
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+        [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
-        public string User { get; set; }
+        //public string User { get; set; }
         [DataType(DataType.Password)]
         public string Password { get; set; }
         [DataType(DataType.Password)]

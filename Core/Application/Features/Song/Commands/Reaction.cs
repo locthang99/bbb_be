@@ -12,12 +12,12 @@ using Domain.Entities;
 
 namespace Application.Features.Song.Commands
 {
-    public class ReactionCommand : IRequest<Response<string>>
+    public class ReactionCommand : IRequest<Response<Object>>
     {
         public int IdSong { get; set; }
         public bool Like { get; set; }
     }
-    public class ReactionHandler : IRequestHandler<ReactionCommand, Response<string>>
+    public class ReactionHandler : IRequestHandler<ReactionCommand, Response<Object>>
     {
         private readonly IUnitOfWork _unitOfWork;
         public readonly IAuthenticatedUserService _authenticatedUserService;
@@ -26,7 +26,7 @@ namespace Application.Features.Song.Commands
             _unitOfWork = unitOfWork;
             _authenticatedUserService = authenticatedUserService;
         }
-        public async Task<Response<string>> Handle(ReactionCommand request, CancellationToken cancellationToken)
+        public async Task<Response<Object>> Handle(ReactionCommand request, CancellationToken cancellationToken)
         {
             var song = await _unitOfWork.SongRepo.GetByIdAsync(request.IdSong);
             if (song == null)
@@ -47,10 +47,10 @@ namespace Application.Features.Song.Commands
                 if(_unitOfWork.Commit())
                 {
                     var msg = request.Like ? "Like OK" : "Unlike OK";
-                    return new Response<string>()
+                    return new Response<Object>()
                     {
                         Msg = msg,
-                        Data = null
+                        Data = new {TotalLike = user_Like_Song.TotalLike}
                     };
                 }
             }
@@ -62,13 +62,20 @@ namespace Application.Features.Song.Commands
                 var totalLike = request.Like ? song_like.TotalLike++ :  song_like.TotalLike = 0;
                 _unitOfWork.SongRepo.Update(song);
                 _unitOfWork.User_Like_SongRepo.Update(song_like);
+                await _unitOfWork.HistoryRepo.AddAsync(new History()
+                {
+                    ActionType = Enum.ActionType.LIKE.ToString(),
+                    ObjectType = Enum.ObjectType.SONG.ToString(),
+                    ObjectId = song.Id.ToString(),
+                    UserId = userId
+                });
                 if (_unitOfWork.Commit())
                 {
                     var msg = request.Like ? "Like OK" : "Unlike OK";
-                    return new Response<string>()
+                    return new Response<Object>()
                     {
                         Msg = msg,
-                        Data = null
+                        Data = new { TotalLike = song_like.TotalLike }
                     };
                 }
             }
