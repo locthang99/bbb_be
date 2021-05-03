@@ -11,6 +11,7 @@ using Application.Parameters;
 using Application.Interfaces.ResQuery;
 using Application.Interfaces.Service;
 using System.Linq.Expressions;
+using System.Reflection;
 
 namespace Persistence.Repositories.Base
 {
@@ -21,38 +22,6 @@ namespace Persistence.Repositories.Base
         public RealEntityRepository(BigBlueBirdsDbContext dbContext, IAuthenticatedUserService authenticatedUserService) : base(dbContext, authenticatedUserService)
         {
             _realEntity = dbContext.Set<T>();
-        }
-
-        private IOrderedQueryable<T> Sort(PagedSortRequest rq, IQueryable<T> input)
-        {
-            if (rq.SortASC)
-            {
-                switch (rq.SortBy)
-                {
-                    case "Id":
-                        return input.OrderBy(x => x.Id);
-                    case "Name":
-                        return input.OrderBy(x => x.Name);
-                    case "DateCreate":
-                        return input.OrderBy(x => x.DateCreate);
-                    default:
-                        return input.OrderBy(x => x.Id);
-                }
-            }
-            else
-            {
-                switch (rq.SortBy)
-                {
-                    case "Id":
-                        return input.OrderByDescending(x => x.Id);
-                    case "Name":
-                        return input.OrderByDescending(x => x.Name);
-                    case "DateCreate":
-                        return input.OrderByDescending(x => x.DateCreate);
-                    default:
-                        return input.OrderByDescending(x => x.Id);
-                }
-            }
         }
 
         public async Task<ResponseQuery<T>> GetAllPagedSortAsync(PagedSortRequest rq)

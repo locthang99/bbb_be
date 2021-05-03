@@ -58,6 +58,12 @@ namespace BackendAPI.Controllers.v1
         {
             return Ok(await Mediator.Send(rq));
         }
+
+        [HttpGet("Predict")]
+        public async Task<IActionResult> Predict([FromQuery] PredictQuery rq)
+        {
+            return Ok(await Mediator.Send(rq));
+        }
         #endregion
 
         #region Command

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Persistence.Migrations
 {
-    public partial class InitDb6 : Migration
+    public partial class InitDb3 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,954 +12,954 @@ namespace Persistence.Migrations
                 table: "Users",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 596, DateTimeKind.Local).AddTicks(9480),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 526, DateTimeKind.Local).AddTicks(2674),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 104, DateTimeKind.Local).AddTicks(6694));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 5, DateTimeKind.Local).AddTicks(3584));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "Users",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 596, DateTimeKind.Local).AddTicks(8373),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 526, DateTimeKind.Local).AddTicks(738),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 104, DateTimeKind.Local).AddTicks(5370));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 5, DateTimeKind.Local).AddTicks(690));
+
+            migrationBuilder.AddColumn<int>(
+                name: "TotalFollower",
+                table: "Users",
+                type: "integer",
+                nullable: false,
+                defaultValue: 0);
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "User_Like_Song",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 632, DateTimeKind.Local).AddTicks(6818),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 565, DateTimeKind.Local).AddTicks(6792),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 158, DateTimeKind.Local).AddTicks(9567));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 45, DateTimeKind.Local).AddTicks(9852));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "User_Like_Song",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 632, DateTimeKind.Local).AddTicks(9829),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 566, DateTimeKind.Local).AddTicks(2436),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 159, DateTimeKind.Local).AddTicks(4833));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 46, DateTimeKind.Local).AddTicks(3839));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "User_Like_Playlist",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 641, DateTimeKind.Local).AddTicks(3124),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 572, DateTimeKind.Local).AddTicks(7680),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 167, DateTimeKind.Local).AddTicks(481));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 54, DateTimeKind.Local).AddTicks(1137));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "User_Like_Playlist",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 641, DateTimeKind.Local).AddTicks(6085),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 573, DateTimeKind.Local).AddTicks(7420),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 167, DateTimeKind.Local).AddTicks(6070));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 54, DateTimeKind.Local).AddTicks(7429));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "User_Cmt_Song",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 639, DateTimeKind.Local).AddTicks(3216),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 569, DateTimeKind.Local).AddTicks(5363),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 163, DateTimeKind.Local).AddTicks(911));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 50, DateTimeKind.Local).AddTicks(7002));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "User_Cmt_Song",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 639, DateTimeKind.Local).AddTicks(1843),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 569, DateTimeKind.Local).AddTicks(3308),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 162, DateTimeKind.Local).AddTicks(8163));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 50, DateTimeKind.Local).AddTicks(4861));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "User_Cmt_Playlist",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 643, DateTimeKind.Local).AddTicks(5085),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 577, DateTimeKind.Local).AddTicks(486),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 171, DateTimeKind.Local).AddTicks(4231));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 58, DateTimeKind.Local).AddTicks(2598));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "User_Cmt_Playlist",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 643, DateTimeKind.Local).AddTicks(7312),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 577, DateTimeKind.Local).AddTicks(3172),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 171, DateTimeKind.Local).AddTicks(8053));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 58, DateTimeKind.Local).AddTicks(6585));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "Types",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 617, DateTimeKind.Local).AddTicks(3616),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 532, DateTimeKind.Local).AddTicks(7636),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 134, DateTimeKind.Local).AddTicks(565));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 13, DateTimeKind.Local).AddTicks(585));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "Types",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 617, DateTimeKind.Local).AddTicks(2388),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 532, DateTimeKind.Local).AddTicks(5220),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 133, DateTimeKind.Local).AddTicks(9157));
-
-            migrationBuilder.AddColumn<string>(
-                name: "Thumbnail",
-                table: "Types",
-                type: "text",
-                nullable: false,
-                defaultValue: "");
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 12, DateTimeKind.Local).AddTicks(8389));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "Tags",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 652, DateTimeKind.Local).AddTicks(3504),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 601, DateTimeKind.Local).AddTicks(9696),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 184, DateTimeKind.Local).AddTicks(2318));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 83, DateTimeKind.Local).AddTicks(5775));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "Tags",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 652, DateTimeKind.Local).AddTicks(2213),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 601, DateTimeKind.Local).AddTicks(7396),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 184, DateTimeKind.Local).AddTicks(721));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 83, DateTimeKind.Local).AddTicks(4129));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "Songs",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 615, DateTimeKind.Local).AddTicks(8627),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 530, DateTimeKind.Local).AddTicks(7634),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 132, DateTimeKind.Local).AddTicks(4978));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 10, DateTimeKind.Local).AddTicks(4607));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "Songs",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 615, DateTimeKind.Local).AddTicks(7173),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 530, DateTimeKind.Local).AddTicks(5631),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 132, DateTimeKind.Local).AddTicks(2745));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 10, DateTimeKind.Local).AddTicks(2411));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "Song_Types",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 624, DateTimeKind.Local).AddTicks(3533),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 550, DateTimeKind.Local).AddTicks(7330),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 146, DateTimeKind.Local).AddTicks(8772));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 30, DateTimeKind.Local).AddTicks(1889));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "Song_Types",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 624, DateTimeKind.Local).AddTicks(1693),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 550, DateTimeKind.Local).AddTicks(4640),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 146, DateTimeKind.Local).AddTicks(6714));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 29, DateTimeKind.Local).AddTicks(9173));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "Song_Tags",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 653, DateTimeKind.Local).AddTicks(5595),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 604, DateTimeKind.Local).AddTicks(5409),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 185, DateTimeKind.Local).AddTicks(8831));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 85, DateTimeKind.Local).AddTicks(3569));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "Song_Tags",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 653, DateTimeKind.Local).AddTicks(4211),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 604, DateTimeKind.Local).AddTicks(2758),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 185, DateTimeKind.Local).AddTicks(6869));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 85, DateTimeKind.Local).AddTicks(1498));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "Song_Singers",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 628, DateTimeKind.Local).AddTicks(2883),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 557, DateTimeKind.Local).AddTicks(9865),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 152, DateTimeKind.Local).AddTicks(1667));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 38, DateTimeKind.Local).AddTicks(2444));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "Song_Singers",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 628, DateTimeKind.Local).AddTicks(1562),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 557, DateTimeKind.Local).AddTicks(7341),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 151, DateTimeKind.Local).AddTicks(9845));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 37, DateTimeKind.Local).AddTicks(9646));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "Song_PlayLists",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 620, DateTimeKind.Local).AddTicks(6243),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 537, DateTimeKind.Local).AddTicks(7912),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 139, DateTimeKind.Local).AddTicks(6841));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 18, DateTimeKind.Local).AddTicks(9677));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "Song_PlayLists",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 620, DateTimeKind.Local).AddTicks(4909),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 537, DateTimeKind.Local).AddTicks(4809),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 139, DateTimeKind.Local).AddTicks(4305));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 18, DateTimeKind.Local).AddTicks(7034));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "Song_Owners",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 631, DateTimeKind.Local).AddTicks(2415),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 563, DateTimeKind.Local).AddTicks(159),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 155, DateTimeKind.Local).AddTicks(9503));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 43, DateTimeKind.Local).AddTicks(76));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "Song_Owners",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 631, DateTimeKind.Local).AddTicks(1954),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 562, DateTimeKind.Local).AddTicks(9148),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 155, DateTimeKind.Local).AddTicks(8954));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 42, DateTimeKind.Local).AddTicks(9319));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "Song_Composers",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 630, DateTimeKind.Local).AddTicks(832),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 561, DateTimeKind.Local).AddTicks(3527),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 154, DateTimeKind.Local).AddTicks(7465));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 41, DateTimeKind.Local).AddTicks(5706));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "Song_Composers",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 629, DateTimeKind.Local).AddTicks(9436),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 561, DateTimeKind.Local).AddTicks(1042),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 154, DateTimeKind.Local).AddTicks(5579));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 41, DateTimeKind.Local).AddTicks(3350));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "Roles",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 594, DateTimeKind.Local).AddTicks(9021),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 522, DateTimeKind.Local).AddTicks(9760),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 102, DateTimeKind.Local).AddTicks(2029));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 3, DateTimeKind.Local).AddTicks(693));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "Roles",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 594, DateTimeKind.Local).AddTicks(7785),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 522, DateTimeKind.Local).AddTicks(7664),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 102, DateTimeKind.Local).AddTicks(556));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 2, DateTimeKind.Local).AddTicks(9015));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
-                table: "PlayList",
+                table: "Playlists",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 618, DateTimeKind.Local).AddTicks(7600),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 534, DateTimeKind.Local).AddTicks(8357),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 136, DateTimeKind.Local).AddTicks(1490));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 15, DateTimeKind.Local).AddTicks(7168));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
-                table: "PlayList",
+                table: "Playlists",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 618, DateTimeKind.Local).AddTicks(6282),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 534, DateTimeKind.Local).AddTicks(6810),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 135, DateTimeKind.Local).AddTicks(9005));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 15, DateTimeKind.Local).AddTicks(5664));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "Histories",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 651, DateTimeKind.Local).AddTicks(5124),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 600, DateTimeKind.Local).AddTicks(4025),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 183, DateTimeKind.Local).AddTicks(2598));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 82, DateTimeKind.Local).AddTicks(1229));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "Histories",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 651, DateTimeKind.Local).AddTicks(3653),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 600, DateTimeKind.Local).AddTicks(1066),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 183, DateTimeKind.Local).AddTicks(880));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 81, DateTimeKind.Local).AddTicks(7045));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
-                table: "Friends",
+                table: "Followers",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 645, DateTimeKind.Local).AddTicks(5289),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 581, DateTimeKind.Local).AddTicks(8631),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 175, DateTimeKind.Local).AddTicks(9519));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 61, DateTimeKind.Local).AddTicks(8557));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
-                table: "Friends",
+                table: "Followers",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 645, DateTimeKind.Local).AddTicks(3989),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 581, DateTimeKind.Local).AddTicks(6284),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 175, DateTimeKind.Local).AddTicks(7789));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 61, DateTimeKind.Local).AddTicks(6600));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "CacheDatas",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 655, DateTimeKind.Local).AddTicks(3653),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 608, DateTimeKind.Local).AddTicks(9450),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 188, DateTimeKind.Local).AddTicks(2995));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 87, DateTimeKind.Local).AddTicks(8296));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "CacheDatas",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 655, DateTimeKind.Local).AddTicks(2328),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 608, DateTimeKind.Local).AddTicks(6332),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 188, DateTimeKind.Local).AddTicks(1026));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 87, DateTimeKind.Local).AddTicks(6658));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "AppConfigs",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 590, DateTimeKind.Local).AddTicks(9723),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 517, DateTimeKind.Local).AddTicks(3356),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 97, DateTimeKind.Local).AddTicks(8067));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 48, 998, DateTimeKind.Local).AddTicks(1928));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "AppConfigs",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 579, DateTimeKind.Local).AddTicks(7311),
+                defaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 504, DateTimeKind.Local).AddTicks(4253),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 82, DateTimeKind.Local).AddTicks(2343));
+                oldDefaultValue: new DateTime(2021, 5, 3, 17, 17, 48, 987, DateTimeKind.Local).AddTicks(4455));
 
             migrationBuilder.UpdateData(
                 table: "Roles",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "ConcurrencyStamp",
-                value: "0fa5abf7-36f3-4169-b688-8a78a556b798");
+                value: "8dbc9912-4b18-4072-a024-a657da4acbe4");
 
             migrationBuilder.UpdateData(
                 table: "Roles",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "ConcurrencyStamp",
-                value: "326de10a-2f36-4f1f-b63c-05744c6f0a9d");
+                value: "3249e67d-055c-4d28-b330-92d95868e7fb");
 
             migrationBuilder.UpdateData(
                 table: "Roles",
                 keyColumn: "Id",
                 keyValue: 3,
                 column: "ConcurrencyStamp",
-                value: "79a6066b-801b-474e-a8e8-a7cc043d227b");
+                value: "01078747-79f5-4f93-a319-e9b8082a2cfb");
 
             migrationBuilder.UpdateData(
                 table: "Roles",
                 keyColumn: "Id",
                 keyValue: 4,
                 column: "ConcurrencyStamp",
-                value: "eb49ec3c-c383-45d6-bb91-455b3954c49b");
+                value: "a87830ec-af48-4136-bac3-d98502c2976f");
 
             migrationBuilder.UpdateData(
                 table: "Roles",
                 keyColumn: "Id",
                 keyValue: 5,
                 column: "ConcurrencyStamp",
-                value: "c6e6bba4-9e62-4310-befe-5ef76461d2e2");
+                value: "c9019efd-cd0e-47f1-b186-7896b77f3ad4");
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 1,
                 columns: new[] { "ConcurrencyStamp", "PasswordHash" },
-                values: new object[] { "e11fa487-8c73-496f-ac34-e7c147ba98c7", "AQAAAAEAACcQAAAAEOFvvQEr7LrEySwAnalqVBhf/lcu/O5VCWrg+rBDOjbUxMaDRgJ5pcvprkQnMMhwqw==" });
+                values: new object[] { "b3292ef9-9527-4ff3-97a7-6d3da7efecdf", "AQAAAAEAACcQAAAAEKC+No3Pqpt+c/Y/0wTF3VPsv+HTROnnOp5QfMbmjWTkM5FBGUwHBXBWlLx2rDxOjw==" });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 2,
                 columns: new[] { "ConcurrencyStamp", "PasswordHash" },
-                values: new object[] { "a5ee6748-f1e5-441a-862f-117da860cf2b", "AQAAAAEAACcQAAAAEBEJD0Me1MGLx/FoJiZBTHk1T+K6M1bOY2Ly1Gch1+4n0Zms/7Rvc0l0DkwQwYz1dA==" });
+                values: new object[] { "f752a11c-6747-41fa-88f8-b9f86788644f", "AQAAAAEAACcQAAAAEH46wS3EohQ9yqOsW3JQkbVDKtBDymxUSDods9YbNgzhrkQAqdjLUQ7o7vepxK7oog==" });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 3,
                 columns: new[] { "ConcurrencyStamp", "PasswordHash" },
-                values: new object[] { "a806b825-02e1-4ca9-9ed0-8b1d07cf4653", "AQAAAAEAACcQAAAAEKMT6j/DokMmJ1vi+7uG5uqebOxrF9UbOQ2yF/kZ+haqWJJA4Fm9k8zmDkBqIZxNoA==" });
+                values: new object[] { "77d8f9eb-8287-4b14-864a-1e6d19597d65", "AQAAAAEAACcQAAAAEKqiNZmXdv13CqlsxgajXzirHYz9dXyppRWLNzfN7/pZaPjw26vpeQE9wcfQFXYkxA==" });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 4,
                 columns: new[] { "ConcurrencyStamp", "PasswordHash" },
-                values: new object[] { "cca6af03-582b-4e67-964a-20505c8745ee", "AQAAAAEAACcQAAAAEOvvDEuefSdoCOpA8UiIFl0YKjfNp0ndWuLAv1cKun9RpGSUnrz3op14FdNvRBxkAQ==" });
+                values: new object[] { "a642f7a4-e90c-4025-a92a-a7ca7ceac6ae", "AQAAAAEAACcQAAAAEC69kJK4fpRURQQIXZgjJDajSJ9equQOZpfwpXp2H45oXvtKDjaP6VnHFZUFcHmj8Q==" });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 5,
                 columns: new[] { "ConcurrencyStamp", "PasswordHash" },
-                values: new object[] { "a4cba30c-2e52-4be4-a16a-ee3f2aa15230", "AQAAAAEAACcQAAAAEG33kkX2iVOXMC/iouRTEQ+nTl2BSBGYXbPlAH8nDu5YfFibXYEV6rpdRfj+HAFwRQ==" });
+                values: new object[] { "679611bc-511d-489f-b78c-33286652b90c", "AQAAAAEAACcQAAAAELGOa04DMr97hmxN653dmU7vKHTjzxTM1liK7DAxrqPV//b8zJ/EEzMGW1VRHBHrFg==" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Thumbnail",
-                table: "Types");
+                name: "TotalFollower",
+                table: "Users");
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "Users",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 104, DateTimeKind.Local).AddTicks(6694),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 5, DateTimeKind.Local).AddTicks(3584),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 596, DateTimeKind.Local).AddTicks(9480));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 526, DateTimeKind.Local).AddTicks(2674));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "Users",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 104, DateTimeKind.Local).AddTicks(5370),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 5, DateTimeKind.Local).AddTicks(690),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 596, DateTimeKind.Local).AddTicks(8373));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 526, DateTimeKind.Local).AddTicks(738));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "User_Like_Song",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 158, DateTimeKind.Local).AddTicks(9567),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 45, DateTimeKind.Local).AddTicks(9852),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 632, DateTimeKind.Local).AddTicks(6818));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 565, DateTimeKind.Local).AddTicks(6792));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "User_Like_Song",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 159, DateTimeKind.Local).AddTicks(4833),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 46, DateTimeKind.Local).AddTicks(3839),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 632, DateTimeKind.Local).AddTicks(9829));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 566, DateTimeKind.Local).AddTicks(2436));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "User_Like_Playlist",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 167, DateTimeKind.Local).AddTicks(481),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 54, DateTimeKind.Local).AddTicks(1137),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 641, DateTimeKind.Local).AddTicks(3124));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 572, DateTimeKind.Local).AddTicks(7680));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "User_Like_Playlist",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 167, DateTimeKind.Local).AddTicks(6070),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 54, DateTimeKind.Local).AddTicks(7429),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 641, DateTimeKind.Local).AddTicks(6085));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 573, DateTimeKind.Local).AddTicks(7420));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "User_Cmt_Song",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 163, DateTimeKind.Local).AddTicks(911),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 50, DateTimeKind.Local).AddTicks(7002),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 639, DateTimeKind.Local).AddTicks(3216));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 569, DateTimeKind.Local).AddTicks(5363));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "User_Cmt_Song",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 162, DateTimeKind.Local).AddTicks(8163),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 50, DateTimeKind.Local).AddTicks(4861),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 639, DateTimeKind.Local).AddTicks(1843));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 569, DateTimeKind.Local).AddTicks(3308));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "User_Cmt_Playlist",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 171, DateTimeKind.Local).AddTicks(4231),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 58, DateTimeKind.Local).AddTicks(2598),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 643, DateTimeKind.Local).AddTicks(5085));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 577, DateTimeKind.Local).AddTicks(486));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "User_Cmt_Playlist",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 171, DateTimeKind.Local).AddTicks(8053),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 58, DateTimeKind.Local).AddTicks(6585),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 643, DateTimeKind.Local).AddTicks(7312));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 577, DateTimeKind.Local).AddTicks(3172));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "Types",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 134, DateTimeKind.Local).AddTicks(565),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 13, DateTimeKind.Local).AddTicks(585),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 617, DateTimeKind.Local).AddTicks(3616));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 532, DateTimeKind.Local).AddTicks(7636));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "Types",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 133, DateTimeKind.Local).AddTicks(9157),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 12, DateTimeKind.Local).AddTicks(8389),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 617, DateTimeKind.Local).AddTicks(2388));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 532, DateTimeKind.Local).AddTicks(5220));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "Tags",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 184, DateTimeKind.Local).AddTicks(2318),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 83, DateTimeKind.Local).AddTicks(5775),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 652, DateTimeKind.Local).AddTicks(3504));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 601, DateTimeKind.Local).AddTicks(9696));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "Tags",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 184, DateTimeKind.Local).AddTicks(721),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 83, DateTimeKind.Local).AddTicks(4129),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 652, DateTimeKind.Local).AddTicks(2213));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 601, DateTimeKind.Local).AddTicks(7396));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "Songs",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 132, DateTimeKind.Local).AddTicks(4978),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 10, DateTimeKind.Local).AddTicks(4607),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 615, DateTimeKind.Local).AddTicks(8627));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 530, DateTimeKind.Local).AddTicks(7634));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "Songs",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 132, DateTimeKind.Local).AddTicks(2745),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 10, DateTimeKind.Local).AddTicks(2411),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 615, DateTimeKind.Local).AddTicks(7173));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 530, DateTimeKind.Local).AddTicks(5631));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "Song_Types",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 146, DateTimeKind.Local).AddTicks(8772),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 30, DateTimeKind.Local).AddTicks(1889),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 624, DateTimeKind.Local).AddTicks(3533));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 550, DateTimeKind.Local).AddTicks(7330));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "Song_Types",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 146, DateTimeKind.Local).AddTicks(6714),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 29, DateTimeKind.Local).AddTicks(9173),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 624, DateTimeKind.Local).AddTicks(1693));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 550, DateTimeKind.Local).AddTicks(4640));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "Song_Tags",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 185, DateTimeKind.Local).AddTicks(8831),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 85, DateTimeKind.Local).AddTicks(3569),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 653, DateTimeKind.Local).AddTicks(5595));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 604, DateTimeKind.Local).AddTicks(5409));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "Song_Tags",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 185, DateTimeKind.Local).AddTicks(6869),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 85, DateTimeKind.Local).AddTicks(1498),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 653, DateTimeKind.Local).AddTicks(4211));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 604, DateTimeKind.Local).AddTicks(2758));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "Song_Singers",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 152, DateTimeKind.Local).AddTicks(1667),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 38, DateTimeKind.Local).AddTicks(2444),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 628, DateTimeKind.Local).AddTicks(2883));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 557, DateTimeKind.Local).AddTicks(9865));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "Song_Singers",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 151, DateTimeKind.Local).AddTicks(9845),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 37, DateTimeKind.Local).AddTicks(9646),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 628, DateTimeKind.Local).AddTicks(1562));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 557, DateTimeKind.Local).AddTicks(7341));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "Song_PlayLists",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 139, DateTimeKind.Local).AddTicks(6841),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 18, DateTimeKind.Local).AddTicks(9677),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 620, DateTimeKind.Local).AddTicks(6243));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 537, DateTimeKind.Local).AddTicks(7912));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "Song_PlayLists",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 139, DateTimeKind.Local).AddTicks(4305),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 18, DateTimeKind.Local).AddTicks(7034),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 620, DateTimeKind.Local).AddTicks(4909));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 537, DateTimeKind.Local).AddTicks(4809));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "Song_Owners",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 155, DateTimeKind.Local).AddTicks(9503),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 43, DateTimeKind.Local).AddTicks(76),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 631, DateTimeKind.Local).AddTicks(2415));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 563, DateTimeKind.Local).AddTicks(159));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "Song_Owners",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 155, DateTimeKind.Local).AddTicks(8954),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 42, DateTimeKind.Local).AddTicks(9319),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 631, DateTimeKind.Local).AddTicks(1954));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 562, DateTimeKind.Local).AddTicks(9148));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "Song_Composers",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 154, DateTimeKind.Local).AddTicks(7465),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 41, DateTimeKind.Local).AddTicks(5706),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 630, DateTimeKind.Local).AddTicks(832));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 561, DateTimeKind.Local).AddTicks(3527));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "Song_Composers",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 154, DateTimeKind.Local).AddTicks(5579),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 41, DateTimeKind.Local).AddTicks(3350),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 629, DateTimeKind.Local).AddTicks(9436));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 561, DateTimeKind.Local).AddTicks(1042));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "Roles",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 102, DateTimeKind.Local).AddTicks(2029),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 3, DateTimeKind.Local).AddTicks(693),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 594, DateTimeKind.Local).AddTicks(9021));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 522, DateTimeKind.Local).AddTicks(9760));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "Roles",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 102, DateTimeKind.Local).AddTicks(556),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 2, DateTimeKind.Local).AddTicks(9015),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 594, DateTimeKind.Local).AddTicks(7785));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 522, DateTimeKind.Local).AddTicks(7664));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
-                table: "PlayList",
+                table: "Playlists",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 136, DateTimeKind.Local).AddTicks(1490),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 15, DateTimeKind.Local).AddTicks(7168),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 618, DateTimeKind.Local).AddTicks(7600));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 534, DateTimeKind.Local).AddTicks(8357));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
-                table: "PlayList",
+                table: "Playlists",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 135, DateTimeKind.Local).AddTicks(9005),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 15, DateTimeKind.Local).AddTicks(5664),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 618, DateTimeKind.Local).AddTicks(6282));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 534, DateTimeKind.Local).AddTicks(6810));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "Histories",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 183, DateTimeKind.Local).AddTicks(2598),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 82, DateTimeKind.Local).AddTicks(1229),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 651, DateTimeKind.Local).AddTicks(5124));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 600, DateTimeKind.Local).AddTicks(4025));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "Histories",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 183, DateTimeKind.Local).AddTicks(880),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 81, DateTimeKind.Local).AddTicks(7045),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 651, DateTimeKind.Local).AddTicks(3653));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 600, DateTimeKind.Local).AddTicks(1066));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
-                table: "Friends",
+                table: "Followers",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 175, DateTimeKind.Local).AddTicks(9519),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 61, DateTimeKind.Local).AddTicks(8557),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 645, DateTimeKind.Local).AddTicks(5289));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 581, DateTimeKind.Local).AddTicks(8631));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
-                table: "Friends",
+                table: "Followers",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 175, DateTimeKind.Local).AddTicks(7789),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 61, DateTimeKind.Local).AddTicks(6600),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 645, DateTimeKind.Local).AddTicks(3989));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 581, DateTimeKind.Local).AddTicks(6284));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "CacheDatas",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 188, DateTimeKind.Local).AddTicks(2995),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 87, DateTimeKind.Local).AddTicks(8296),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 655, DateTimeKind.Local).AddTicks(3653));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 608, DateTimeKind.Local).AddTicks(9450));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "CacheDatas",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 188, DateTimeKind.Local).AddTicks(1026),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 49, 87, DateTimeKind.Local).AddTicks(6658),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 655, DateTimeKind.Local).AddTicks(2328));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 608, DateTimeKind.Local).AddTicks(6332));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "LastModified",
                 table: "AppConfigs",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 97, DateTimeKind.Local).AddTicks(8067),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 48, 998, DateTimeKind.Local).AddTicks(1928),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 590, DateTimeKind.Local).AddTicks(9723));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 517, DateTimeKind.Local).AddTicks(3356));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "DateCreate",
                 table: "AppConfigs",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(2021, 4, 25, 16, 23, 16, 82, DateTimeKind.Local).AddTicks(2343),
+                defaultValue: new DateTime(2021, 5, 3, 17, 17, 48, 987, DateTimeKind.Local).AddTicks(4455),
                 oldClrType: typeof(DateTime),
                 oldType: "timestamp without time zone",
-                oldDefaultValue: new DateTime(2021, 4, 26, 12, 36, 47, 579, DateTimeKind.Local).AddTicks(7311));
+                oldDefaultValue: new DateTime(2021, 5, 3, 22, 55, 19, 504, DateTimeKind.Local).AddTicks(4253));
 
             migrationBuilder.UpdateData(
                 table: "Roles",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "ConcurrencyStamp",
-                value: "021951c1-cea9-401d-80f0-7212619177ad");
+                value: "7e21f254-c743-4927-9bd3-826a214f54b8");
 
             migrationBuilder.UpdateData(
                 table: "Roles",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "ConcurrencyStamp",
-                value: "0951b41b-ba80-4f89-8387-6a24df711cbf");
+                value: "fddf5238-3bf7-447d-af5a-4dce808eb386");
 
             migrationBuilder.UpdateData(
                 table: "Roles",
                 keyColumn: "Id",
                 keyValue: 3,
                 column: "ConcurrencyStamp",
-                value: "db0f6930-9485-4100-86eb-01999c5522f1");
+                value: "1f4a1e7e-496b-41d2-9f4e-54c5dddda023");
 
             migrationBuilder.UpdateData(
                 table: "Roles",
                 keyColumn: "Id",
                 keyValue: 4,
                 column: "ConcurrencyStamp",
-                value: "fbf7e8de-3906-49cc-a197-d126f929c228");
+                value: "5244ce62-1c25-40a0-a1a7-1593799b26ab");
 
             migrationBuilder.UpdateData(
                 table: "Roles",
                 keyColumn: "Id",
                 keyValue: 5,
                 column: "ConcurrencyStamp",
-                value: "c8fd8432-ed61-4318-a783-9d9bb3ed7a54");
+                value: "80c8848c-f478-488a-b640-a3acfeceed31");
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 1,
                 columns: new[] { "ConcurrencyStamp", "PasswordHash" },
-                values: new object[] { "d705372a-0888-4d3c-9489-2296cd927843", "AQAAAAEAACcQAAAAEIzA6AbntAwyUw3EqgkFq8RSzEQLMa/HR7T4j5EeOoN0JdmKyb4mOarXIQQXmn2ygw==" });
+                values: new object[] { "881bb6c9-35d4-4a89-82da-a86762d2cf1e", "AQAAAAEAACcQAAAAEFd1NtuTbONwdWTE6GacKxLU0QRqOiAGrA2c5zJcpI4gak6eWZ1dCTbZabpBIXCWaA==" });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 2,
                 columns: new[] { "ConcurrencyStamp", "PasswordHash" },
-                values: new object[] { "9e45f033-26e2-4383-8e18-4c1a24887b79", "AQAAAAEAACcQAAAAEFxovsegKIFVL8sy1st2j0W3+S3BXfoz1k2GulLH1qiAJtJjJCUbQU5DNb9K3wGvnw==" });
+                values: new object[] { "60bf8859-f36e-4bad-8235-cff77cbdec94", "AQAAAAEAACcQAAAAEPRRVj1v7QUwRGzF5MNhSEKR97BTV53Vzas5DicWieXt6XrCV37ho6T85IzAPD/0PQ==" });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 3,
                 columns: new[] { "ConcurrencyStamp", "PasswordHash" },
-                values: new object[] { "9a070df7-0a43-484b-ad19-aeede9fd6d15", "AQAAAAEAACcQAAAAELCwr8RQxVq1o5xQUzfKp5D4WgDY2kPDY1eWzkdumrWURly8J3DRM6zd+eFPH5ggCw==" });
+                values: new object[] { "01198707-7546-4713-9990-eb11523966af", "AQAAAAEAACcQAAAAEPP13E1w/oDv101f1GAeC68cBs/4twaR49FUwuGDYSBcA+l/nDtEdXg+csAMUt8x5w==" });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 4,
                 columns: new[] { "ConcurrencyStamp", "PasswordHash" },
-                values: new object[] { "11f03e68-9c9f-4f6f-bb22-d5774e9be9a4", "AQAAAAEAACcQAAAAEH3t3zpnzUB1QhrKDEa/JoG6wRauf2/QgOJwmi+zNlst2o9Bbj2otuw/fEBbPapV0w==" });
+                values: new object[] { "942fa2d5-0afc-4899-b698-ac5b8a860461", "AQAAAAEAACcQAAAAEOClEGhaAjH9RcNOI5p5V4SCAj20M/KuzMyhSvLOKALop73uxJRsOk/3+l8QF9wVPA==" });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 5,
                 columns: new[] { "ConcurrencyStamp", "PasswordHash" },
-                values: new object[] { "f9f6af85-c3e7-45fe-91af-b6d44e6e2f4c", "AQAAAAEAACcQAAAAEPS0WrIqbXlUUl3xQqs1oWTV/QJ4Oiy4yTp9IOndSEElat4n2SLdwfsqpF8LsKGLRg==" });
+                values: new object[] { "ec4eea67-6b97-41db-949c-9936ba5371d6", "AQAAAAEAACcQAAAAEJAL5vAAStUiCJqqFIA1NP5KhgezAkoCgWAhdJRQzmM4LAlsHNuDWxM43QP3Kgbnmw==" });
         }
     }
 }

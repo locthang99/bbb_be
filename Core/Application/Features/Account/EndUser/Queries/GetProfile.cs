@@ -13,23 +13,23 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Account.EndUser.Queries
 {
-    public class GetProfileCommand : IRequest<CommandResponse<UserDTO>>
+    public class GetProfileQuery : IRequest<CommandResponse<UserDTO>>
     {
     }
-    public class GetProfileCommandHandler : IRequestHandler<GetProfileCommand, CommandResponse<UserDTO>>
+    public class GetProfileQueryHandler : IRequestHandler<GetProfileQuery, CommandResponse<UserDTO>>
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly IAccountRepository<User> _accountRepository;
         private readonly IAuthenticatedUserService _authenticatedUserService;
-        public GetProfileCommandHandler(UserManager<User> userManager, IAccountRepository<User> accountRepository,
+        public GetProfileQueryHandler(UserManager<User> userManager, IAccountRepository<User> accountRepository,
             IAuthenticatedUserService authenticatedUserService)
         {
             _userManager = userManager;
             _accountRepository = accountRepository;
             _authenticatedUserService = authenticatedUserService;
         }
-        public async Task<CommandResponse<UserDTO>> Handle(GetProfileCommand request, CancellationToken cancellationToken)
+        public async Task<CommandResponse<UserDTO>> Handle(GetProfileQuery request, CancellationToken cancellationToken)
         {
             var userId =  _authenticatedUserService.GetCurrentUserId();
             var user = await  _accountRepository.GetByIdAsync(userId);

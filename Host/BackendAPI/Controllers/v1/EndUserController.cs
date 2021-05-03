@@ -1,5 +1,5 @@
-﻿using Application.Features.Account.Admin.Queries;
-using Application.Features.Account.EndUser.Commands;
+﻿using Application.Features.Account.EndUser.Commands;
+using Application.Features.Account.EndUser.Queries;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -34,7 +34,19 @@ namespace BackendAPI.Controllers.v1
         [HttpGet("GetProfile")]
         public async Task<IActionResult> GetProfile()
         {
-            var rq = new GetProfileCommand();
+            var rq = new GetProfileQuery();
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpGet("GetSubscriber")]
+        public async Task<IActionResult> GetObserver([FromQuery] GetSubscriberQuery rq)
+        {
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpGet("GetPublisher")]
+        public async Task<IActionResult> GetPublicer([FromQuery] GetPublisherQuery rq)
+        {
             return Ok(await Mediator.Send(rq));
         }
     }

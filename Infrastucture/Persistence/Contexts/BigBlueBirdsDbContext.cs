@@ -58,7 +58,7 @@ namespace Persistence.Contexts
             modelBuilder.ApplyConfiguration(new User_Cmt_SongConfiguration());
             modelBuilder.ApplyConfiguration(new User_Like_PlaylistConfiguration());
             modelBuilder.ApplyConfiguration(new User_Cmt_PlaylistConfiguration());
-            modelBuilder.ApplyConfiguration(new FriendConfiguration());
+            modelBuilder.ApplyConfiguration(new FollowerConfiguration());
             modelBuilder.ApplyConfiguration(new FileImageConfiguration());
             modelBuilder.ApplyConfiguration(new FileMusicConfiguration());
             modelBuilder.ApplyConfiguration(new HistoryConfiguration());
@@ -91,7 +91,7 @@ namespace Persistence.Contexts
         public DbSet<User_Cmt_Song> User_Cmt_Songs { get; set; }
         public DbSet<User_Like_Playlist> User_Like_Playlists { get; set; }
         public DbSet<User_Cmt_Playlist> User_Cmt_Playlists { get; set; }
-        public DbSet<Friend> Friends { get; set; }
+        public DbSet<Follower> Followers { get; set; }
         public DbSet<FileImage> FileImages { get; set; }
         public DbSet<FileMusic> FileMusics { get; set; }
         public DbSet<History> Histories { get; set; }

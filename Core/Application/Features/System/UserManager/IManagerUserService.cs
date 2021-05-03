@@ -21,7 +21,7 @@ namespace Application.Features.System.UserManager
         Task<int> Delete(Guid Id);
         Task<int> SetRole(Guid Id, string RoleName);
         Task<List<FriendDTO>> GetAllStatusFiend();
-        Task<List<FirendAcceptedDTO>> GetAllFiend();
+        Task<List<FollowerDTO>> GetAllFiend();
         Task<int> SendFriendRequest(Guid ReceiverId);
         Task<int> AcceptFriendRequest(Guid SenderID);
         Task<int> DenyFriendRequest(Guid SenderID);

@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using Domain.Base;
 using Application.Interfaces.Service;
+using Application.Parameters;
+using System.Linq.Expressions;
 
 namespace Persistence.Repositories.Base
 {
@@ -23,6 +25,22 @@ namespace Persistence.Repositories.Base
         public virtual async Task<T> GetByIdAsync(int id)
         {
             return await _dbContext.Set<T>().FindAsync(id);
+        }
+
+        public IOrderedQueryable<T> Sort(PagedSortRequest rq, IQueryable<T> input)
+        {
+            var param = Expression.Parameter(typeof(T), "item");
+
+            var sortExpression = Expression.Lambda<Func<T, object>>
+                (Expression.Convert(Expression.Property(param, rq.SortBy), typeof(object)), param);
+            if (rq.SortASC)
+            {
+                return input.OrderBy<T, object>(sortExpression);
+            }
+            else
+            {
+                return input.OrderByDescending<T, object>(sortExpression);
+            }
         }
 
         public async Task<IReadOnlyList<T>> GetPagedReponseAsync(int pageNumber, int pageSize)

@@ -10,5 +10,13 @@ namespace Application.Parameters
         public int PageSize { get; set; }
         public string SortBy { get; set; }
         public bool SortASC { get; set; }
+
+        public PagedSortRequest()
+        {
+            Index = 1;
+            PageSize = 10;
+            SortBy = "Id";
+            SortASC = true;
+        }
     }
 }

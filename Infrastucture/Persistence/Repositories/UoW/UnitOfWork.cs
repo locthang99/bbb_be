@@ -18,6 +18,7 @@ namespace Persistence.Repositories.UoW
         public ITagRepository TagRepo { get; set; }
         public ITypeRepository TypeRepo { get; }
         public IRepository<History> HistoryRepo { get; }
+        public IExtensionEntityRepository<Follower> FollowerRepo { get; }
         public IExtensionEntityRepository<Song_PlayList> Song_PlaylistRepo { get; }
         public IExtensionEntityRepository<Song_Tag> Song_TagRepo { get; set; }
         public IExtensionEntityRepository<Song_Type> Song_TypeRepo { get; set; }
@@ -27,12 +28,14 @@ namespace Persistence.Repositories.UoW
         public IExtensionEntityRepository<User_Cmt_Song> User_Comment_SongRepo { get; }
         public IExtensionEntityRepository<User_Like_Playlist> User_Like_PlaylistRepo { get; }
         public IExtensionEntityRepository<User_Cmt_Playlist> User_Comment_PlaylistRepo { get; }
+
         public UnitOfWork(BigBlueBirdsDbContext bigBlueBirdsDbContext,
             ISongRepository _songRepo,
             IPlaylistRepository _playlistRepo,
             ITagRepository _tagRepo,
             ITypeRepository _typeRepo,
             IRepository<History> _historyRepo,
+            IExtensionEntityRepository<Follower> _followerRepo,
             IExtensionEntityRepository<Song_PlayList> _song_PlaylistRepo,
             IExtensionEntityRepository<Song_Tag> _song_TagRepo,
             IExtensionEntityRepository<Song_Type> _song_TypeRepo,
@@ -50,6 +53,7 @@ namespace Persistence.Repositories.UoW
             TagRepo = _tagRepo;
             TypeRepo = _typeRepo;
             HistoryRepo = _historyRepo;
+            FollowerRepo = _followerRepo;
             Song_PlaylistRepo = _song_PlaylistRepo;
             Song_TagRepo = _song_TagRepo;
             Song_TypeRepo = _song_TypeRepo;

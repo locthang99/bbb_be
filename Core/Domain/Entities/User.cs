@@ -45,12 +45,15 @@ namespace Domain.Entities
 
 
         //public List<FileImage> FileImages { get; set; }
+
+        public int TotalFollower { get; set; }
         public List<User_Like_Song> ListSongLike { get; set; }
         public List<User_Cmt_Song> ListSongCmt { get; set; }
         public List<User_Like_Playlist> ListPlaylistLike { get; set; }
         public List<User_Cmt_Playlist> ListPlaylistCmt { get; set; }
-        public List<Friend> ListFriendSend { get; set; }
-        public List<Friend> ListFriendReceive { get; set; }
+        public List<Follower> ListSubscribers { get; set; }
+        public List<Follower> ListPublishers { get; set; }
+        //public List<Follower> ListFriendReceive { get; set; }
         public List<Song_Owner> Song_Owners { get; set; }
         public List<Song_Singer> Song_Singers { get; set; }
         public List<Song_Composer> Song_Composers { get; set; }

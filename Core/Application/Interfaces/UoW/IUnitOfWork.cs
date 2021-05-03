@@ -24,6 +24,7 @@ namespace Application.Interfaces.UoW
         public IExtensionEntityRepository<User_Cmt_Song> User_Comment_SongRepo { get; }
         public IExtensionEntityRepository<User_Like_Playlist> User_Like_PlaylistRepo { get; }
         public IExtensionEntityRepository<User_Cmt_Playlist> User_Comment_PlaylistRepo { get; }
+        public IExtensionEntityRepository<Follower> FollowerRepo { get; }
         public bool Commit();
         public Task<bool> CommitAsync();
         public void Disposable();

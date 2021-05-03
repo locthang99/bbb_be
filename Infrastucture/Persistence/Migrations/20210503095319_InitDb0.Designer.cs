@@ -10,8 +10,8 @@ using Persistence.Contexts;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(BigBlueBirdsDbContext))]
-    [Migration("20210421080411_intiDB0")]
-    partial class intiDB0
+    [Migration("20210503095319_InitDb0")]
+    partial class InitDb0
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,7 +32,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 296, DateTimeKind.Local).AddTicks(8074));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 604, DateTimeKind.Local).AddTicks(2610));
 
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -43,7 +43,7 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 313, DateTimeKind.Local).AddTicks(3890));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 617, DateTimeKind.Local).AddTicks(6443));
 
                     b.Property<int?>("LastModifiedBy")
                         .HasColumnType("integer");
@@ -74,13 +74,13 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 399, DateTimeKind.Local).AddTicks(7576));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 696, DateTimeKind.Local).AddTicks(326));
 
                     b.Property<DateTime?>("LastModified")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 399, DateTimeKind.Local).AddTicks(9804));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 696, DateTimeKind.Local).AddTicks(2234));
 
                     b.Property<int?>("LastModifiedBy")
                         .HasColumnType("integer");
@@ -189,7 +189,7 @@ namespace Persistence.Migrations
                     b.ToTable("FileMusics");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Friend", b =>
+            modelBuilder.Entity("Domain.Entities.Follower", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -202,21 +202,21 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 380, DateTimeKind.Local).AddTicks(7158));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 673, DateTimeKind.Local).AddTicks(783));
 
                     b.Property<DateTime?>("LastModified")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 380, DateTimeKind.Local).AddTicks(9466));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 673, DateTimeKind.Local).AddTicks(2500));
 
                     b.Property<int?>("LastModifiedBy")
                         .HasColumnType("integer");
 
-                    b.Property<int>("ReceiverId")
+                    b.Property<int>("ObserverId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("SenderId")
+                    b.Property<int>("PublicserId")
                         .HasColumnType("integer");
 
                     b.Property<int>("Status")
@@ -224,11 +224,11 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ReceiverId");
+                    b.HasIndex("ObserverId");
 
-                    b.HasIndex("SenderId");
+                    b.HasIndex("PublicserId");
 
-                    b.ToTable("Friends");
+                    b.ToTable("Followers");
                 });
 
             modelBuilder.Entity("Domain.Entities.History", b =>
@@ -248,7 +248,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 391, DateTimeKind.Local).AddTicks(8460));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 689, DateTimeKind.Local).AddTicks(9565));
 
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("timestamp without time zone");
@@ -257,7 +257,7 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 392, DateTimeKind.Local).AddTicks(755));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 690, DateTimeKind.Local).AddTicks(1198));
 
                     b.Property<int?>("LastModifiedBy")
                         .HasColumnType("integer");
@@ -293,7 +293,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 355, DateTimeKind.Local).AddTicks(6335));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 633, DateTimeKind.Local).AddTicks(7822));
 
                     b.Property<string>("Description")
                         .ValueGeneratedOnAdd()
@@ -304,7 +304,7 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 355, DateTimeKind.Local).AddTicks(8351));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 633, DateTimeKind.Local).AddTicks(9977));
 
                     b.Property<int?>("LastModifiedBy")
                         .HasColumnType("integer");
@@ -348,7 +348,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PlayList");
+                    b.ToTable("Playlists");
                 });
 
             modelBuilder.Entity("Domain.Entities.Role", b =>
@@ -367,13 +367,13 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 318, DateTimeKind.Local).AddTicks(5972));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 621, DateTimeKind.Local).AddTicks(7012));
 
                     b.Property<DateTime?>("LastModified")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 318, DateTimeKind.Local).AddTicks(8280));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 621, DateTimeKind.Local).AddTicks(8541));
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
@@ -392,7 +392,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "57e4f186-de32-4be8-9831-e37ea69a9b66",
+                            ConcurrencyStamp = "749006b7-7a42-4f0a-9329-d8b29976207c",
                             DateCreate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "SUPPERADMIN",
                             NormalizedName = "SUPPERADMIN"
@@ -400,7 +400,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "a3d7f00d-4c64-42da-ae52-1bd99347a4dc",
+                            ConcurrencyStamp = "b65868d4-7b5d-490d-90ff-c330372b15ea",
                             DateCreate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "ADMIN",
                             NormalizedName = "ADMIN"
@@ -408,7 +408,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 3,
-                            ConcurrencyStamp = "a82b25fe-b9c8-488a-a5a0-e20317f667d9",
+                            ConcurrencyStamp = "c3a389eb-a73b-4ae7-8911-93dc43d3c0d8",
                             DateCreate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "USER",
                             NormalizedName = "USER"
@@ -416,7 +416,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 4,
-                            ConcurrencyStamp = "ac521a3b-949f-4a62-9fde-6089b0eb74c9",
+                            ConcurrencyStamp = "8774ae1f-a111-4084-bcd3-f35e9141bca7",
                             DateCreate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "SINGER",
                             NormalizedName = "SINGER"
@@ -424,7 +424,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 5,
-                            ConcurrencyStamp = "a846497f-b16c-4d4b-9e87-5324402a58c7",
+                            ConcurrencyStamp = "78205cae-5983-400c-bed1-83cb6f6a525d",
                             DateCreate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "AUTHOR",
                             NormalizedName = "AUTHOR"
@@ -444,7 +444,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 349, DateTimeKind.Local).AddTicks(1840));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 628, DateTimeKind.Local).AddTicks(1073));
 
                     b.Property<string>("Description")
                         .ValueGeneratedOnAdd()
@@ -463,15 +463,13 @@ namespace Persistence.Migrations
                         .HasDefaultValue("");
 
                     b.Property<bool>("IsPublic")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(true);
+                        .HasColumnType("boolean");
 
                     b.Property<DateTime?>("LastModified")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 349, DateTimeKind.Local).AddTicks(4450));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 628, DateTimeKind.Local).AddTicks(3293));
 
                     b.Property<int?>("LastModifiedBy")
                         .HasColumnType("integer");
@@ -514,6 +512,41 @@ namespace Persistence.Migrations
                     b.ToTable("Songs");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Song_Composer", b =>
+                {
+                    b.Property<int>("SongId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ComposerId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("CreatedBy")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("DateCreate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp without time zone")
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 656, DateTimeKind.Local).AddTicks(4111));
+
+                    b.Property<int>("Id")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime?>("LastModified")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp without time zone")
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 656, DateTimeKind.Local).AddTicks(6232));
+
+                    b.Property<int?>("LastModifiedBy")
+                        .HasColumnType("integer");
+
+                    b.HasKey("SongId", "ComposerId");
+
+                    b.HasIndex("ComposerId");
+
+                    b.ToTable("Song_Composers");
+                });
+
             modelBuilder.Entity("Domain.Entities.Song_Owner", b =>
                 {
                     b.Property<int>("SongId")
@@ -528,7 +561,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 367, DateTimeKind.Local).AddTicks(183));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 657, DateTimeKind.Local).AddTicks(7844));
 
                     b.Property<int>("Id")
                         .HasColumnType("integer");
@@ -537,7 +570,7 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 367, DateTimeKind.Local).AddTicks(2126));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 657, DateTimeKind.Local).AddTicks(8379));
 
                     b.Property<int?>("LastModifiedBy")
                         .HasColumnType("integer");
@@ -563,7 +596,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 358, DateTimeKind.Local).AddTicks(4560));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 637, DateTimeKind.Local).AddTicks(773));
 
                     b.Property<int>("Id")
                         .HasColumnType("integer");
@@ -572,7 +605,7 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 358, DateTimeKind.Local).AddTicks(6379));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 637, DateTimeKind.Local).AddTicks(4428));
 
                     b.Property<int?>("LastModifiedBy")
                         .HasColumnType("integer");
@@ -582,6 +615,41 @@ namespace Persistence.Migrations
                     b.HasIndex("PlayListId");
 
                     b.ToTable("Song_PlayLists");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Song_Singer", b =>
+                {
+                    b.Property<int>("SongId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("SingerId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("CreatedBy")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("DateCreate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp without time zone")
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 653, DateTimeKind.Local).AddTicks(6284));
+
+                    b.Property<int>("Id")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime?>("LastModified")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp without time zone")
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 653, DateTimeKind.Local).AddTicks(8039));
+
+                    b.Property<int?>("LastModifiedBy")
+                        .HasColumnType("integer");
+
+                    b.HasKey("SongId", "SingerId");
+
+                    b.HasIndex("SingerId");
+
+                    b.ToTable("Song_Singers");
                 });
 
             modelBuilder.Entity("Domain.Entities.Song_Tag", b =>
@@ -598,7 +666,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 395, DateTimeKind.Local).AddTicks(4663));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 692, DateTimeKind.Local).AddTicks(5234));
 
                     b.Property<int>("Id")
                         .HasColumnType("integer");
@@ -607,7 +675,7 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 396, DateTimeKind.Local).AddTicks(2689));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 692, DateTimeKind.Local).AddTicks(7166));
 
                     b.Property<int?>("LastModifiedBy")
                         .HasColumnType("integer");
@@ -633,7 +701,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 364, DateTimeKind.Local).AddTicks(3967));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 648, DateTimeKind.Local).AddTicks(5675));
 
                     b.Property<int>("Id")
                         .HasColumnType("integer");
@@ -642,7 +710,7 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 364, DateTimeKind.Local).AddTicks(5780));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 648, DateTimeKind.Local).AddTicks(7624));
 
                     b.Property<int?>("LastModifiedBy")
                         .HasColumnType("integer");
@@ -667,7 +735,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 393, DateTimeKind.Local).AddTicks(1881));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 690, DateTimeKind.Local).AddTicks(9277));
 
                     b.Property<string>("Description")
                         .ValueGeneratedOnAdd()
@@ -678,7 +746,7 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 393, DateTimeKind.Local).AddTicks(4088));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 691, DateTimeKind.Local).AddTicks(966));
 
                     b.Property<int?>("LastModifiedBy")
                         .HasColumnType("integer");
@@ -705,7 +773,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 351, DateTimeKind.Local).AddTicks(2843));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 631, DateTimeKind.Local).AddTicks(1633));
 
                     b.Property<string>("Description")
                         .ValueGeneratedOnAdd()
@@ -716,7 +784,7 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 351, DateTimeKind.Local).AddTicks(5093));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 631, DateTimeKind.Local).AddTicks(4435));
 
                     b.Property<int?>("LastModifiedBy")
                         .HasColumnType("integer");
@@ -725,35 +793,15 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("Thumbnail")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("text")
+                        .HasDefaultValue("");
+
                     b.HasKey("Id");
 
                     b.ToTable("Types");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DateCreate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Nhac tre"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DateCreate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Nhac Remix"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            DateCreate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Nhac Pop"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            DateCreate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Nhac Ballad"
-                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.User", b =>
@@ -782,7 +830,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 322, DateTimeKind.Local).AddTicks(7540));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 623, DateTimeKind.Local).AddTicks(5317));
 
                     b.Property<DateTime>("Dob")
                         .HasColumnType("timestamp without time zone");
@@ -802,7 +850,7 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 322, DateTimeKind.Local).AddTicks(8877));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 623, DateTimeKind.Local).AddTicks(6572));
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
@@ -861,7 +909,7 @@ namespace Persistence.Migrations
                             Id = 1,
                             AccessFailedCount = 0,
                             AccountType = "SYSTEM",
-                            ConcurrencyStamp = "3bdcca1f-2979-4b97-b636-0ae35cb3692b",
+                            ConcurrencyStamp = "96d5b8fe-f0d4-4de4-9a01-f6718abc2ce9",
                             DateCreate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "supperadmin@gmail.com",
@@ -871,7 +919,7 @@ namespace Persistence.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPPERADMIN@GMAIL.COM",
                             NormalizedUserName = "SUPPERADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBWHOVs3680XnxKJ0rMsxJxzLquW7KlFrmNg/YjB75i+UcdPOarzISShRAifSs+O0A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECIHs+uB/+uZ0TdH9zeOhG9X35DyhQ0Lx8zh2B7hpZonJn+BrWD1CszAr8nB6SwZvQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -882,7 +930,7 @@ namespace Persistence.Migrations
                             Id = 2,
                             AccessFailedCount = 0,
                             AccountType = "SYSTEM",
-                            ConcurrencyStamp = "85a6ece4-5144-47f7-807e-504aff0852ec",
+                            ConcurrencyStamp = "0a1b04fd-7a01-468a-9533-5f561baf6030",
                             DateCreate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "admin@gmail.com",
@@ -892,7 +940,7 @@ namespace Persistence.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJ7hzWb4SOp4F2pNUIDmIBVbQerOJ9hQ5qhlrrxZ1GPOVa3oxIv67Cn0uwPrY4gQXw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHOFITZ9hPM0asTGnDfsdBdvuT3cDYCPPlZdm0CRdUnJdkdDULNXfhO95UfZji+Sfw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -903,7 +951,7 @@ namespace Persistence.Migrations
                             Id = 3,
                             AccessFailedCount = 0,
                             AccountType = "SYSTEM",
-                            ConcurrencyStamp = "88ad2e2a-c7c6-4590-bb48-8d5bf915be9f",
+                            ConcurrencyStamp = "fddca26f-8e97-4403-a514-00d3f11290d8",
                             DateCreate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "user@gmail.com",
@@ -913,7 +961,7 @@ namespace Persistence.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@GMAIL.COM",
                             NormalizedUserName = "USER",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDhA1hGOjbDGZV+75UnkRmusOMHrzde5Nc72u0wLBUp9pS8SYmbQC6SZ5zAfj2nm3Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBogEGmEVb8OsnSKnIjjzpf7nV7yCtKZgXEismtRMm9o3X+e/8/guSzMl5kSAoIS3Q==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -924,7 +972,7 @@ namespace Persistence.Migrations
                             Id = 4,
                             AccessFailedCount = 0,
                             AccountType = "SYSTEM",
-                            ConcurrencyStamp = "464b5d5c-ce44-4989-bc8a-f8fd56850a31",
+                            ConcurrencyStamp = "a3aca41a-f43e-4f4c-a504-0e8d0a917433",
                             DateCreate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "singer@gmail.com",
@@ -934,7 +982,7 @@ namespace Persistence.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SINGER@GMAIL.COM",
                             NormalizedUserName = "SINGER",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIpMIJ6p7d+VAWJg7kW5UKd7WQQ7n0KPde2m+T15ZqrngnUyHf0a3SI83TZdKmKovg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEC6bHrb+gPlMPjCZBtG6OWURNkWdhL4/zwbLtGn3dNZ3CKQtYuMKhYmFajdeEw4LIA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -945,7 +993,7 @@ namespace Persistence.Migrations
                             Id = 5,
                             AccessFailedCount = 0,
                             AccountType = "SYSTEM",
-                            ConcurrencyStamp = "12f4d53b-6b78-4484-853a-eb4d5632c674",
+                            ConcurrencyStamp = "8d96d15a-e2c0-4638-a1b9-df67e6d7c2f7",
                             DateCreate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "author@gmail.com",
@@ -955,7 +1003,7 @@ namespace Persistence.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "AUTHOR@GMAIL.COM",
                             NormalizedUserName = "AUTHOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPknHgnQ2NpnFS0jGq09pHJSMXqeF1XS0Y11bZp+zfwNmk1heoXlZMGp6KkGhIyhVw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENyN0TiYdkwo0X0oN8X5pOE3VRqsmOApbP2sKdgdIHtmlUuHp7FvM0bM9VBkM0TInw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -971,16 +1019,23 @@ namespace Persistence.Migrations
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Content")
-                        .HasColumnType("text");
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("character varying(1000)");
 
                     b.Property<int?>("CreatedBy")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("DateCreate")
-                        .HasColumnType("timestamp without time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp without time zone")
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 670, DateTimeKind.Local).AddTicks(8162));
 
                     b.Property<DateTime?>("LastModified")
-                        .HasColumnType("timestamp without time zone");
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp without time zone")
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 670, DateTimeKind.Local).AddTicks(5543));
 
                     b.Property<int?>("LastModifiedBy")
                         .HasColumnType("integer");
@@ -997,7 +1052,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("User_Cmt_Playlists");
+                    b.ToTable("User_Cmt_Playlist");
                 });
 
             modelBuilder.Entity("Domain.Entities.User_Cmt_Song", b =>
@@ -1018,13 +1073,13 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 376, DateTimeKind.Local).AddTicks(6820));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 664, DateTimeKind.Local).AddTicks(126));
 
                     b.Property<DateTime?>("LastModified")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 376, DateTimeKind.Local).AddTicks(9741));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 664, DateTimeKind.Local).AddTicks(2189));
 
                     b.Property<int?>("LastModifiedBy")
                         .HasColumnType("integer");
@@ -1046,39 +1101,42 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.User_Like_Playlist", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<int?>("CreatedBy")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTime>("DateCreate")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<DateTime?>("LastModified")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<int?>("LastModifiedBy")
+                    b.Property<int>("UserId")
                         .HasColumnType("integer");
 
                     b.Property<int>("PlaylistId")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("CreatedBy")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("DateCreate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp without time zone")
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 667, DateTimeKind.Local).AddTicks(7334));
+
+                    b.Property<int>("Id")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime?>("LastModified")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp without time zone")
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 667, DateTimeKind.Local).AddTicks(3413));
+
+                    b.Property<int?>("LastModifiedBy")
+                        .HasColumnType("integer");
+
                     b.Property<int>("TotalLike")
-                        .HasColumnType("integer");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(0);
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
+                    b.HasKey("UserId", "PlaylistId");
 
                     b.HasIndex("PlaylistId");
 
-                    b.HasIndex("UserId");
-
-                    b.ToTable("User_Like_Playlists");
+                    b.ToTable("User_Like_Playlist");
                 });
 
             modelBuilder.Entity("Domain.Entities.User_Like_Song", b =>
@@ -1095,7 +1153,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("DateCreate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 373, DateTimeKind.Local).AddTicks(1137));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 660, DateTimeKind.Local).AddTicks(1030));
 
                     b.Property<int>("Id")
                         .HasColumnType("integer");
@@ -1104,7 +1162,7 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2021, 4, 21, 15, 4, 10, 372, DateTimeKind.Local).AddTicks(3595));
+                        .HasDefaultValue(new DateTime(2021, 5, 3, 16, 53, 18, 659, DateTimeKind.Local).AddTicks(7200));
 
                     b.Property<int?>("LastModifiedBy")
                         .HasColumnType("integer");
@@ -1275,23 +1333,42 @@ namespace Persistence.Migrations
                     b.Navigation("Song");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Friend", b =>
+            modelBuilder.Entity("Domain.Entities.Follower", b =>
                 {
-                    b.HasOne("Domain.Entities.User", "Receiver")
-                        .WithMany("ListFriendReceive")
-                        .HasForeignKey("ReceiverId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Entities.User", "Sender")
-                        .WithMany("ListFriendSend")
-                        .HasForeignKey("SenderId")
+                    b.HasOne("Domain.Entities.User", "Observer")
+                        .WithMany("ListObservers")
+                        .HasForeignKey("ObserverId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Receiver");
+                    b.HasOne("Domain.Entities.User", "Publicser")
+                        .WithMany("ListPublicers")
+                        .HasForeignKey("PublicserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
-                    b.Navigation("Sender");
+                    b.Navigation("Observer");
+
+                    b.Navigation("Publicser");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Song_Composer", b =>
+                {
+                    b.HasOne("Domain.Entities.User", "Composer")
+                        .WithMany("Song_Composers")
+                        .HasForeignKey("ComposerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Song", "Song")
+                        .WithMany("Song_Composers")
+                        .HasForeignKey("SongId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Composer");
+
+                    b.Navigation("Song");
                 });
 
             modelBuilder.Entity("Domain.Entities.Song_Owner", b =>
@@ -1328,6 +1405,25 @@ namespace Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("PlayList");
+
+                    b.Navigation("Song");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Song_Singer", b =>
+                {
+                    b.HasOne("Domain.Entities.User", "Singer")
+                        .WithMany("Song_Singers")
+                        .HasForeignKey("SingerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Song", "Song")
+                        .WithMany("Song_Singers")
+                        .HasForeignKey("SongId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Singer");
 
                     b.Navigation("Song");
                 });
@@ -1461,9 +1557,13 @@ namespace Persistence.Migrations
 
                     b.Navigation("ListUserLike");
 
+                    b.Navigation("Song_Composers");
+
                     b.Navigation("Song_Owners");
 
                     b.Navigation("Song_PlayLists");
+
+                    b.Navigation("Song_Singers");
 
                     b.Navigation("Song_Tags");
 
@@ -1482,19 +1582,23 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Entities.User", b =>
                 {
-                    b.Navigation("ListFriendReceive");
-
-                    b.Navigation("ListFriendSend");
+                    b.Navigation("ListObservers");
 
                     b.Navigation("ListPlaylistCmt");
 
                     b.Navigation("ListPlaylistLike");
 
+                    b.Navigation("ListPublicers");
+
                     b.Navigation("ListSongCmt");
 
                     b.Navigation("ListSongLike");
 
+                    b.Navigation("Song_Composers");
+
                     b.Navigation("Song_Owners");
+
+                    b.Navigation("Song_Singers");
                 });
 #pragma warning restore 612, 618
         }
