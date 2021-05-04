@@ -6,12 +6,15 @@ using Application.Interfaces.Service;
 using Application.Parameters;
 using Domain.Entities;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Persistence.Contexts;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,19 +22,22 @@ using ThirdPartyServices.Storage;
 
 namespace Persistence.Repositories.Repo
 {
-    public class AccountRepository : IAccountRepository<User>
+    public class AccountRepository : IAccountRepository
     {
-        private readonly BigBlueBirdsDbContext bigBlueBirdsDbContext;
+        private readonly BigBlueBirdsDbContext _bigBlueBirdsDbContext;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly RoleManager<Role> _roleManager;
         private readonly IAuthenticatedUserService _authenticatedUserService;
         private readonly IConfiguration _config;
         private readonly IStorageService _storageService;
-        public AccountRepository(IAuthenticatedUserService authenticatedUserService,
+        public AccountRepository(
+            BigBlueBirdsDbContext bigBlueBirdsDbContext,
+            IAuthenticatedUserService authenticatedUserService,
             UserManager<User> userManager, SignInManager<User> signInManager,
             RoleManager<Role> roleManager, IConfiguration config, IStorageService storageService)
         {
+            _bigBlueBirdsDbContext = bigBlueBirdsDbContext;
             _userManager = userManager;
             _authenticatedUserService = authenticatedUserService;
             _signInManager = signInManager;
@@ -60,6 +66,24 @@ namespace Persistence.Repositories.Repo
                 data.Thumbnail = _config["File:Image"] + user.Thumbnail;
             return data;
         }
+
+        public IOrderedQueryable<User> Sort(PagedSortRequest rq, IQueryable<User> input)
+        {
+            var param = Expression.Parameter(typeof(User), "item");
+
+            var sortExpression = Expression.Lambda<Func<User, object>>
+                (Expression.Convert(Expression.Property(param, rq.SortBy), typeof(object)), param);
+            if (rq.SortASC)
+            {
+                return input.OrderBy<User, object>(sortExpression);
+            }
+            else
+            {
+                return input.OrderByDescending<User, object>(sortExpression);
+            }
+        }
+
+
 
         public async Task<string> GenerateToken(User user)
         {
@@ -105,6 +129,7 @@ namespace Persistence.Repositories.Repo
             throw new NotImplementedException();
         }
 
+
         public async Task<User> GetByEmailAsync(string email)
         {
             var user = await _userManager.FindByEmailAsync(email);
@@ -132,6 +157,17 @@ namespace Persistence.Repositories.Repo
         public Task<User> UpdateAsync(User entity)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<ResponseQueryable<IQueryable<User>>> FindByAsync(Expression<Func<User, bool>> predicate, PagedSortRequest rq)
+        {
+            var data = _bigBlueBirdsDbContext.Users.Where(predicate).AsNoTracking();
+            //listData.Add(Sort(rq, data).Skip((rq.Index - 1) * rq.PageSize).Take(rq.PageSize));
+            return new ResponseQueryable<IQueryable<User>>()
+            {
+                TotallRecord = data.Count(),
+                Data = Sort(rq, data).Skip((rq.Index - 1) * rq.PageSize).Take(rq.PageSize)
+            };
         }
     }
 }

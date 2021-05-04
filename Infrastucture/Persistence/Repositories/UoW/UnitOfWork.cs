@@ -18,6 +18,7 @@ namespace Persistence.Repositories.UoW
         public ITagRepository TagRepo { get; set; }
         public ITypeRepository TypeRepo { get; }
         public IRepository<History> HistoryRepo { get; }
+        public IAccountRepository AccountRepo { get; }
         public IExtensionEntityRepository<Follower> FollowerRepo { get; }
         public IExtensionEntityRepository<Song_PlayList> Song_PlaylistRepo { get; }
         public IExtensionEntityRepository<Song_Tag> Song_TagRepo { get; set; }
@@ -35,6 +36,7 @@ namespace Persistence.Repositories.UoW
             ITagRepository _tagRepo,
             ITypeRepository _typeRepo,
             IRepository<History> _historyRepo,
+            IAccountRepository _accountRepo,
             IExtensionEntityRepository<Follower> _followerRepo,
             IExtensionEntityRepository<Song_PlayList> _song_PlaylistRepo,
             IExtensionEntityRepository<Song_Tag> _song_TagRepo,
@@ -54,6 +56,7 @@ namespace Persistence.Repositories.UoW
             TypeRepo = _typeRepo;
             HistoryRepo = _historyRepo;
             FollowerRepo = _followerRepo;
+            AccountRepo = _accountRepo;
             Song_PlaylistRepo = _song_PlaylistRepo;
             Song_TagRepo = _song_TagRepo;
             Song_TypeRepo = _song_TypeRepo;
@@ -77,7 +80,7 @@ namespace Persistence.Repositories.UoW
 
         public async Task<bool> CommitAsync()
         {
-            var numRecordChange =  await _bigBlueBirdsDbContext.SaveChangesAsync();
+            var numRecordChange = await _bigBlueBirdsDbContext.SaveChangesAsync();
             if (numRecordChange > 0)
                 return true;
             else

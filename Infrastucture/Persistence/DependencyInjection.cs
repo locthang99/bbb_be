@@ -34,7 +34,7 @@ namespace Persistence
             services.AddTransient<IPlaylistRepository, PlaylistRepository>();
             services.AddTransient<ITypeRepository, TypeRepository>();
             services.AddTransient<ITagRepository, TagRepository>();
-            services.AddTransient<IAccountRepository<User>, AccountRepository>();
+            services.AddTransient<IAccountRepository, AccountRepository>();
 
 
 

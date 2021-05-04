@@ -27,9 +27,9 @@ namespace Application.Features.Account.EndUser.Commands
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        private readonly IAccountRepository<User> _accountRepository;
+        private readonly IAccountRepository _accountRepository;
         private readonly IFacebookAuthService _facebookAuthService;
-        public LoginFBCommandHandler(UserManager<User> userManager, SignInManager<User> signInManager, IAccountRepository<User> accountRepository, IFacebookAuthService facebookAuthService)
+        public LoginFBCommandHandler(UserManager<User> userManager, SignInManager<User> signInManager, IAccountRepository accountRepository, IFacebookAuthService facebookAuthService)
         {
             _userManager = userManager;
             _signInManager = signInManager;

@@ -29,9 +29,9 @@ namespace Application.Features.Song.Commands
     public class UpdateSingerHandler : IRequestHandler<UpdateSingerCommand, Response<string>>
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IAccountRepository<User> _accountRepository;
+        private readonly IAccountRepository _accountRepository;
 
-        public UpdateSingerHandler(IUnitOfWork unitOfWork, IAccountRepository<User> accountRepository)
+        public UpdateSingerHandler(IUnitOfWork unitOfWork, IAccountRepository accountRepository)
         {
             _unitOfWork = unitOfWork;
             _accountRepository = accountRepository;

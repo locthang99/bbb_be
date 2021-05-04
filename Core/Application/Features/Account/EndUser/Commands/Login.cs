@@ -25,8 +25,8 @@ namespace Application.Features.Account.EndUser.Commands
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        private readonly IAccountRepository<User> _accountRepository;
-        public LoginCommandHandler(UserManager<User> userManager, SignInManager<User> signInManager, IAccountRepository<User> accountRepository)
+        private readonly IAccountRepository _accountRepository;
+        public LoginCommandHandler(UserManager<User> userManager, SignInManager<User> signInManager, IAccountRepository accountRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;

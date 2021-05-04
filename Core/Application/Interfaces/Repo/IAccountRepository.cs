@@ -1,24 +1,28 @@
 ﻿using Application.DTOs.User;
 using Application.Interfaces.ResQuery;
 using Application.Parameters;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.Interfaces.Repo
 {
-    public interface IAccountRepository<T>
+    public interface IAccountRepository
     {
-        Task<T> GetByIdAsync(int id);
-        Task<T> GetByEmailAsync(string email);
-        Task<T> AddAsync(T entity,string pwd);
-        Task<T> UpdateAsync(T entity);
-        Task<T> DeleteAsync(T entity);
-        Task<T> SetRole(T entity);
-        Task<UserDTO> MapUserAsync(T entity);
-        Task<string> GenerateToken(T entity);
-        Task<ResponseQuery<T>> GetAllPagedSortAsync(PagedSortRequest rq);
-        Task<ResponseQuery<T>> GetByListIdPagedSortAsync(IReadOnlyList<int> listId, PagedSortRequest rq);
+        Task<User> GetByIdAsync(int id);
+        Task<User> GetByEmailAsync(string email);
+        Task<User> AddAsync(User entity,string pwd);
+        Task<User> UpdateAsync(User entity);
+        Task<User> DeleteAsync(User entity);
+        Task<User> SetRole(User entity);
+        Task<UserDTO> MapUserAsync(User entity);
+        Task<string> GenerateToken(User entity);
+        Task<ResponseQueryable<IQueryable<User>>> FindByAsync(Expression<Func<User, bool>> predicate, PagedSortRequest rq);
+        Task<ResponseQuery<User>> GetAllPagedSortAsync(PagedSortRequest rq);
+        Task<ResponseQuery<User>> GetByListIdPagedSortAsync(IReadOnlyList<int> listId, PagedSortRequest rq);
     }
 }

@@ -20,9 +20,9 @@ namespace Application.Features.Account.EndUser.Queries
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        private readonly IAccountRepository<User> _accountRepository;
+        private readonly IAccountRepository _accountRepository;
         private readonly IAuthenticatedUserService _authenticatedUserService;
-        public GetProfileQueryHandler(UserManager<User> userManager, IAccountRepository<User> accountRepository,
+        public GetProfileQueryHandler(UserManager<User> userManager, IAccountRepository accountRepository,
             IAuthenticatedUserService authenticatedUserService)
         {
             _userManager = userManager;

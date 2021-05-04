@@ -39,13 +39,19 @@ namespace BackendAPI.Controllers.v1
         }
 
         [HttpGet("GetSubscriber")]
-        public async Task<IActionResult> GetObserver([FromQuery] GetSubscriberQuery rq)
+        public async Task<IActionResult> GetSubscriber([FromQuery] GetSubscriberQuery rq)
         {
             return Ok(await Mediator.Send(rq));
         }
 
         [HttpGet("GetPublisher")]
-        public async Task<IActionResult> GetPublicer([FromQuery] GetPublisherQuery rq)
+        public async Task<IActionResult> GetPublisher([FromQuery] GetPublisherQuery rq)
+        {
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpGet("GetRecommedPublisher")]
+        public async Task<IActionResult> GetPublicer([FromQuery] GetRecommendPublicerQuery rq)
         {
             return Ok(await Mediator.Send(rq));
         }
