@@ -12,24 +12,7 @@ namespace BackendAPI.Controllers.v1
     [ApiController]
     public class EndUserController: BaseApiController
     {
-        [HttpPost("Resgister")]
-        public async Task<IActionResult> Register([FromForm] RegisterCommand rq)
-        {
-            return Ok(await Mediator.Send(rq));
-        }
-
-        [HttpPost("Login")]
-        public async Task<IActionResult> Login([FromBody] LoginCommand rq)
-        {
-            return Ok(await Mediator.Send(rq));
-        }
-
-        [HttpPost("LoginWithFacebook")]
-        public async Task<IActionResult> LoginFacebook([FromQuery] string Token)
-        {
-            var rq = new LoginFBCommand { Token = Token };
-            return Ok(await Mediator.Send(rq));
-        }
+        #region Queries
 
         [HttpGet("GetProfile")]
         public async Task<IActionResult> GetProfile()
@@ -50,10 +33,45 @@ namespace BackendAPI.Controllers.v1
             return Ok(await Mediator.Send(rq));
         }
 
-        [HttpGet("GetRecommedPublisher")]
+        [HttpGet("GetRecommendPublisher")]
         public async Task<IActionResult> GetPublicer([FromQuery] GetRecommendPublicerQuery rq)
         {
             return Ok(await Mediator.Send(rq));
         }
+
+        #endregion
+
+        #region Command
+        [HttpPost("Resgister")]
+        public async Task<IActionResult> Register([FromForm] RegisterCommand rq)
+        {
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login([FromBody] LoginCommand rq)
+        {
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpPost("LoginWithFacebook")]
+        public async Task<IActionResult> LoginFacebook([FromQuery] string Token)
+        {
+            var rq = new LoginFBCommand { Token = Token };
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpPut("Follow")]
+        public async Task<IActionResult> Follow([FromQuery] FollowUserCommand rq)
+        {
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpPut("UnFollow")]
+        public async Task<IActionResult> UnFollow([FromQuery] UnFollowUserCommand rq)
+        {
+            return Ok(await Mediator.Send(rq));
+        }
+        #endregion
     }
 }
