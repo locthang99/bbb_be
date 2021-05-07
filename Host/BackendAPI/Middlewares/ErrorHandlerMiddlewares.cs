@@ -3,6 +3,7 @@ using Application.Wrappers;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net;
 using System.Text.Json;
@@ -29,7 +30,7 @@ namespace BackendAPI.Middlewares
             {
                 var response = context.Response;
                 response.ContentType = "application/json";
-                var responseModel = new Response<string>() { Data =null };
+                var responseModel = new Response<object>() { Data =null };
 
                 switch (error)
                 {
@@ -65,11 +66,12 @@ namespace BackendAPI.Middlewares
                         else
                             responseModel.Msg = e.Message;
                         break;
-                    //case ValidationException e:
-                    //    // custom application error
-                    //    response.StatusCode = (int)HttpStatusCode.BadRequest;
-                    //    responseModel.Errors = e.Errors;
-                    //    break;
+                    case FluentValidation.ValidationException e:
+                        // custom application error
+                        response.StatusCode = (int)HttpStatusCode.BadRequest;
+                        responseModel.Msg = "Validate FAILED";
+                        responseModel.Data = e.Errors;
+                        break;
                     case KeyNotFoundException e:
                         // not found error
                         response.StatusCode = (int)HttpStatusCode.NotFound;

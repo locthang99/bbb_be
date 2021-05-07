@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FluentValidation.Results;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
@@ -48,5 +49,23 @@ namespace Application.Exceptions
     public class AuthFailedException : ApiException
     {
         public AuthFailedException(string message) : base(message) { }
+    }
+
+    public class ValidationException : ApiException
+    {
+        public ValidationException() : base("One or more validation failures have occurred.")
+        {
+            Errors = new List<string>();
+        }
+        public List<string> Errors { get; }
+        public ValidationException(IEnumerable<ValidationFailure> failures)
+            : this()
+        {
+            foreach (var failure in failures)
+            {
+                Errors.Add(failure.ErrorMessage);
+            }
+        }
+
     }
 }

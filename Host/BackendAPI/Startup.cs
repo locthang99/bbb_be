@@ -20,6 +20,9 @@ using Microsoft.Extensions.Logging;
 using Persistence;
 using Persistence.Contexts;
 using ThirdPartyServices;
+using FluentValidation.AspNetCore;
+using BackendAPI.ValidateFilter;
+using System.Reflection;
 
 namespace BackendAPI
 {
@@ -39,19 +42,19 @@ namespace BackendAPI
             services.AddPersistenceInfrastructure(Configuration);
             services.AddThirdPartyServices(Configuration);
             services.AddSwagger();
-            services.AddControllers();
+            services.AddScoped<ValidateModelAttribute>();
+            services.AddControllers(o => o.Filters.Add(new ValidateModelAttribute())).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddHttpClient();
             services.AddTransient<IAuthenticatedUserService, AuthenticatedUserService>();
             services.AddHttpContextAccessor();
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddMvc();
+            services.AddMvc().AddFluentValidation(o=>o.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly()));
             services.AddCors(o => o.AddPolicy("CORSPolicy", builder =>
             {
                 builder.AllowAnyOrigin()
                        .AllowAnyMethod()
                        .AllowAnyHeader();
             }));
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

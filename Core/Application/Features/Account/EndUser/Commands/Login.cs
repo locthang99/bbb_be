@@ -6,6 +6,7 @@ using Application.Features.Account.Base.Queries;
 using Application.Interfaces.Repo;
 using Application.Wrappers;
 using Domain.Entities;
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System;
@@ -21,6 +22,14 @@ namespace Application.Features.Account.EndUser.Commands
     public class LoginCommand : UserLoginRequest, IRequest<CommandResponse<TokenResponse>>
     {
     }
+    //public class LoginCommandValidator : AbstractValidator<LoginCommand>
+    //{
+    //    public LoginCommandValidator()
+    //    {
+    //        RuleFor(x => x.Username).NotEmpty().WithMessage("Username not empty");
+    //        RuleFor(x => x.Password).NotEmpty().WithMessage("Password not empty").MinimumLength(6).WithMessage("Password must > 6");
+    //    }
+    //}
     public class LoginCommandHandler : IRequestHandler<LoginCommand, CommandResponse<TokenResponse>>
     {
         private readonly UserManager<User> _userManager;

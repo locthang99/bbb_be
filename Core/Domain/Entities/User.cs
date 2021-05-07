@@ -16,6 +16,7 @@ namespace Domain.Entities
         public string AccountType { get; set; }
         public string Thumbnail { get; set; }
         public string CreatedBy { get; set; }
+        public string ResetCode { get; set; }
         public DateTime DateCreate { get; set; }
         public string LastModifiedBy { get; set; }
         public DateTime? LastModified { get; set; }

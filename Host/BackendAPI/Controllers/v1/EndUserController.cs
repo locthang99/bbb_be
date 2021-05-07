@@ -1,5 +1,8 @@
-﻿using Application.Features.Account.EndUser.Commands;
+﻿using Application.Features.Account.Base.Commands;
+using Application.Features.Account.EndUser.Commands;
 using Application.Features.Account.EndUser.Queries;
+using BackendAPI.ValidateFilter;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -58,6 +61,26 @@ namespace BackendAPI.Controllers.v1
         public async Task<IActionResult> LoginFacebook([FromQuery] string Token)
         {
             var rq = new LoginFBCommand { Token = Token };
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpPost("ChangePassword")]
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordCommand rq)
+        {
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpPost("SendCodeResetPassword")]
+        [AllowAnonymous]
+        public async Task<IActionResult> SendCodeResetPassword([FromBody] SendCodeResetPasswordCommand rq)
+        {
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpPost("ResetPassword")]
+        [AllowAnonymous]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordCommand rq)
+        {
             return Ok(await Mediator.Send(rq));
         }
 
