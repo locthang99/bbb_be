@@ -1,4 +1,5 @@
 ﻿using Application.Features.Account.Base.Commands;
+using Application.Features.Account.Base.Queries;
 using Application.Features.Account.EndUser.Commands;
 using Application.Features.Account.EndUser.Queries;
 using BackendAPI.ValidateFilter;
@@ -24,6 +25,20 @@ namespace BackendAPI.Controllers.v1
             return Ok(await Mediator.Send(rq));
         }
 
+        [HttpGet("GetUserById")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetUserById([FromQuery] GetUserByIdQuery rq)
+        {
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpGet("GetUserByKeyword")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetUserByKeyword([FromQuery] GetUserByKeywordQuery rq)
+        {
+            return Ok(await Mediator.Send(rq));
+        }
+
         [HttpGet("GetSubscriber")]
         public async Task<IActionResult> GetSubscriber([FromQuery] GetSubscriberQuery rq)
         {
@@ -37,15 +52,17 @@ namespace BackendAPI.Controllers.v1
         }
 
         [HttpGet("GetRecommendPublisher")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetPublicer([FromQuery] GetRecommendPublicerQuery rq)
         {
             return Ok(await Mediator.Send(rq));
         }
 
+
         #endregion
 
         #region Command
-        [HttpPost("Resgister")]
+        [HttpPost("Register")]
         public async Task<IActionResult> Register([FromForm] RegisterCommand rq)
         {
             return Ok(await Mediator.Send(rq));
@@ -53,6 +70,12 @@ namespace BackendAPI.Controllers.v1
 
         [HttpPost("Login")]
         public async Task<IActionResult> Login([FromBody] LoginCommand rq)
+        {
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpPut("UpdateProfile")]
+        public async Task<IActionResult> UpdateProfile([FromForm] UpdateProfileCommand rq)
         {
             return Ok(await Mediator.Send(rq));
         }
@@ -80,6 +103,20 @@ namespace BackendAPI.Controllers.v1
         [HttpPost("ResetPassword")]
         [AllowAnonymous]
         public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordCommand rq)
+        {
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpPost("SendLinkVerifyEmail")]
+        [AllowAnonymous]
+        public async Task<IActionResult> SendLinkVerifyEmail([FromBody] SendVerifyEmailCommand rq)
+        {
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpGet("VerifyEmail")]
+        [AllowAnonymous]
+        public async Task<IActionResult> VerifyEmail([FromQuery] VerifyEmailCommand rq)
         {
             return Ok(await Mediator.Send(rq));
         }

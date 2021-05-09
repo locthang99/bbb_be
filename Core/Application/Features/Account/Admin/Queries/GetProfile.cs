@@ -13,10 +13,10 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Account.Admin.Queries
 {
-    public class GetProfileCommand : IRequest<CommandResponse<UserDTO>>
+    public class GetProfileCommand : IRequest<CommandResponse<ProfileDTO>>
     {
     }
-    public class GetProfileCommandHandler : IRequestHandler<GetProfileCommand, CommandResponse<UserDTO>>
+    public class GetProfileCommandHandler : IRequestHandler<GetProfileCommand, CommandResponse<ProfileDTO>>
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
@@ -29,15 +29,28 @@ namespace Application.Features.Account.Admin.Queries
             _accountRepository = accountRepository;
             _authenticatedUserService = authenticatedUserService;
         }
-        public async Task<CommandResponse<UserDTO>> Handle(GetProfileCommand request, CancellationToken cancellationToken)
+        public async Task<CommandResponse<ProfileDTO>> Handle(GetProfileCommand request, CancellationToken cancellationToken)
         {
             var userId =  _authenticatedUserService.GetCurrentUserId();
             var user = await  _accountRepository.GetByIdAsync(userId);
-            var data = await _accountRepository.MapUserAsync(user);
-            return new CommandOK<UserDTO>()
+            var data = _accountRepository.MapUser(user);
+            var profile = new ProfileDTO()
+            {
+                Id = data.Id,
+                Email = data.Email,
+                UserName = data.UserName,
+                Dob = data.Dob,
+                FirstName = data.FirstName,
+                LastName = data.LastName,
+                PhoneNumber = data.PhoneNumber,
+                Role = data.Role,
+                VerifyEmailStatus = user.EmailConfirmed,
+                Thumbnail = data.Thumbnail
+            };
+            return new CommandOK<ProfileDTO>()
             {
                 Msg = "GetProfile OK",
-                Data = data
+                Data = profile
             };
         }
     }

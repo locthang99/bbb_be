@@ -9,11 +9,11 @@ namespace Application.DTOs.User.UserRequest
     public class UserUpdateRequest
     {
 
-        [DataType(DataType.Date)]
-        public DateTime Dob { get; set; }
-        public string Email { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime Dob { get; set; }
+        [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
         public IFormFile Thumbnail { get; set; }
     }

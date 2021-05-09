@@ -12,9 +12,9 @@ namespace Application.Features.System.UserManager
         Task<TokenResponse> Login(UserLoginRequest rq);
         Task<TokenResponse> LoginWithFacebook(string Token);
         Task<TokenResponse> Register(UserRegisterRequest rq);
-        Task<UserDTO> GetCurrentUser();
-        Task<List<UserDTO>> GetByUsername(string rqUser);
-        Task<UserDTO> GetById(Guid Id);
+        Task<ProfileDTO> GetCurrentUser();
+        Task<List<ProfileDTO>> GetByUsername(string rqUser);
+        Task<ProfileDTO> GetById(Guid Id);
         //Task<List<UserDTO>> GetAllUser(PagingRequest pg);
         //Task<List<UserDTO>> GetUserByPhone(string Phones, PagingRequest pg);
         Task<int> Update(Guid Id, UserUpdateRequest rq);

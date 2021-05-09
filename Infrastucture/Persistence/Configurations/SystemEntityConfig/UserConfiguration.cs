@@ -22,6 +22,7 @@ namespace Persistence.Configurations
             builder.Property(x => x.Dob);
             builder.Property(x => x.Thumbnail).IsRequired().HasDefaultValue("");
             builder.Property(x => x.TotalFollower).IsRequired().HasDefaultValue(0);
+            builder.Property(x => x.RoleBase).IsRequired().HasDefaultValue("USER");
             builder.Property(x => x.ResetCode);
             builder.Property(x => x.SecurityStamp).IsRequired().HasDefaultValue("");
             builder.Property(x => x.AccountType).IsRequired();

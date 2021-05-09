@@ -35,7 +35,7 @@ namespace ThirdPartyServices.SendMail
             email.Body = new TextPart(TextFormat.Html) { Text = body };
 
             await _smtpClient.SendAsync(email);
-            _smtpClient.Disconnect(true);
+            //_smtpClient.Disconnect(true);
             return true;
         }
 

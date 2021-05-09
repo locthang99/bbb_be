@@ -45,7 +45,8 @@ namespace Application.Features.Account.EndUser.Commands
                 Email = request.Email,
                 FirstName = request.FirstName,
                 LastName = request.LastName,
-                UserName = request.Email,              
+                UserName = request.Email,
+                EmailConfirmed = false,
                 PhoneNumber = request.PhoneNumber ?? "0",
                 AccountType = AccountType.SYSTEM.ToString(),
 
@@ -69,7 +70,7 @@ namespace Application.Features.Account.EndUser.Commands
                         Username = user.Email
 
                     };
-                    //await _sendMailService.SendMailNotify("Vip pro", "<h1>BBB aaaaaaaaaaaaaaaaa</h1>", user.Email);
+                    await _sendMailService.SendMailNotify("Welcome to BigBlueBirds", "Welcome to BigBlueBirds", user.Email);
                     return new CommandOK<TokenResponse>()
                     {
                         Msg = "Register OK",

@@ -10,9 +10,9 @@ namespace Application.Mapping
     public class Mapper : IMapper
     {
         private readonly IConfiguration _config;
-        public UserDTO MapUser(User user)
+        public ProfileDTO MapUser(User user)
         {
-            var data = new UserDTO()
+            var data = new ProfileDTO()
             {
                 Id = user.Id,
                 FirstName = user.FirstName,

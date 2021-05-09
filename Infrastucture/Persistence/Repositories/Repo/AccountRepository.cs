@@ -46,7 +46,7 @@ namespace Persistence.Repositories.Repo
             _storageService = storageService;
         }
 
-        public async Task<UserDTO> MapUserAsync(User user)
+        public UserDTO MapUser(User user)
         {
             var data = new UserDTO()
             {
@@ -55,8 +55,28 @@ namespace Persistence.Repositories.Repo
                 LastName = user.LastName,
                 PhoneNumber = user.PhoneNumber,
                 UserName = user.UserName,
+                Role = user.RoleBase,
                 Dob = user.Dob,
-                Role = string.Join(";", await _userManager.GetRolesAsync(user)),
+                Email = user.Email,
+                Thumbnail = user.Thumbnail
+
+            };
+            if (!user.Thumbnail.Contains("http") && user.Thumbnail != "")
+                data.Thumbnail = _config["File:Image"] + user.Thumbnail;
+            return data;
+        }
+
+        public async Task<UserDTO> MapUser2(User user)
+        {
+            var data = new UserDTO()
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                PhoneNumber = user.PhoneNumber,
+                UserName = user.UserName,
+                Role = string.Join(";",await _userManager.GetRolesAsync(user)),
+                Dob = user.Dob,
                 Email = user.Email,
                 Thumbnail = user.Thumbnail
 

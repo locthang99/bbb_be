@@ -43,8 +43,10 @@ namespace Application.Features.Playlist.Commands
             {
                 Name = request.Name,
                 Description = request.Description,
-                Thumbnail = await _storageService.SaveFile(request.Thumbnail, 0),
+                
             };
+            if (request.Thumbnail != null)
+                playlist.Thumbnail = await _storageService.SaveFile(request.Thumbnail, 0);
             if (_authenticatedUserService.CheckRole("admin"))
                 playlist.PlaylistType = PlaylistType.SYSTEM.ToString();
             else

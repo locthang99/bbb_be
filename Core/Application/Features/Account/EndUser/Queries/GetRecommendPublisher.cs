@@ -27,7 +27,7 @@ namespace Application.Features.Account.EndUser.Queries
         }
         public async Task<PagedResponse<IEnumerable<FollowerDTO>>> Handle(GetRecommendPublicerQuery request, CancellationToken cancellationToken)
         {
-            var userId = _authenticatedUserService.GetCurrentUserId();
+            //var userId = _authenticatedUserService.GetCurrentUserId();
             var res = await _unitOfWork.AccountRepo.FindByAsync(x => x.TotalFollower>=100, request);
             var data = res.Data.Select(u => new FollowerDTO()
             {

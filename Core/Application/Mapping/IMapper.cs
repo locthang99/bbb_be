@@ -7,6 +7,6 @@ namespace Application.Mapping
 {
     public interface IMapper
     {
-        public UserDTO MapUser(Domain.Entities.User user);
+        public ProfileDTO MapUser(Domain.Entities.User user);
     }
 }

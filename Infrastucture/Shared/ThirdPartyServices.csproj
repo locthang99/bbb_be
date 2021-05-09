@@ -10,11 +10,11 @@
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="StackExchange.Redis" Version="2.2.4" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="GoogleAuth\" />
-    <Folder Include="RedisCache\" />
     <Folder Include="Payment\" />
   </ItemGroup>
 
