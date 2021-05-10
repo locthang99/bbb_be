@@ -21,7 +21,7 @@ namespace BackendAPI.Controllers.v1
         [HttpGet("GetCache")]
         public async Task<IActionResult> GetCache([FromQuery] string key, [FromQuery] int db)
         {
-            var data = _redisService.Get(key, db);
+            var data = await _redisService.Get(key, db);
             if (data != null)
                 return Ok(new Response<object>()
                 {
@@ -41,7 +41,7 @@ namespace BackendAPI.Controllers.v1
         [HttpPost("SetCache")]
         public async Task<IActionResult> SetCache([FromBody] ObjectCache obj)
         {
-            var data = _redisService.Set(obj);
+            var data = await _redisService.Set(obj);
             if (data)
                 return Ok(new Response<object>()
                 {
@@ -61,7 +61,7 @@ namespace BackendAPI.Controllers.v1
         [HttpDelete("DeleteCache")]
         public async Task<IActionResult> DeleteCache([FromQuery] string key, [FromQuery] int db)
         {
-            var data = _redisService.Delete(key, db);
+            var data = await _redisService.Delete(key, db);
             if (data)
                 return Ok(new Response<object>()
                 {
