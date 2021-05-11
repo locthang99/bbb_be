@@ -57,7 +57,14 @@ namespace Persistence.Repositories.Base
         {
             await _dbContext.Set<T>().AddAsync(entity);
             entity.DateCreate = DateTime.Now;
-            entity.CreatedBy = _authenticatedUserService.GetCurrentUserId();
+            try
+            {
+                entity.CreatedBy = _authenticatedUserService.GetCurrentUserId();
+            }
+            catch
+            {
+                entity.CreatedBy = 0;
+            }
             //await _dbContext.SaveChangesAsync();
             return entity;
         }
@@ -66,7 +73,14 @@ namespace Persistence.Repositories.Base
         {
             _dbContext.Entry(entity).State = EntityState.Modified;
             entity.LastModified = DateTime.Now;
-            entity.LastModifiedBy = _authenticatedUserService.GetCurrentUserId();
+            try
+            {
+                entity.CreatedBy = _authenticatedUserService.GetCurrentUserId();
+            }
+            catch
+            {
+                entity.CreatedBy = 0;
+            }
             _dbContext.Set<T>().Update(entity);
             return entity;
             //return await _dbContext.SaveChangesAsync();

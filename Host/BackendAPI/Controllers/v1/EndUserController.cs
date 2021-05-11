@@ -39,6 +39,13 @@ namespace BackendAPI.Controllers.v1
             return Ok(await Mediator.Send(rq));
         }
 
+        [HttpGet("GetTempUserId")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetTempUserId([FromQuery] GetTempUserIdQuery rq)
+        {
+            return Ok(await Mediator.Send(rq));
+        }
+
         [HttpGet("GetSubscriber")]
         public async Task<IActionResult> GetSubscriber([FromQuery] GetSubscriberQuery rq)
         {

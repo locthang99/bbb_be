@@ -15,6 +15,7 @@ namespace Application.Features.Song.Commands
     public class ListenCommand : IRequest<Response<Object>>
     {
         public int SongId { get; set; }
+        public int UserId { get; set; }
     }
     public class ListenHandler : IRequestHandler<ListenCommand, Response<Object>>
     {
@@ -28,9 +29,14 @@ namespace Application.Features.Song.Commands
         public async Task<Response<Object>> Handle(ListenCommand request, CancellationToken cancellationToken)
         {
             var song = await _unitOfWork.SongRepo.GetByIdAsync(request.SongId);
+            int userId = 0;
             if (song == null)
                 throw new NotFoundException("Song not found");
-            var userId = _authenticatedUserService.GetCurrentUserId();
+
+            if (request.UserId != 0)
+                userId = request.UserId;
+            else
+                userId = _authenticatedUserService.GetCurrentUserId();
             await _unitOfWork.HistoryRepo.AddAsync(new History()
             {
                 ActionType = Enum.ActionType.LISTEN.ToString(),
