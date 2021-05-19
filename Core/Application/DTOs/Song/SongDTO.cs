@@ -18,6 +18,7 @@ namespace Application.DTOs.Song
         public int TotalCmt { get; set; }
         public int TotalDownload { get; set; }
         public string Lyric { get; set; }
+        public bool SongVip { get; set; }
         public string Thumbnail { get; set; }
         public string FileMusic { get; set; }
         public int Duration { get; set; }

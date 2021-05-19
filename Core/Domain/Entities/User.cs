@@ -15,6 +15,7 @@ namespace Domain.Entities
         public string Address { get; set; }
         public string AccountType { get; set; }
         public string RoleBase { get; set; }
+        public bool UserVip { get; set; }
         public string Thumbnail { get; set; }
         public string CreatedBy { get; set; }
         public string ResetCode { get; set; }

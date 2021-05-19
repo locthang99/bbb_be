@@ -32,7 +32,7 @@ Project_Readme.html
 *.Development.json
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
-
+.vs/*
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/

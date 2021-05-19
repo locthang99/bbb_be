@@ -56,6 +56,7 @@ namespace Persistence.Repositories.Repo
                 PhoneNumber = user.PhoneNumber,
                 UserName = user.UserName,
                 Role = user.RoleBase,
+                UserVip = user.UserVip,
                 Dob = user.Dob,
                 Email = user.Email,
                 Thumbnail = user.Thumbnail

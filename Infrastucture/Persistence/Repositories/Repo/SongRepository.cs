@@ -42,6 +42,7 @@ namespace Persistence.Repositories.Repo
                 TotalLike = song.TotalLike,
                 TotalCmt = song.TotalCmt,
                 TotalDownload = song.TotalDownload,
+                SongVip = song.SongVip,
                 Lyric = song.Lyric,
                 Duration = song.Duration,
                 Types = _dbContext.Song_Types.Where(z => z.SongId == song.Id).Select(c => new TypeDTO()

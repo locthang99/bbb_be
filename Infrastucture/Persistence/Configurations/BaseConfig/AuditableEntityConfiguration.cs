@@ -16,6 +16,8 @@ namespace Persistence.Configurations.BaseConfig
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Property(x => x.DateCreate).IsRequired(true).HasDefaultValue(DateTime.Now);
             builder.Property(x => x.LastModified).IsRequired(true).HasDefaultValue(DateTime.Now);
+            builder.Property(x => x.Disable).IsRequired(true).HasDefaultValue(false);
+            builder.Property(x => x.IsDelete).IsRequired(true).HasDefaultValue(true);
             return builder;
         }
     }

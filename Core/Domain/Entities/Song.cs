@@ -14,6 +14,7 @@ namespace Domain.Entities
         public string Lyric { get; set; }
         public int Duration { get; set; }
         public bool IsPublic { get; set; }
+        public bool SongVip { get; set; }
         public string Thumbnail { get; set; }
         public string FileMusic { get; set; }
         public List<Song_PlayList> Song_PlayLists { get; set; }

@@ -1,6 +1,6 @@
 ﻿using Application.Features.Account.Base.Commands;
 using Application.Features.Account.Base.Queries;
-using Application.Features.Account.EndUser.Commands;
+using Application.Features.Account.Admin.Commands;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -15,6 +15,12 @@ namespace BackendAPI.Controllers.v1
     public class AdminController: BaseApiController
     {
         #region Command
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login([FromBody] LoginCommand rq)
+        {
+            return Ok(await Mediator.Send(rq));
+        }
+
         [HttpPost("ChangePassword")]
         public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordCommand rq)
         {

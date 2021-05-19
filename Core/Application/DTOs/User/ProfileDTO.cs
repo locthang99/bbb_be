@@ -15,6 +15,7 @@ namespace Application.DTOs.User
         public string PhoneNumber { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
+        public bool UserVip { get; set; }
         public bool VerifyEmailStatus { get; set; }
         public string Role { get; set; }
         public string Thumbnail { get; set; }

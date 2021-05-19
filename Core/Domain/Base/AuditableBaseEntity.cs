@@ -15,5 +15,7 @@ namespace Domain.Base
         public DateTime DateCreate { get; set; }
         public int? LastModifiedBy { get; set; }
         public DateTime? LastModified { get; set; }
+        public bool Disable { get; set; }
+        public bool IsDelete { get; set; }
     }
 }

@@ -43,6 +43,7 @@ namespace Application.Features.Account.EndUser.Queries
                 FirstName = data.FirstName,
                 LastName = data.LastName,
                 PhoneNumber = data.PhoneNumber,
+                UserVip = data.UserVip,
                 Role = data.Role,
                 VerifyEmailStatus = user.EmailConfirmed,
                 Thumbnail = data.Thumbnail

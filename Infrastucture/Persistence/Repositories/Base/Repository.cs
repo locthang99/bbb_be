@@ -92,6 +92,13 @@ namespace Persistence.Repositories.Base
             return entity;
         }
 
+        public T Disable(T entity)
+        {
+            entity.Disable = true;
+            _dbContext.Set<T>().Update(entity);
+            return entity;
+        }
+
         public async Task<IReadOnlyList<T>> GetAllAsync()
         {
             return await _dbContext
