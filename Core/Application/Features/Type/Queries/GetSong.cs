@@ -39,7 +39,7 @@ namespace Application.Features.Type.Queries
 
             var listS_P = await _unitOfWork.Song_TypeRepo.FindByAsync(s_p => s_p.TypeId == Type.Id, request);
             var ListIdSong = listS_P.Data.Select(s_p => s_p.SongId).ToList();
-            var listSong = await _unitOfWork.SongRepo.GetByListIdPagedSortAsync(ListIdSong, request);
+            var listSong = await _unitOfWork.SongRepo.GetByListIdPagedSortAsync(ListIdSong);
             var resListSong = listSong.Data.Select(s => _unitOfWork.SongRepo.MapSong(s)).ToList();
             return new PagedResponse<IEnumerable<SongDTO>>(request)
             {

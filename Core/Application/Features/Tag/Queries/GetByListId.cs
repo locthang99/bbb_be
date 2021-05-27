@@ -25,7 +25,7 @@ namespace Application.Features.Tag.Queries
         }
         public async Task<PagedResponse<IEnumerable<TagDTO>>> Handle(GetByListIdQuery request, CancellationToken cancellationToken)
         {
-            var res = await _tagRepository.GetByListIdPagedSortAsync(request.listId,request);
+            var res = await _tagRepository.GetByListIdPagedSortAsync(request.listId);
             var data = res.Data.Select(s => _tagRepository.MapTag(s)).ToList();
             return new PagedResponse<IEnumerable<TagDTO>>(request)
             {

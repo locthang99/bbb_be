@@ -15,7 +15,7 @@ namespace Application.Interfaces.RepoBase
         Task<ResponseQuery<T>> GetAllPagedSortAsync(PagedSortRequest rq);
 
         Task<ResponseQuery<T>> GetByNamePagedSortAsync(string name,PagedSortRequest rq);
-        Task<ResponseQuery<T>> GetByListIdPagedSortAsync(IReadOnlyList<int> listId, PagedSortRequest rq);
+        Task<ResponseQuery<T>> GetByListIdPagedSortAsync(IReadOnlyList<int> listId);
         Task<ResponseQueryable<IQueryable<T>>> FindByAsync(Expression<Func<T, bool>> predicate, PagedSortRequest rq);
 
 

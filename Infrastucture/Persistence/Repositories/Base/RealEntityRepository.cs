@@ -44,13 +44,13 @@ namespace Persistence.Repositories.Base
             };
         }
 
-        public async Task<ResponseQuery<T>> GetByListIdPagedSortAsync(IReadOnlyList<int> listId, PagedSortRequest rq)
+        public async Task<ResponseQuery<T>> GetByListIdPagedSortAsync(IReadOnlyList<int> listId)
         {
             var data = _realEntity.Where(r => listId.Contains(r.Id)).AsNoTracking();
             return new ResponseQuery<T>()
             {
                 TotallRecord = data.Count(),
-                Data = await Sort(rq, data).Skip((rq.Index - 1) * rq.PageSize).Take(rq.PageSize).ToListAsync()
+                Data = await data.ToListAsync()
             };
         }
 

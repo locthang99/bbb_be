@@ -25,7 +25,7 @@ namespace Application.Features.Type.Queries
         }
         public async Task<PagedResponse<IEnumerable<TypeDTO>>> Handle(GetByListIdQuery request, CancellationToken cancellationToken)
         {
-            var res = await _typeRepository.GetByListIdPagedSortAsync(request.listId,request);
+            var res = await _typeRepository.GetByListIdPagedSortAsync(request.listId);
             var data = res.Data.Select(s => _typeRepository.MapType(s)).ToList();
             return new PagedResponse<IEnumerable<TypeDTO>>(request)
             {

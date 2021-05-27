@@ -25,7 +25,7 @@ namespace Application.Features.Playlist.Queries
         }
         public async Task<PagedResponse<IEnumerable<PlaylistDTO>>> Handle(GetByListIdQuery request, CancellationToken cancellationToken)
         {
-            var res = await _playlistRepository.GetByListIdPagedSortAsync(request.listId,request);
+            var res = await _playlistRepository.GetByListIdPagedSortAsync(request.listId);
             var data = res.Data.Select(s => _playlistRepository.MapPlaylist(s)).ToList();
             return new PagedResponse<IEnumerable<PlaylistDTO>>(request)
             {

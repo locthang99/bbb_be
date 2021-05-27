@@ -39,7 +39,7 @@ namespace Application.Features.Tag.Queries
 
             var listS_P = await _unitOfWork.Song_TagRepo.FindByAsync(s_p => s_p.TagId == tag.Id, request);
             var ListIdSong = listS_P.Data.Select(s_p => s_p.SongId).ToList();
-            var listSong = await _unitOfWork.SongRepo.GetByListIdPagedSortAsync(ListIdSong, request);
+            var listSong = await _unitOfWork.SongRepo.GetByListIdPagedSortAsync(ListIdSong);
             var resListSong = listSong.Data.Select(s => _unitOfWork.SongRepo.MapSong(s)).ToList();
             return new PagedResponse<IEnumerable<SongDTO>>(request)
             {
