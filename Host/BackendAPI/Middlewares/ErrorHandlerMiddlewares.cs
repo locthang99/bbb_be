@@ -57,7 +57,10 @@ namespace BackendAPI.Middlewares
                         break;
                     case Application.Exceptions.AuthFailedException e:
                         response.StatusCode = (int)HttpStatusCode.Unauthorized;
-                        responseModel.Msg = e.Message;
+                        if (string.IsNullOrEmpty(e.Message))
+                            responseModel.Msg = "Not login";
+                        else
+                            responseModel.Msg = e.Message;
                         break;
                     case Application.Exceptions.UnauthorizeException e:
                         response.StatusCode = (int)HttpStatusCode.Unauthorized;

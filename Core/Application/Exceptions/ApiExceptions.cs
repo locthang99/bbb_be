@@ -48,6 +48,7 @@ namespace Application.Exceptions
 
     public class AuthFailedException : ApiException
     {
+        public AuthFailedException() : base() { }
         public AuthFailedException(string message) : base(message) { }
     }
 

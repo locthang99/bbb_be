@@ -15,6 +15,11 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Application.Interfaces.UoW;
 using Persistence.Repositories.UoW;
+using Application.Exceptions;
+using Microsoft.AspNetCore.Http;
+using Application.Wrappers;
+using System.Net;
+using System.Text.Json;
 
 namespace Persistence
 {
@@ -75,31 +80,41 @@ namespace Persistence
                         ValidAudience = configuration["JWTSettings:Issuer"],
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWTSettings:Key"]))
                     };
-                    //o.Events = new JwtBearerEvents()
-                    //{
-                    //    OnAuthenticationFailed = c =>
-                    //    {
-                    //        c.NoResult();
-                    //        c.Response.StatusCode = 500;
-                    //        c.Response.ContentType = "text/plain";
-                    //        return c.Response.WriteAsync(c.Exception.ToString());
-                    //    },
-                    //    OnChallenge = context =>
-                    //    {
-                    //        context.HandleResponse();
-                    //        context.Response.StatusCode = 401;
-                    //        context.Response.ContentType = "application/json";
-                    //        var result = JsonConvert.SerializeObject(new Response<string>("You are not Authorized"));
-                    //        return context.Response.WriteAsync(result);
-                    //    },
-                    //    OnForbidden = context =>
-                    //    {
-                    //        context.Response.StatusCode = 403;
-                    //        context.Response.ContentType = "application/json";
-                    //        var result = JsonConvert.SerializeObject(new Response<string>("You are not authorized to access this resource"));
-                    //        return context.Response.WriteAsync(result);
-                    //    },
-                    //};
+                    o.Events = new JwtBearerEvents()
+                    {
+                        OnAuthenticationFailed = c =>
+                        {
+                            c.NoResult();
+                            c.Response.StatusCode = 500;
+                            c.Response.ContentType = "text/plain";
+                            return c.Response.WriteAsync(c.Exception.ToString());
+                        },
+                        OnChallenge = context =>
+                        {
+                            context.HandleResponse();
+                            var response = context.Response;
+                            response.ContentType = "application/json";
+                            var responseModel = new Response<object>() { Data = null };
+                            response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                            responseModel.Msg = "Not login";
+                            responseModel.Code = response.StatusCode;
+                            var result = JsonSerializer.Serialize(responseModel);
+
+                            return response.WriteAsync(result);
+                        },
+                        OnForbidden = context =>
+                        {
+                            var response = context.Response;
+                            response.ContentType = "application/json";
+                            var responseModel = new Response<object>() { Data = null };
+                            response.StatusCode = (int)HttpStatusCode.Forbidden;
+                            responseModel.Msg = "You have not permission to change this resource";
+                            responseModel.Code = response.StatusCode;
+                            var result = JsonSerializer.Serialize(responseModel);
+
+                            return response.WriteAsync(result);
+                        },
+                    };
                 });
 
 

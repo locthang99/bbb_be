@@ -26,27 +26,45 @@ namespace Persistence.Repositories.Base
 
         public async Task<ResponseQuery<T>> GetAllPagedSortAsync(PagedSortRequest rq)
         {
-            var data = _realEntity.Select(x => x).AsNoTracking();
+            var data = _realEntity.Select(x => x).Where(x => x.IsDelete == false);
             return new ResponseQuery<T>()
             {
                 TotallRecord = data.Count(),
-                Data = await Sort(rq, data).Skip((rq.Index - 1) * rq.PageSize).Take(rq.PageSize).ToListAsync()
+                Data = await Sort(rq, data).Skip(rq.Index * rq.PageSize).Take(rq.PageSize).ToListAsync()
             };
         }
 
         public async Task<ResponseQuery<T>> GetByNamePagedSortAsync(string name, PagedSortRequest rq)
         {
-            var data = _realEntity.Where(r => r.Name.Contains(name) || name.Contains(r.Name)).AsNoTracking();
-            return new ResponseQuery<T>()
+            int Id;
+            var isNumbericId = Int32.TryParse(name, out Id);
+            if (string.IsNullOrWhiteSpace(name))
             {
-                TotallRecord = data.Count(),
-                Data = await Sort(rq, data).Skip((rq.Index - 1) * rq.PageSize).Take(rq.PageSize).ToListAsync()
-            };
+                return await GetAllPagedSortAsync(rq);
+            }
+            if(isNumbericId)
+            {
+                var data = _realEntity.Where(r => r.Id==Id || r.Name.ToUpper().Contains(name.ToUpper()) || name.ToUpper().Contains(r.Name.ToUpper())).Where(x => x.IsDelete == false);
+                return new ResponseQuery<T>()
+                {
+                    TotallRecord = data.Count(),
+                    Data = await Sort(rq, data).Skip(rq.Index * rq.PageSize).Take(rq.PageSize).ToListAsync()
+                };
+            }
+            else
+            {
+                var data = _realEntity.Where(r => r.Name.ToUpper().Contains(name.ToUpper()) || name.ToUpper().Contains(r.Name.ToUpper())).Where(x => x.IsDelete == false);
+                return new ResponseQuery<T>()
+                {
+                    TotallRecord = data.Count(),
+                    Data = await Sort(rq, data).Skip(rq.Index * rq.PageSize).Take(rq.PageSize).ToListAsync()
+                };
+            }
         }
 
         public async Task<ResponseQuery<T>> GetByListIdPagedSortAsync(IReadOnlyList<int> listId)
         {
-            var data = _realEntity.Where(r => listId.Contains(r.Id)).AsNoTracking();
+            var data = _realEntity.Where(r => listId.Contains(r.Id)).Where(x => x.IsDelete == false);
             return new ResponseQuery<T>()
             {
                 TotallRecord = data.Count(),
@@ -56,12 +74,23 @@ namespace Persistence.Repositories.Base
 
         public async Task<ResponseQueryable<IQueryable<T>>> FindByAsync(Expression<Func<T, bool>> predicate, PagedSortRequest rq)
         {
-            var data = _realEntity.Where(predicate).AsNoTracking();
+            var data = _realEntity.Where(predicate).Where(x => x.IsDelete == false);
             //listData.Add(Sort(rq, data).Skip((rq.Index - 1) * rq.PageSize).Take(rq.PageSize));
             return new ResponseQueryable<IQueryable<T>>()
             {
                 TotallRecord = data.Count(),
-                Data = Sort(rq, data).Skip((rq.Index - 1) * rq.PageSize).Take(rq.PageSize)
+                Data = Sort(rq, data).Skip(rq.Index * rq.PageSize).Take(rq.PageSize)
+            };
+        }
+
+        public async Task<ResponseQuery<T>> GetByListDeletedSortAsync(PagedSortRequest rq)
+        {
+            var data = _realEntity.Where(x => x.IsDelete == true);
+            //listData.Add(Sort(rq, data).Skip((rq.Index - 1) * rq.PageSize).Take(rq.PageSize));
+            return new ResponseQuery<T>()
+            {
+                TotallRecord = data.Count(),
+                Data = await Sort(rq, data).Skip(rq.Index * rq.PageSize).Take(rq.PageSize).ToListAsync()
             };
         }
     }

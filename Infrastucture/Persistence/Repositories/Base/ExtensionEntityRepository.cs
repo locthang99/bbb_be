@@ -41,7 +41,7 @@ namespace Persistence.Repositories.Base
             return new ResponseQueryable<IQueryable<T>>()
             {
                 TotallRecord = data.Count(),
-                Data = Sort(rq, data).Skip((rq.Index - 1) * rq.PageSize).Take(rq.PageSize)
+                Data = Sort(rq, data).Skip(rq.Index * rq.PageSize).Take(rq.PageSize)
             };
         }
     }

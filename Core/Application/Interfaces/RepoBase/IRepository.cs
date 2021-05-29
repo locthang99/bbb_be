@@ -13,6 +13,8 @@ namespace Application.Interfaces.RepoBase
         Task<T> AddAsync(T entity);
         T Update(T entity);
         T Delete(T entity);
+        T StrongDelete(T entity);
+        T UnDelete(T entity);
         T Disable(T entity);
         bool CheckAuthorizeResource(T entiry);
     }

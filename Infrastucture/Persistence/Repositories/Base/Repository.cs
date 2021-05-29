@@ -46,8 +46,8 @@ namespace Persistence.Repositories.Base
         public async Task<IReadOnlyList<T>> GetPagedReponseAsync(int pageNumber, int pageSize)
         {
             return await _dbContext
-                .Set<T>()
-                .Skip((pageNumber - 1) * pageSize)
+                .Set<T>().Where(x=>x.IsDelete==false)
+                .Skip(pageNumber * pageSize)
                 .Take(pageSize)
                 .AsNoTracking()
                 .ToListAsync();
@@ -88,7 +88,21 @@ namespace Persistence.Repositories.Base
 
         public T Delete(T entity)
         {
+            entity.IsDelete = true;
+            _dbContext.Set<T>().Update(entity);
+            return entity;
+        }
+
+        public T StrongDelete(T entity)
+        {
             _dbContext.Set<T>().Remove(entity);
+            return entity;
+        }
+
+        public T UnDelete(T entity)
+        {
+            entity.IsDelete = false;
+            _dbContext.Set<T>().Update(entity);
             return entity;
         }
 
@@ -102,7 +116,7 @@ namespace Persistence.Repositories.Base
         public async Task<IReadOnlyList<T>> GetAllAsync()
         {
             return await _dbContext
-                 .Set<T>()
+                 .Set<T>().Where(x => x.IsDelete == false)
                  .ToListAsync();
         }
 

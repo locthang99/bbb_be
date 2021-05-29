@@ -13,7 +13,7 @@ namespace Application.Parameters
 
         public PagedSortRequest()
         {
-            Index = 1;
+            Index = 0;
             PageSize = 10;
             SortBy = "Id";
             SortASC = true;

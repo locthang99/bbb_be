@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Application.Features.Playlist.Queries;
 using Application.Features.Playlist.Commands;
+using Microsoft.AspNetCore.Authorization;
 //using Application.Features.Playlist.Commands;
 
 namespace BackendAPI.Controllers.v1
@@ -58,6 +59,7 @@ namespace BackendAPI.Controllers.v1
 
         #region Command
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create([FromForm] CreateCommand rq)
         {
             return Ok(await Mediator.Send(rq));
