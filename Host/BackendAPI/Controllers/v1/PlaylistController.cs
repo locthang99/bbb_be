@@ -50,6 +50,7 @@ namespace BackendAPI.Controllers.v1
         }
 
         [HttpGet("ListSong")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetSong([FromQuery] GetSongQuery rq)
         {
             return Ok(await Mediator.Send(rq));
