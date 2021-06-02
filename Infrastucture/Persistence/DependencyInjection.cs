@@ -94,31 +94,31 @@ namespace Persistence
 
                         //    return response.WriteAsync(result);
                         //},
-                        //OnChallenge = context =>
-                        //{
+                        OnChallenge = context =>
+                        {
+                            context.HandleResponse();
+                            var response = context.Response;
+                            var responseModel = new Response<object>() { Data = null };
+                            responseModel.Msg = "Not login";
+                            responseModel.Code = (int)HttpStatusCode.Unauthorized;
 
-                        //    var response = context.Response;
-                        //    response.ContentType = "application/json";
-                        //    var responseModel = new Response<object>() { Data = null };
-                        //    response.StatusCode = (int)HttpStatusCode.Unauthorized;
-                        //    responseModel.Msg = "Not login";
-                        //    responseModel.Code = response.StatusCode;
-                        //    var result = JsonSerializer.Serialize(responseModel);
+                            response.ContentType = "application/json";
+                            response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                            var result = JsonSerializer.Serialize(responseModel);
+                            return response.WriteAsync(result);
+                        },
+                        OnForbidden = context =>
+                        {
+                            var response = context.Response;
+                            response.ContentType = "application/json";
+                            var responseModel = new Response<object>() { Data = null };
+                            response.StatusCode = (int)HttpStatusCode.Forbidden;
+                            responseModel.Msg = "You have not permission to change this resource";
+                            responseModel.Code = response.StatusCode;
+                            var result = JsonSerializer.Serialize(responseModel);
 
-                        //    return response.WriteAsync(result);
-                        //},
-                        //OnForbidden = context =>
-                        //{
-                        //    var response = context.Response;
-                        //    response.ContentType = "application/json";
-                        //    var responseModel = new Response<object>() { Data = null };
-                        //    response.StatusCode = (int)HttpStatusCode.Forbidden;
-                        //    responseModel.Msg = "You have not permission to change this resource";
-                        //    responseModel.Code = response.StatusCode;
-                        //    var result = JsonSerializer.Serialize(responseModel);
-
-                        //    return response.WriteAsync(result);
-                        //},
+                            return response.WriteAsync(result);
+                        },
                     };
                 });
 

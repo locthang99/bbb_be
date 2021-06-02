@@ -56,7 +56,7 @@ namespace Persistence.Repositories.Repo
                     OwnerId = c.Id,
                     NameOwner = c.FirstName + " " + c.LastName,
                     Thumbnail = c.Thumbnail
-                }).ToList().First(),
+                }).ToList().FirstOrDefault(),
             };
 
             if (!playlist.Thumbnail.Contains("http") && playlist.Thumbnail != "")
