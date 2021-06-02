@@ -38,6 +38,7 @@ namespace BackendAPI.Controllers.v1
         }
 
         [HttpGet("MyPlaylist")]
+        [Authorize]
         public async Task<IActionResult> GetMySong([FromQuery] GetPrivateQuery rq)
         {
             return Ok(await Mediator.Send(rq));
@@ -67,6 +68,7 @@ namespace BackendAPI.Controllers.v1
         }
 
         [HttpPut]
+        [Authorize]
         public async Task<IActionResult> Update([FromQuery] int Id, [FromForm] UpdateCommand rq)
         {
             rq.SetId(Id);
@@ -102,6 +104,7 @@ namespace BackendAPI.Controllers.v1
         //}
 
         [HttpDelete]
+        [Authorize]
         public async Task<IActionResult> Delete([FromQuery] int Id)
         {
             var rq = new DeleteCommand();
@@ -110,24 +113,28 @@ namespace BackendAPI.Controllers.v1
         }
 
         [HttpPost("Reaction")]
+        [Authorize]
         public async Task<IActionResult> Reaction([FromQuery] ReactionCommand rq)
         {
             return Ok(await Mediator.Send(rq));
         }
 
         [HttpPost("Comment")]
+        [Authorize]
         public async Task<IActionResult> Comment([FromBody] CommentCommand rq)
         {
             return Ok(await Mediator.Send(rq));
         }
 
         [HttpPost("PushSong")]
+        [Authorize]
         public async Task<IActionResult> PushSongToPlayList([FromQuery] PushSongCommand rq)
         {
             return Ok(await Mediator.Send(rq));
         }
 
         [HttpDelete("RemoveSong")]
+        [Authorize]
         public async Task<IActionResult> RemoveSongFromPlayist([FromQuery] RemoveSongCommand rq)
         {
             return Ok(await Mediator.Send(rq));

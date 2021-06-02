@@ -82,38 +82,43 @@ namespace Persistence
                     };
                     o.Events = new JwtBearerEvents()
                     {
-                        OnAuthenticationFailed = c =>
-                        {
-                            c.NoResult();
-                            c.Response.StatusCode = 500;
-                            c.Response.ContentType = "text/plain";
-                            return c.Response.WriteAsync(c.Exception.ToString());
-                        },
-                        OnChallenge = context =>
-                        {
-                            context.HandleResponse();
-                            var response = context.Response;
-                            response.ContentType = "application/json";
-                            var responseModel = new Response<object>() { Data = null };
-                            response.StatusCode = (int)HttpStatusCode.Unauthorized;
-                            responseModel.Msg = "Not login";
-                            responseModel.Code = response.StatusCode;
-                            var result = JsonSerializer.Serialize(responseModel);
+                        //OnAuthenticationFailed = context =>
+                        //{
+                        //    var response = context.Response;
+                        //    response.ContentType = "application/json";
+                        //    var responseModel = new Response<object>() { Data = null };
+                        //    response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                        //    responseModel.Msg = "Not login";
+                        //    responseModel.Code = response.StatusCode;
+                        //    var result = JsonSerializer.Serialize(responseModel);
 
-                            return response.WriteAsync(result);
-                        },
-                        OnForbidden = context =>
-                        {
-                            var response = context.Response;
-                            response.ContentType = "application/json";
-                            var responseModel = new Response<object>() { Data = null };
-                            response.StatusCode = (int)HttpStatusCode.Forbidden;
-                            responseModel.Msg = "You have not permission to change this resource";
-                            responseModel.Code = response.StatusCode;
-                            var result = JsonSerializer.Serialize(responseModel);
+                        //    return response.WriteAsync(result);
+                        //},
+                        //OnChallenge = context =>
+                        //{
 
-                            return response.WriteAsync(result);
-                        },
+                        //    var response = context.Response;
+                        //    response.ContentType = "application/json";
+                        //    var responseModel = new Response<object>() { Data = null };
+                        //    response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                        //    responseModel.Msg = "Not login";
+                        //    responseModel.Code = response.StatusCode;
+                        //    var result = JsonSerializer.Serialize(responseModel);
+
+                        //    return response.WriteAsync(result);
+                        //},
+                        //OnForbidden = context =>
+                        //{
+                        //    var response = context.Response;
+                        //    response.ContentType = "application/json";
+                        //    var responseModel = new Response<object>() { Data = null };
+                        //    response.StatusCode = (int)HttpStatusCode.Forbidden;
+                        //    responseModel.Msg = "You have not permission to change this resource";
+                        //    responseModel.Code = response.StatusCode;
+                        //    var result = JsonSerializer.Serialize(responseModel);
+
+                        //    return response.WriteAsync(result);
+                        //},
                     };
                 });
 
