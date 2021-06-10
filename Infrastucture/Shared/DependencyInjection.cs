@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ThirdPartyServices.Deeplearning;
 using ThirdPartyServices.FacebookAuth;
 using ThirdPartyServices.Hash;
 using ThirdPartyServices.RedisCache;
@@ -21,6 +22,8 @@ namespace ThirdPartyServices
             services.AddTransient<IFacebookAuthService, FacebookAuthService>();
             services.AddTransient<IHashService, HashService>();
             services.AddSingleton<IRedisService, RedisService>();
+            services.AddSingleton<IDeeplearningService, DeeplearningService>();
+
             //services.AddTransient<IManageUserService, ManageUserService>();
             //services.AddTransient<IValidator<UserLoginRequest>, UserLoginValidator>();
 

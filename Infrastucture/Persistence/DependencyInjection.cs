@@ -40,6 +40,7 @@ namespace Persistence
             services.AddTransient<ITypeRepository, TypeRepository>();
             services.AddTransient<ITagRepository, TagRepository>();
             services.AddTransient<IAccountRepository, AccountRepository>();
+            services.AddTransient<IDashboardRepository, DashboardRepository>();
 
 
 

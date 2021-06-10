@@ -122,6 +122,8 @@ namespace Persistence.Repositories.Base
 
         public bool CheckAuthorizeResource(T entiry)
         {
+            if (_authenticatedUserService.CheckRole("ADMIN") || _authenticatedUserService.CheckRole("SUPPERUSER"))
+                return true;
             if (_authenticatedUserService.GetCurrentUserId() == entiry.CreatedBy)
                 return true;
             else

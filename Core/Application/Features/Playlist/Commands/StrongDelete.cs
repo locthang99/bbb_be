@@ -13,7 +13,7 @@ using ThirdPartyServices.Storage;
 
 namespace Application.Features.Playlist.Commands
 {
-    public class DeleteCommand : IRequest<Response<Domain.Entities.Playlist>>
+    public class StrongDeleteCommand : IRequest<Response<Domain.Entities.Playlist>>
     {
         [JsonIgnore]
         internal int Id { get; set; }
@@ -22,17 +22,17 @@ namespace Application.Features.Playlist.Commands
             Id = id;
         }
     }
-    public class DeleteCommandHandler : IRequestHandler<DeleteCommand, Response<Domain.Entities.Playlist>>
+    public class StrongDeleteCommandHandler : IRequestHandler<StrongDeleteCommand, Response<Domain.Entities.Playlist>>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IStorageService _storageService;
-        public DeleteCommandHandler(IUnitOfWork unitOfWork, IStorageService storageService)
+        public StrongDeleteCommandHandler(IUnitOfWork unitOfWork, IStorageService storageService)
         {
             _unitOfWork = unitOfWork;
             _storageService = storageService;
         }
 
-        public async Task<Response<Domain.Entities.Playlist>> Handle(DeleteCommand request, CancellationToken cancellationToken)
+        public async Task<Response<Domain.Entities.Playlist>> Handle(StrongDeleteCommand request, CancellationToken cancellationToken)
         {
 
             var playlist = await _unitOfWork.PlaylistRepo.GetByIdAsync(request.Id);
@@ -40,17 +40,17 @@ namespace Application.Features.Playlist.Commands
                 throw new NotFoundException("Playlist not found");
             if (!_unitOfWork.PlaylistRepo.CheckAuthorizeResource(playlist))
                 throw new UnauthorizeException();
-            var res =  _unitOfWork.PlaylistRepo.Delete(playlist);
+            var res = _unitOfWork.PlaylistRepo.StrongDelete(playlist);
 
             if (!_unitOfWork.Commit())
-                throw new DeleteRequestException("Delete fail");
+                throw new DeleteRequestException("StrongDelete fail");
             else
             {
                 //await _storageService.DeleteFileAsync(playlist.Thumbnail, 0);
                 return new CommandOK<Domain.Entities.Playlist>()
                 {
                     ObjectId = playlist.Id,
-                    Msg = "Delete playlist OK",
+                    Msg = "StrongDelete playlist OK",
                 };
             }
         }

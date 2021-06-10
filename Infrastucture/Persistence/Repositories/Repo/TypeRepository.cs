@@ -9,6 +9,8 @@ using Application.Interfaces.Repo;
 using Application.Interfaces.Service;
 using Application.DTOs.Type;
 using Microsoft.Extensions.Configuration;
+using System.Linq;
+using Application.DTOs.Owner;
 
 namespace Persistence.Repositories.Repo
 {
@@ -34,6 +36,12 @@ namespace Persistence.Repositories.Repo
                 Name = type.Name,
                 Description = type.Description,
                 DateCreate = type.DateCreate,
+                Owner = _dbContext.Users.Where(z => z.Id == type.CreatedBy).Select(c => new OwnerDTO()
+                {
+                    OwnerId = c.Id,
+                    NameOwner = c.FirstName + " " + c.LastName,
+                    Thumbnail = c.Thumbnail
+                }).ToList().FirstOrDefault(),
             };
             if (!type.Thumbnail.Contains("http") && type.Thumbnail != "")
                 data.Thumbnail = _config["File:Image"] + type.Thumbnail;

@@ -21,11 +21,16 @@ namespace ThirdPartyServices.Storage
         private readonly string _lyric;
         private const string LYRIC_FOLDER_NAME = "Lyric";
 
+        private readonly string _temp;
+        private const string TEMP_FOLDER_NAME = "Temporary";
+
         public FileStorageService(IHostEnvironment webHostEnvironment)
         {
             _audio = Path.Combine(webHostEnvironment.ContentRootPath + "/wwwroot", AUDIO_FOLDER_NAME);
             _image = Path.Combine(webHostEnvironment.ContentRootPath + "/wwwroot", IMAGE_FOLDER_NAME);
             _lyric = Path.Combine(webHostEnvironment.ContentRootPath + "/wwwroot", LYRIC_FOLDER_NAME);
+            _temp = Path.Combine(webHostEnvironment.ContentRootPath + "/wwwroot", TEMP_FOLDER_NAME);
+
         }
 
         //public string GetFileUrl(string fileName)
@@ -68,6 +73,18 @@ namespace ThirdPartyServices.Storage
             var originalFileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
             var fileName = $"{Guid.NewGuid()}{Path.GetExtension(originalFileName)}";
             await SaveFileAsync(file.OpenReadStream(), fileName, Type);
+            return fileName;
+        }
+
+        public async Task<string> SaveTempFile(IFormFile file)
+        {
+            var originalFileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+            var fileName = $"{Guid.NewGuid()}{Path.GetExtension(originalFileName)}";
+
+            var filePath = Path.Combine(_temp, fileName);
+            using var output = new FileStream(filePath, FileMode.Create);
+            await file.OpenReadStream().CopyToAsync(output);
+
             return fileName;
         }
     }

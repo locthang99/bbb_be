@@ -1,4 +1,5 @@
-﻿using Application.DTOs.Song;
+﻿using Application.DTOs.Owner;
+using Application.DTOs.Song;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,6 +13,7 @@ namespace Application.DTOs.Type
         public string Description { get; set; }
         public DateTime DateCreate { get; set; }
         public string Thumbnail { get; set; }
+        public OwnerDTO Owner { get; set; }
         //public List<SongModel> ListSong { get; set; }
     }
 }

@@ -9,10 +9,10 @@ namespace Application.DTOs.Dashboard
         public int M { get; set; }
         public int Y { get; set; }
         public string Title { get; set; }
-        public string Value { get; set; }
+        public long Value { get; set; }
     }
 
-    public class DashboardModelVIP
+    public class DashboardDTOVIP
     {
         public int M { get; set; }
         public int Y { get; set; }

@@ -13,7 +13,7 @@ using ThirdPartyServices.Storage;
 
 namespace Application.Features.Song.Commands
 {
-    public class DeleteCommand : IRequest<Response<Domain.Entities.Song>>
+    public class UnDeleteCommand : IRequest<Response<Domain.Entities.Song>>
     {
         [JsonIgnore]
         internal int Id { get; set; }
@@ -22,17 +22,17 @@ namespace Application.Features.Song.Commands
             Id = id;
         }
     }
-    public class DeleteCommandHandler : IRequestHandler<DeleteCommand, Response<Domain.Entities.Song>>
+    public class UnDeleteCommandHandler : IRequestHandler<UnDeleteCommand, Response<Domain.Entities.Song>>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IStorageService _storageService;
-        public DeleteCommandHandler(IUnitOfWork unitOfWork, IStorageService storageService)
+        public UnDeleteCommandHandler(IUnitOfWork unitOfWork, IStorageService storageService)
         {
             _unitOfWork = unitOfWork;
             _storageService = storageService;
         }
 
-        public async Task<Response<Domain.Entities.Song>> Handle(DeleteCommand request, CancellationToken cancellationToken)
+        public async Task<Response<Domain.Entities.Song>> Handle(UnDeleteCommand request, CancellationToken cancellationToken)
         {
 
             var song = await _unitOfWork.SongRepo.GetByIdAsync(request.Id);
@@ -40,18 +40,18 @@ namespace Application.Features.Song.Commands
                 throw new NotFoundException("Song not found");
             if (!_unitOfWork.SongRepo.CheckAuthorizeResource(song))
                 throw new UnauthorizeException();
-            var res =  _unitOfWork.SongRepo.Delete(song);
+            var res = _unitOfWork.SongRepo.UnDelete(song);
 
             if (!_unitOfWork.Commit())
-                throw new DeleteRequestException("Delete fail");
+                throw new DeleteRequestException("UnDelete fail");
             else
             {
-                //await _storageService.DeleteFileAsync(song.Thumbnail, 0);
-                //await _storageService.DeleteFileAsync(song.FileMusic, 1);
+                //await _storageService.UnDeleteFileAsync(song.Thumbnail, 0);
+                //await _storageService.UnDeleteFileAsync(song.FileMusic, 1);
                 return new CommandOK<Domain.Entities.Song>()
                 {
                     ObjectId = song.Id,
-                    Msg = "Delete song OK",
+                    Msg = "UnDelete song OK",
                 };
             }
         }

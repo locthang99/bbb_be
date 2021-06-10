@@ -9,6 +9,8 @@ using Application.Interfaces.Repo;
 using Application.Interfaces.Service;
 using Application.DTOs.Tag;
 using Microsoft.Extensions.Configuration;
+using System.Linq;
+using Application.DTOs.Owner;
 
 namespace Persistence.Repositories.Repo
 {
@@ -34,6 +36,12 @@ namespace Persistence.Repositories.Repo
                 Name = tag.Name,
                 Description = tag.Description,
                 DateCreate = tag.DateCreate,
+                Owner = _dbContext.Users.Where(z => z.Id == tag.CreatedBy).Select(c => new OwnerDTO()
+                {
+                    OwnerId = c.Id,
+                    NameOwner = c.FirstName + " " + c.LastName,
+                    Thumbnail = c.Thumbnail
+                }).ToList().FirstOrDefault(),
             };
             return data;
         }

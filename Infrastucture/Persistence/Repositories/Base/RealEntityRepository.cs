@@ -83,15 +83,37 @@ namespace Persistence.Repositories.Base
             };
         }
 
-        public async Task<ResponseQuery<T>> GetByListDeletedSortAsync(PagedSortRequest rq)
+        public async Task<ResponseQuery<T>> GetByListDeletedSortAsync(string name,PagedSortRequest rq)
         {
-            var data = _realEntity.Where(x => x.IsDelete == true);
-            //listData.Add(Sort(rq, data).Skip((rq.Index - 1) * rq.PageSize).Take(rq.PageSize));
-            return new ResponseQuery<T>()
+            int Id;
+            var isNumbericId = Int32.TryParse(name, out Id);
+            if (string.IsNullOrWhiteSpace(name))
             {
-                TotallRecord = data.Count(),
-                Data = await Sort(rq, data).Skip(rq.Index * rq.PageSize).Take(rq.PageSize).ToListAsync()
-            };
+                var data = _realEntity.Select(x => x).Where(x => x.IsDelete == true);
+                return new ResponseQuery<T>()
+                {
+                    TotallRecord = data.Count(),
+                    Data = await Sort(rq, data).Skip(rq.Index * rq.PageSize).Take(rq.PageSize).ToListAsync()
+                };
+            }
+            if (isNumbericId)
+            {
+                var data = _realEntity.Where(r => r.Id == Id || r.Name.ToUpper().Contains(name.ToUpper()) || name.ToUpper().Contains(r.Name.ToUpper())).Where(x => x.IsDelete == true);
+                return new ResponseQuery<T>()
+                {
+                    TotallRecord = data.Count(),
+                    Data = await Sort(rq, data).Skip(rq.Index * rq.PageSize).Take(rq.PageSize).ToListAsync()
+                };
+            }
+            else
+            {
+                var data = _realEntity.Where(r => r.Name.ToUpper().Contains(name.ToUpper()) || name.ToUpper().Contains(r.Name.ToUpper())).Where(x => x.IsDelete == true);
+                return new ResponseQuery<T>()
+                {
+                    TotallRecord = data.Count(),
+                    Data = await Sort(rq, data).Skip(rq.Index * rq.PageSize).Take(rq.PageSize).ToListAsync()
+                };
+            }
         }
     }
 }

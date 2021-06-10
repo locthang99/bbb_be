@@ -31,6 +31,13 @@ namespace BackendAPI.Controllers.v1
             return Ok(await Mediator.Send(rq));
         }
 
+        [HttpGet("ListDeleted")]
+        public async Task<IActionResult> GetListDeleted([FromQuery] GetDeletedlQuery rq)
+        {
+
+            return Ok(await Mediator.Send(rq));
+        }
+
         [HttpGet("ByName")]
         public async Task<IActionResult> GetByName([FromQuery] GetByNameQuery rq)
         {
@@ -107,6 +114,24 @@ namespace BackendAPI.Controllers.v1
         public async Task<IActionResult> Delete([FromQuery] int Id)
         {
             var rq = new DeleteCommand();
+            rq.SetId(Id);
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpPut("UnDelete")]
+        [Authorize]
+        public async Task<IActionResult> UnDelete([FromQuery] int Id)
+        {
+            var rq = new UnDeleteCommand();
+            rq.SetId(Id);
+            return Ok(await Mediator.Send(rq));
+        }
+
+        [HttpDelete("StrongDelete")]
+        [Authorize]
+        public async Task<IActionResult> StrongDelete([FromQuery] int Id)
+        {
+            var rq = new StrongDeleteCommand();
             rq.SetId(Id);
             return Ok(await Mediator.Send(rq));
         }

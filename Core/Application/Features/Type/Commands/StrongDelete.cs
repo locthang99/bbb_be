@@ -13,7 +13,7 @@ using ThirdPartyServices.Storage;
 
 namespace Application.Features.Type.Commands
 {
-    public class DeleteCommand : IRequest<Response<Domain.Entities.Type>>
+    public class StrongDeleteCommand : IRequest<Response<Domain.Entities.Type>>
     {
         [JsonIgnore]
         internal int Id { get; set; }
@@ -22,17 +22,17 @@ namespace Application.Features.Type.Commands
             Id = id;
         }
     }
-    public class DeleteCommandHandler : IRequestHandler<DeleteCommand, Response<Domain.Entities.Type>>
+    public class StrongDeleteCommandHandler : IRequestHandler<StrongDeleteCommand, Response<Domain.Entities.Type>>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IStorageService _storageService;
-        public DeleteCommandHandler(IUnitOfWork unitOfWork, IStorageService storageService)
+        public StrongDeleteCommandHandler(IUnitOfWork unitOfWork, IStorageService storageService)
         {
             _unitOfWork = unitOfWork;
             _storageService = storageService;
         }
 
-        public async Task<Response<Domain.Entities.Type>> Handle(DeleteCommand request, CancellationToken cancellationToken)
+        public async Task<Response<Domain.Entities.Type>> Handle(StrongDeleteCommand request, CancellationToken cancellationToken)
         {
 
             var Type = await _unitOfWork.TypeRepo.GetByIdAsync(request.Id);
@@ -40,17 +40,17 @@ namespace Application.Features.Type.Commands
                 throw new NotFoundException("Type not found");
             if (!_unitOfWork.TypeRepo.CheckAuthorizeResource(Type))
                 throw new UnauthorizeException();
-            var res =  _unitOfWork.TypeRepo.Delete(Type);
+            var res = _unitOfWork.TypeRepo.StrongDelete(Type);
 
             if (!_unitOfWork.Commit())
-                throw new DeleteRequestException("Delete fail");
+                throw new DeleteRequestException("StrongDelete fail");
             else
             {
                 //await _storageService.DeleteFileAsync(Type.Thumbnail, 0);
                 return new CommandOK<Domain.Entities.Type>()
                 {
                     ObjectId = Type.Id,
-                    Msg = "Delete Type OK",
+                    Msg = "StrongDelete Type OK",
                 };
             }
         }
