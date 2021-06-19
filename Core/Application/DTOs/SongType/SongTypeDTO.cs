@@ -16,4 +16,8 @@ namespace Application.DTOs.Type
         public OwnerDTO Owner { get; set; }
         //public List<SongModel> ListSong { get; set; }
     }
+    public class TypeValueDTO : TypeDTO
+    {
+        public int Value { get; set; }
+    }
 }

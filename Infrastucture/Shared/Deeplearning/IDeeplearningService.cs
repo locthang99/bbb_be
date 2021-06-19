@@ -14,6 +14,7 @@ namespace ThirdPartyServices.Deeplearning
         Task<List<Model>> GetModels();
         Task<string> SaveTempFileMusic(FileObj file);
         Task<object> PredictTemp(FileObj file,bool isVN);
+        Task<List<ResponsePredict>> PredictType(string nameFile, bool isVN);
 
     }
 }

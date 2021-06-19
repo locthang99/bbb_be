@@ -24,14 +24,14 @@ namespace Application.Features.Account.EndUser.Commands
         private readonly UserManager<Domain.Entities.User> _userManager;
         private readonly IToken _token;
         private readonly IStorageService _storageService;
-        private readonly ISendMailService _sendMailService; 
+        //private readonly ISendMailService _sendMailService; 
         public RegisterCommandHandler(UserManager<Domain.Entities.User> userManager,
-            IToken token, IStorageService storageService, ISendMailService sendMailService)
+            IToken token, IStorageService storageService)
         {
             _userManager = userManager;
             _token = token;
             _storageService = storageService;
-            _sendMailService = sendMailService;
+            //_sendMailService = sendMailService;
         }
         public async Task<CommandResponse<TokenResponse>> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
@@ -70,7 +70,7 @@ namespace Application.Features.Account.EndUser.Commands
                         Username = user.Email
 
                     };
-                    await _sendMailService.SendMailNotify("Welcome to BigBlueBirds", "Welcome to BigBlueBirds", user.Email);
+                    //await _sendMailService.SendMailNotify("Welcome to BigBlueBirds", "Welcome to BigBlueBirds", user.Email);
                     return new CommandOK<TokenResponse>()
                     {
                         Msg = "Register OK",

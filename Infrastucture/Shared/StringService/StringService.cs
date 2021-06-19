@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Domain.Base
+namespace ThirdPartyServices.StringService
 {
-    public class RealEntity : AuditableBaseEntity
+    public class StringService : IStringService
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
-
-        public bool CompareNoSign(string str)
+        public string RemoveSigns(string str)
         {
-            var name = Name.ToLower();
             str = str.ToLower();
             Regex[] listRe = {
                 new Regex("[à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ]"),
@@ -25,14 +21,8 @@ namespace Domain.Base
             };
             string[] map = { "a", "e", "i", "o", "u", "y", "d", };
             for (int i = 0; i < listRe.Length; i++)
-            {
                 str = listRe[i].Replace(str, map[i]);
-                name = listRe[i].Replace(str, map[i]);
-            }
-            if (name.Contains(str) || str.Contains(name))
-                return true;
-            else
-                return false;
+            return str;
         }
     }
 }

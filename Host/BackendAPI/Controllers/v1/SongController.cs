@@ -66,8 +66,8 @@ namespace BackendAPI.Controllers.v1
             return Ok(await Mediator.Send(rq));
         }
 
-        [HttpGet("Predict")]
-        public async Task<IActionResult> Predict([FromQuery] PredictQuery rq)
+        [HttpPost("PredictType")]
+        public async Task<IActionResult> PredictType([FromQuery] PredictTypeCommand rq)
         {
             return Ok(await Mediator.Send(rq));
         }

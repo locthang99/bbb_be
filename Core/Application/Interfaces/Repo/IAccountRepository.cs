@@ -17,13 +17,15 @@ namespace Application.Interfaces.Repo
         Task<User> GetByEmailAsync(string email);
         Task<User> AddAsync(User entity,string pwd);
         Task<User> UpdateAsync(User entity);
-        Task<User> DeleteAsync(User entity);
+        User Delete(User entity);
+        User UnDelete(User entity);
+        Task<User> StrongDeleteAsync(User entity);
         Task<User> SetRole(User entity);
         UserDTO MapUser(User entity);
-        Task<UserDTO> MapUser2(User user);
         Task<string> GenerateToken(User entity);
         Task<ResponseQueryable<IQueryable<User>>> FindByAsync(Expression<Func<User, bool>> predicate, PagedSortRequest rq);
-        Task<ResponseQuery<User>> GetAllPagedSortAsync(PagedSortRequest rq);
+        Task<ResponseQuery<User>> GetAllPagedSortAsync(PagedSortRequest rq,string RoleBase,string Name);
+        Task<ResponseQuery<User>> GetListDeletedPagedSortAsync(PagedSortRequest rq, string Name);
         Task<ResponseQuery<User>> GetByListIdPagedSortAsync(IReadOnlyList<int> listId, PagedSortRequest rq);
     }
 }

@@ -21,8 +21,13 @@ namespace Persistence.Configurations
             builder.Property(x => x.Duration).IsRequired().HasDefaultValue(0);
             builder.Property(x => x.IsPublic).IsRequired();
             builder.Property(x => x.SongVip).IsRequired().HasDefaultValue(false);
+            builder.Property(x => x.Country).IsRequired().HasDefaultValue("");
+            builder.Property(x => x.IsChecked).IsRequired().HasDefaultValue(false);
+            builder.Property(x => x.IsOfficial).IsRequired().HasDefaultValue(true);
             builder.Property(x => x.Thumbnail).IsRequired().HasDefaultValue("");
-            builder.Property(x => x.FileMusic).IsRequired().HasDefaultValue("");
+            builder.Property(x => x.FileMusic128).IsRequired().HasDefaultValue("");
+            builder.Property(x => x.FileMusic320).HasDefaultValue("");
+            builder.Property(x => x.FileMusicLossless).HasDefaultValue("");
             //builder.HasOne(x => x.FileMusic).WithOne(x => x.Song).HasForeignKey<FileMusic>(x => x.IdSong).OnDelete(DeleteBehavior.Cascade);
             //builder.HasMany(x => x.FileImages).WithOne(x => x.Song).HasForeignKey(x=>x.IdSong).OnDelete(DeleteBehavior.Cascade);
             //builder.Property(x => x.IdFileMusic);

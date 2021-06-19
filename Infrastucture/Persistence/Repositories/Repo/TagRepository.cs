@@ -11,6 +11,7 @@ using Application.DTOs.Tag;
 using Microsoft.Extensions.Configuration;
 using System.Linq;
 using Application.DTOs.Owner;
+using ThirdPartyServices.StringService;
 
 namespace Persistence.Repositories.Repo
 {
@@ -20,7 +21,7 @@ namespace Persistence.Repositories.Repo
 
         private readonly DbSet<Tag> _tags;
 
-        public TagRepository(BigBlueBirdsDbContext dbContext, IAuthenticatedUserService authenticatedUserService, IConfiguration config) : base(dbContext, authenticatedUserService)
+        public TagRepository(BigBlueBirdsDbContext dbContext, IAuthenticatedUserService authenticatedUserService, IStringService strSv, IConfiguration config) : base(dbContext, authenticatedUserService, strSv)
         {
             _tags = dbContext.Set<Tag>();
             _config = config;

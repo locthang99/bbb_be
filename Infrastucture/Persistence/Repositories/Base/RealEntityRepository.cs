@@ -12,16 +12,20 @@ using Application.Interfaces.ResQuery;
 using Application.Interfaces.Service;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Text.RegularExpressions;
+using ThirdPartyServices.StringService;
 
 namespace Persistence.Repositories.Base
 {
     public class RealEntityRepository<T> : Repository<T>, IRealEntityRepository<T> where T : RealEntity
     {
         public readonly DbSet<T> _realEntity;
+        public readonly IStringService _strSv;
 
-        public RealEntityRepository(BigBlueBirdsDbContext dbContext, IAuthenticatedUserService authenticatedUserService) : base(dbContext, authenticatedUserService)
+        public RealEntityRepository(BigBlueBirdsDbContext dbContext, IAuthenticatedUserService authenticatedUserService,IStringService strSv) : base(dbContext, authenticatedUserService)
         {
             _realEntity = dbContext.Set<T>();
+            _strSv = strSv;
         }
 
         public async Task<ResponseQuery<T>> GetAllPagedSortAsync(PagedSortRequest rq)
@@ -44,7 +48,8 @@ namespace Persistence.Repositories.Base
             }
             if(isNumbericId)
             {
-                var data = _realEntity.Where(r => r.Id==Id || r.Name.ToUpper().Contains(name.ToUpper()) || name.ToUpper().Contains(r.Name.ToUpper())).Where(x => x.IsDelete == false);
+                var data = _realEntity.Where(r => r.Id == Id || r.Name.ToUpper().Contains(name.ToUpper()) || name.ToUpper().Contains(r.Name.ToUpper()))
+                    .Where(x => x.IsDelete == false);
                 return new ResponseQuery<T>()
                 {
                     TotallRecord = data.Count(),
@@ -53,7 +58,8 @@ namespace Persistence.Repositories.Base
             }
             else
             {
-                var data = _realEntity.Where(r => r.Name.ToUpper().Contains(name.ToUpper()) || name.ToUpper().Contains(r.Name.ToUpper())).Where(x => x.IsDelete == false);
+                var data = _realEntity.Where(r => r.Name.ToUpper().Contains(name.ToUpper()) || name.ToUpper().Contains(r.Name.ToUpper()))
+               .Where(x => x.IsDelete == false);
                 return new ResponseQuery<T>()
                 {
                     TotallRecord = data.Count(),
@@ -98,7 +104,8 @@ namespace Persistence.Repositories.Base
             }
             if (isNumbericId)
             {
-                var data = _realEntity.Where(r => r.Id == Id || r.Name.ToUpper().Contains(name.ToUpper()) || name.ToUpper().Contains(r.Name.ToUpper())).Where(x => x.IsDelete == true);
+                var data = _realEntity.Where(r => r.Id == Id || r.Name.ToUpper().Contains(name.ToUpper()) || name.ToUpper().Contains(r.Name.ToUpper()))
+                    .Where(x => x.IsDelete == true);
                 return new ResponseQuery<T>()
                 {
                     TotallRecord = data.Count(),
@@ -107,7 +114,8 @@ namespace Persistence.Repositories.Base
             }
             else
             {
-                var data = _realEntity.Where(r => r.Name.ToUpper().Contains(name.ToUpper()) || name.ToUpper().Contains(r.Name.ToUpper())).Where(x => x.IsDelete == true);
+                var data = _realEntity.Where(r => r.Name.ToUpper().Contains(name.ToUpper()) || name.ToUpper().Contains(r.Name.ToUpper()))
+               .Where(x => x.IsDelete == true);
                 return new ResponseQuery<T>()
                 {
                     TotallRecord = data.Count(),
@@ -115,5 +123,6 @@ namespace Persistence.Repositories.Base
                 };
             }
         }
+
     }
 }

@@ -14,9 +14,14 @@ namespace Domain.Entities
         public string Lyric { get; set; }
         public int Duration { get; set; }
         public bool IsPublic { get; set; }
+        public bool IsOfficial { get; set; }
+        public bool IsChecked { get; set; }
         public bool SongVip { get; set; }
+        public string Country { get; set; }
         public string Thumbnail { get; set; }
-        public string FileMusic { get; set; }
+        public string FileMusic128 { get; set; }
+        public string FileMusic320 { get; set; }
+        public string FileMusicLossless { get; set; }
         public List<Song_PlayList> Song_PlayLists { get; set; }
         public List<Song_Type> Song_Types { get; set; }
         public List<User_Like_Song> ListUserLike { get; set; }

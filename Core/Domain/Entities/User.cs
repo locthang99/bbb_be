@@ -22,6 +22,7 @@ namespace Domain.Entities
         public DateTime DateCreate { get; set; }
         public string LastModifiedBy { get; set; }
         public DateTime? LastModified { get; set; }
+        public bool IsDelete { get; set; }
 
 
         //public virtual DateTimeOffset? LockoutEnd { get; set; }

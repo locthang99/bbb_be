@@ -68,6 +68,17 @@ namespace ThirdPartyServices.Deeplearning
             return obj.data;
         }
 
+        public async Task<List<ResponsePredict>> PredictType(string nameFile, bool isVN)
+        {
+            var host = await _rediservice.Get(KEY_HOST, 0);
+            var rg = isVN ? "VN" : "AU";
+            var rs = await _httpClientFactoty.CreateClient().GetAsync(host + "/real_predict_" + rg + "/?name_file=" + nameFile);
+            rs.EnsureSuccessStatusCode();
+            var resp = await rs.Content.ReadAsStringAsync();
+            var obj = JsonConvert.DeserializeObject<List_ResponsePredict>(resp);
+            return obj.data;
+        }
+
         public async Task<string> SaveTempFileMusic(FileObj file)
         {
            var fileName = await _storageService.SaveTempFile(file.file);

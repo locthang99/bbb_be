@@ -13,6 +13,7 @@ using Application.DTOs.Owner;
 using Application.DTOs.Tag;
 using Microsoft.Extensions.Configuration;
 using Application.Interfaces.Service;
+using ThirdPartyServices.StringService;
 
 namespace Persistence.Repositories.Repo
 {
@@ -22,7 +23,7 @@ namespace Persistence.Repositories.Repo
 
         private readonly DbSet<Song> _songs;
 
-        public SongRepository(BigBlueBirdsDbContext dbContext, IAuthenticatedUserService authenticatedUserService, IConfiguration config) : base(dbContext, authenticatedUserService)
+        public SongRepository(BigBlueBirdsDbContext dbContext, IAuthenticatedUserService authenticatedUserService, IStringService strSv, IConfiguration config) : base(dbContext, authenticatedUserService, strSv)
         {
             _songs = dbContext.Set<Song>();
             _config = config;
@@ -43,11 +44,15 @@ namespace Persistence.Repositories.Repo
                 TotalCmt = song.TotalCmt,
                 TotalDownload = song.TotalDownload,
                 SongVip = song.SongVip,
+                Country = song.Country,
+                IsChecked = song.IsChecked,
+                IsOfficial = song.IsOfficial,
                 Lyric = song.Lyric,
                 Duration = song.Duration,
-                Types = _dbContext.Song_Types.Where(z => z.SongId == song.Id).Select(c => new TypeDTO()
-                {   Id = c.TypeId,
-                    Name = c.Type.Name
+                Types = _dbContext.Song_Types.Where(z => z.SongId == song.Id).Select(c => new TypeValueDTO {
+                    Id = c.TypeId,
+                    Name = c.Type.Name,
+                    Value = c.Value
                 }).ToList(),
                 Tags = _dbContext.Song_Tags.Where(z => z.SongId == song.Id).Select(c => new TagDTO()
                 {
@@ -77,14 +82,27 @@ namespace Persistence.Repositories.Repo
                 data.Lyric = _config["File:Lyric"] + song.Lyric;
             else
                 data.Lyric = song.Lyric;
+
             if (!song.Thumbnail.Contains("http") && song.Thumbnail != "")
                 data.Thumbnail = _config["File:Image"] + song.Thumbnail;
             else
                 data.Thumbnail = song.Thumbnail;
-            if (!song.FileMusic.Contains("http") && song.FileMusic != "")
-                data.FileMusic = _config["File:Music"] + song.FileMusic;
+
+            if (!song.FileMusic128.Contains("http") && song.FileMusic128 != "")
+                data.FileMusic128 = _config["File:Music"] + song.FileMusic128;
             else
-                data.FileMusic = song.FileMusic;
+                data.FileMusic128 = song.FileMusic128;
+
+            if (!song.FileMusic320.Contains("http") && song.FileMusic320 != "")
+                data.FileMusic320 = _config["File:Music"] + song.FileMusic320;
+            else
+                data.FileMusic320 = song.FileMusic320;
+
+            if (!song.FileMusicLossless.Contains("http") && song.FileMusicLossless != "")
+                data.FileMusicLossless = _config["File:Music"] + song.FileMusicLossless;
+            else
+                data.FileMusicLossless = song.FileMusicLossless;
+
             return data;
 
         }

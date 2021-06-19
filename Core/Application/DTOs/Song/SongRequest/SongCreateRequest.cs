@@ -15,8 +15,12 @@ namespace Application.DTOs.Song.SongRequest
         public IFormFile Lyric { get; set; }
         public int Duration { get; set; }
         public IFormFile Thumbnail { get; set; }
-        public IFormFile FileMusic { get; set; }
+        public IFormFile FileMusic128 { get; set; }
+        public IFormFile FileMusic320 { get; set; }
+        public IFormFile FileMusicLossless { get; set; }
         public bool IsPublic { get; set; }
+        public bool IsOfficial { get; set; }
+        public string Country { get; set; }
 
     }
 }

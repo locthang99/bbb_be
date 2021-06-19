@@ -9,6 +9,7 @@ using ThirdPartyServices.Hash;
 using ThirdPartyServices.RedisCache;
 using ThirdPartyServices.SendMail;
 using ThirdPartyServices.Storage;
+using ThirdPartyServices.StringService;
 
 namespace ThirdPartyServices
 {
@@ -23,6 +24,8 @@ namespace ThirdPartyServices
             services.AddTransient<IHashService, HashService>();
             services.AddSingleton<IRedisService, RedisService>();
             services.AddSingleton<IDeeplearningService, DeeplearningService>();
+            services.AddSingleton<IStringService, ThirdPartyServices.StringService.StringService>();
+
 
             //services.AddTransient<IManageUserService, ManageUserService>();
             //services.AddTransient<IValidator<UserLoginRequest>, UserLoginValidator>();

@@ -50,8 +50,14 @@ namespace Application.Features.Song.Commands
                 song.Lyric = await _storageService.SaveFile(request.Lyric,2);
             if (request.Thumbnail != null)
                 song.Thumbnail = await _storageService.SaveFile(request.Thumbnail, 0);
-            if (request.FileMusic != null)
-                song.FileMusic = await _storageService.SaveFile(request.FileMusic, 1);
+            if (request.FileMusic128 != null)
+                song.FileMusic128 = await _storageService.SaveFile(request.FileMusic128, 1);
+
+            if (request.FileMusic320 != null)
+                song.FileMusic320 = await _storageService.SaveFile(request.FileMusic320, 1);
+
+            if (request.FileMusicLossless != null)
+                song.FileMusicLossless = await _storageService.SaveFile(request.FileMusicLossless, 1);
 
             var res =  _unitOfWork.SongRepo.Update(song);
 
