@@ -16,6 +16,9 @@ namespace Application.Interfaces.UoW
         public ITypeRepository TypeRepo { get; }
         public IRepository<History> HistoryRepo { get; }
         public IAccountRepository AccountRepo { get; }
+        public IRealEntityRepository<Item> ItemRepo { get; }
+        public IRealEntityRepository<Order> OrderRepo { get; }
+        public IRepository<InfoVipUser> InfoVipUserRepo { get; }
         public IExtensionEntityRepository<Song_PlayList> Song_PlaylistRepo { get; }
         public IExtensionEntityRepository<Song_Tag> Song_TagRepo {get;}
         public IExtensionEntityRepository<Song_Type> Song_TypeRepo { get; }

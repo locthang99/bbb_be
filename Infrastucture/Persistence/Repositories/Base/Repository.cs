@@ -27,6 +27,11 @@ namespace Persistence.Repositories.Base
             return await _dbContext.Set<T>().FindAsync(id);
         }
 
+        public virtual T GetById(int id)
+        {
+            return _dbContext.Set<T>().Find(id);
+        }
+
         public IOrderedQueryable<T> Sort(PagedSortRequest rq, IQueryable<T> input)
         {
             var param = Expression.Parameter(typeof(T), "item");
@@ -118,6 +123,11 @@ namespace Persistence.Repositories.Base
             return await _dbContext
                  .Set<T>().Where(x => x.IsDelete == false)
                  .ToListAsync();
+        }
+
+        public IReadOnlyList<T> CustomFindBy(Expression<Func<T, bool>> predicate)
+        {
+            return _dbContext.Set<T>().Where(predicate).Where(x => x.IsDelete == false).ToList();
         }
 
         public bool CheckAuthorizeResource(T entiry)

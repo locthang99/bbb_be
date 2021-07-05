@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <Folder Include="GoogleAuth\" />
-    <Folder Include="Payment\" />
   </ItemGroup>
 
 </Project>

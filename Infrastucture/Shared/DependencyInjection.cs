@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using ThirdPartyServices.Deeplearning;
 using ThirdPartyServices.FacebookAuth;
 using ThirdPartyServices.Hash;
+using ThirdPartyServices.Payment;
 using ThirdPartyServices.RedisCache;
 using ThirdPartyServices.SendMail;
 using ThirdPartyServices.Storage;
@@ -22,6 +23,7 @@ namespace ThirdPartyServices
             services.AddSingleton<ISendMailService, SendMailService>();
             services.AddTransient<IFacebookAuthService, FacebookAuthService>();
             services.AddTransient<IHashService, HashService>();
+            services.AddTransient<IMomoService, MomoService>();
             services.AddSingleton<IRedisService, RedisService>();
             services.AddSingleton<IDeeplearningService, DeeplearningService>();
             services.AddSingleton<IStringService, ThirdPartyServices.StringService.StringService>();

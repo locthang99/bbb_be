@@ -5,6 +5,7 @@ using Application.Features.Tag.Commands;
 using Microsoft.AspNetCore.Authorization;
 using Application.Interfaces.Repo;
 using Application.Wrappers;
+using Application.Interfaces.Service;
 //using Application.Features.Tag.Commands;
 
 namespace BackendAPI.Controllers.v1
@@ -14,9 +15,11 @@ namespace BackendAPI.Controllers.v1
     {
         #region Queries
         private readonly IDashboardRepository _dashboardRepo;
-        public DashboardController(IDashboardRepository dashboardRepo)
+        private readonly IAuthenticatedUserService _authenService;
+        public DashboardController(IDashboardRepository dashboardRepo, IAuthenticatedUserService authenService)
         {
             _dashboardRepo = dashboardRepo;
+            _authenService = authenService;
         }
 
         [HttpGet("ChartSong")]
@@ -73,6 +76,27 @@ namespace BackendAPI.Controllers.v1
         {
             var all = await _dashboardRepo.GetCreateUser(type);
             return Ok(new Response<object>() { Msg = "Dashboard Create User", Data = all });
+        }
+
+        [HttpGet("ChartRectionMySong")]
+        public async Task<IActionResult> ChartRectionMySong([FromQuery] string type)
+        {
+            var all = await _dashboardRepo.GetAllReactionMySong(type,_authenService.GetCurrentUserId());
+            return Ok(new Response<object>() { Msg = "Dashboard Song", Data = all });
+        }
+
+        [HttpGet("GetAllInfoMySong")]
+        public async Task<IActionResult> GetAllInfoMySong()
+        {
+            var all =  _dashboardRepo.GetAllInfoMySong( _authenService.GetCurrentUserId());
+            return Ok(new Response<object>() { Msg = "Dashboard all", Data = all });
+        }
+
+        [HttpGet("GetChartAllUser")]
+        public async Task<IActionResult> GetChartAllUser()
+        {
+            var all =await _dashboardRepo.GetChartAllUser();
+            return Ok(new Response<object>() { Msg = "Dashboard user all", Data = all });
         }
         #endregion
 

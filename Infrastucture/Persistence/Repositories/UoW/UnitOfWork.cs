@@ -19,6 +19,9 @@ namespace Persistence.Repositories.UoW
         public ITypeRepository TypeRepo { get; }
         public IRepository<History> HistoryRepo { get; }
         public IAccountRepository AccountRepo { get; }
+        public IRealEntityRepository<Item> ItemRepo { get; }
+        public IRealEntityRepository<Order> OrderRepo { get; }
+        public IRepository<InfoVipUser> InfoVipUserRepo { get; }
         public IExtensionEntityRepository<Follower> FollowerRepo { get; }
         public IExtensionEntityRepository<Song_PlayList> Song_PlaylistRepo { get; }
         public IExtensionEntityRepository<Song_Tag> Song_TagRepo { get; set; }
@@ -37,6 +40,9 @@ namespace Persistence.Repositories.UoW
             ITypeRepository _typeRepo,
             IRepository<History> _historyRepo,
             IAccountRepository _accountRepo,
+            IRealEntityRepository<Item> _itemRepo,
+            IRealEntityRepository<Order> _orderRepo,
+            IRepository<InfoVipUser> _infoVipUserRepo,
             IExtensionEntityRepository<Follower> _followerRepo,
             IExtensionEntityRepository<Song_PlayList> _song_PlaylistRepo,
             IExtensionEntityRepository<Song_Tag> _song_TagRepo,
@@ -57,6 +63,9 @@ namespace Persistence.Repositories.UoW
             HistoryRepo = _historyRepo;
             FollowerRepo = _followerRepo;
             AccountRepo = _accountRepo;
+            ItemRepo = _itemRepo;
+            OrderRepo = _orderRepo;
+            InfoVipUserRepo = _infoVipUserRepo;
             Song_PlaylistRepo = _song_PlaylistRepo;
             Song_TagRepo = _song_TagRepo;
             Song_TypeRepo = _song_TypeRepo;

@@ -34,6 +34,7 @@ namespace Persistence
             #region Repositories
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient(typeof(IExtensionEntityRepository<>), typeof(ExtensionEntityRepository<>));
+            services.AddTransient(typeof(IRealEntityRepository<>), typeof(RealEntityRepository<>));
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<ISongRepository, SongRepository>();
             services.AddTransient<IPlaylistRepository, PlaylistRepository>();

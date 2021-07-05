@@ -16,5 +16,8 @@ namespace Application.Interfaces.Repo
         Task<List<DashboardDTOVIP>> GetAll(string type);
         Task<List<DashboardDTO>> GetAge(string type);
         Task<List<DashboardDTO>> GetCreateUser(string type);
+        Task<List<DashboardDTOVIP>> GetAllReactionMySong(string type, int userId);
+        List<DashboardDTO> GetAllInfoMySong(int userId);
+        Task<List<DashboardDTO>> GetChartAllUser();
     }
 }

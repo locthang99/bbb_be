@@ -15,6 +15,8 @@ using System.Threading.Tasks;
 namespace Persistence.Contexts
 {
     public class BigBlueBirdsDbContext : IdentityDbContext<User, Role, int,IdentityUserClaim<int>,IdentityUserRole<int>,IdentityUserLogin<int>,IdentityRoleClaim<int>,IdentityUserToken<int>>
+    //public class BigBlueBirdsDbContext : DbContext
+
     {
 
         public BigBlueBirdsDbContext(DbContextOptions options) : base(options)
@@ -65,6 +67,9 @@ namespace Persistence.Contexts
             modelBuilder.ApplyConfiguration(new TagConfiguration());
             modelBuilder.ApplyConfiguration(new Song_TagConfiguration());
             modelBuilder.ApplyConfiguration(new CacheDataConfiguration());
+            modelBuilder.ApplyConfiguration(new ItemConfiguration());
+            modelBuilder.ApplyConfiguration(new OrderConfiguration());
+            modelBuilder.ApplyConfiguration(new InfoVipUserConfiguration());
 
             modelBuilder.Entity<IdentityUserClaim<int>>().ToTable("UserClaims");
             modelBuilder.Entity<IdentityUserRole<int>>().ToTable("UserRoles").HasKey(x => new { x.UserId, x.RoleId });
@@ -77,6 +82,9 @@ namespace Persistence.Contexts
             modelBuilder.SeedRole();
             modelBuilder.SeedAccount_Role();
             modelBuilder.SeedType();
+            modelBuilder.SeedItems();
+            modelBuilder.SeedOrders();
+
         }
         public DbSet<AppConfig> AppConfig { get; set; }
         public DbSet<Song> Songs { get; set; }
@@ -98,6 +106,9 @@ namespace Persistence.Contexts
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Song_Tag> Song_Tags { get; set; }
         public DbSet<CacheData> CacheDatas { get; set; }
+        public DbSet<Item> Items { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<InfoVipUser> InfoVipUsers { get; set; }
 
     }
 }

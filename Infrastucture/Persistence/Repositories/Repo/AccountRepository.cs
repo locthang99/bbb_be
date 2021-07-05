@@ -100,7 +100,7 @@ namespace Persistence.Repositories.Repo
             var token = new JwtSecurityToken(_config["JWTSettings:Issuer"],
                 _config["JWTSettings:Issuer"],
                 claims,
-                expires: DateTime.Now.AddHours(3),
+                expires: DateTime.Now.AddMinutes(Int32.Parse(_config["JWTSettings:DurationInMinutes"])),
                 signingCredentials: creds);
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
@@ -211,9 +211,10 @@ namespace Persistence.Repositories.Repo
             throw new NotImplementedException();
         }
 
-        public Task<User> UpdateAsync(User entity)
+        public async Task<User> UpdateAsync(User entity)
         {
-            throw new NotImplementedException();
+            var rs = _bigBlueBirdsDbContext.Users.Update(entity);
+                return entity;
         }
 
         public async Task<ResponseQueryable<IQueryable<User>>> FindByAsync(Expression<Func<User, bool>> predicate, PagedSortRequest rq)
